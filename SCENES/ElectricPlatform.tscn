@@ -1,0 +1,43 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://ASSETS/Sprites/ElectricPlatform/On2.png" type="Texture" id=1]
+[ext_resource path="res://ASSETS/Sprites/ElectricPlatform/On4.png" type="Texture" id=2]
+[ext_resource path="res://ASSETS/Sprites/ElectricPlatform/On6.png" type="Texture" id=3]
+[ext_resource path="res://ASSETS/Sprites/ElectricPlatform/On3.png" type="Texture" id=4]
+[ext_resource path="res://ASSETS/Sprites/ElectricPlatform/On1.png" type="Texture" id=5]
+[ext_resource path="res://ASSETS/Sprites/ElectricPlatform/On5.png" type="Texture" id=6]
+[ext_resource path="res://ASSETS/Sprites/ElectricPlatform/On7.png" type="Texture" id=7]
+[ext_resource path="res://ASSETS/Sprites/ElectricPlatform/Off.png" type="Texture" id=8]
+[ext_resource path="res://SCENES/ElectricPlatform.gd" type="Script" id=9]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 128.003, 15.3727 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 8 ) ],
+"loop": true,
+"name": "off",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 1 ), ExtResource( 4 ), ExtResource( 2 ), ExtResource( 6 ), ExtResource( 3 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "on",
+"speed": 20.0
+} ]
+
+[node name="ElectricPlatform" type="StaticBody2D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource( 9 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 4, 4 )
+frames = SubResource( 2 )
+animation = "on"
+
+[node name="Tween" type="Tween" parent="."]
+[connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]

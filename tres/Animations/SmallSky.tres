@@ -1,0 +1,18 @@
+[gd_resource type="SpriteFrames" load_steps=9 format=2]
+
+[ext_resource path="res://ASSETS/Sprites/Backgrounds/Cloud/Cloud2.png" type="Texture" id=1]
+[ext_resource path="res://ASSETS/Sprites/Backgrounds/Cloud/Cloud6.png" type="Texture" id=2]
+[ext_resource path="res://ASSETS/Sprites/Backgrounds/Cloud/Cloud1.png" type="Texture" id=3]
+[ext_resource path="res://ASSETS/Sprites/Backgrounds/Cloud/Cloud8.png" type="Texture" id=4]
+[ext_resource path="res://ASSETS/Sprites/Backgrounds/Cloud/Cloud4.png" type="Texture" id=5]
+[ext_resource path="res://ASSETS/Sprites/Backgrounds/Cloud/Cloud3.png" type="Texture" id=6]
+[ext_resource path="res://ASSETS/Sprites/Backgrounds/Cloud/Cloud5.png" type="Texture" id=7]
+[ext_resource path="res://ASSETS/Sprites/Backgrounds/Cloud/Cloud7.png" type="Texture" id=8]
+
+[resource]
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 1 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 7 ), ExtResource( 2 ), ExtResource( 8 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "default",
+"speed": 1.3
+} ]

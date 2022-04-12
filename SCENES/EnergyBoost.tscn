@@ -1,0 +1,71 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://ASSETS/Sprites/EnergyBoost.png" type="Texture" id=1]
+[ext_resource path="res://SCENES/EnergyBoost.gd" type="Script" id=2]
+[ext_resource path="res://float_animation.tres" type="Animation" id=3]
+[ext_resource path="res://ASSETS/Sprites/EnergyBoostGray.png" type="Texture" id=4]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 20.8272
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "gray",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": false,
+"name": "default",
+"speed": 0.0
+} ]
+
+[sub_resource type="Animation" id=2]
+resource_name = "collected"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 0.732043, 3.13834, 34.2966 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( 0, -135 ), Vector2( 0, 106.891 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 132.9 ]
+}
+
+[node name="EnergyBoost" type="Area2D"]
+collision_layer = 32
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0, 0.39 )
+scale = Vector2( 4, 4 )
+frames = SubResource( 3 )
+animation = "gray"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite"]
+autoplay = "float"
+anims/collected = SubResource( 2 )
+anims/float = ExtResource( 3 )
+[connection signal="body_entered" from="." to="." method="_on_EnergyBoost_body_entered"]
+[connection signal="animation_finished" from="AnimatedSprite/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

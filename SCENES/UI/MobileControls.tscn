@@ -1,0 +1,77 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://ASSETS/Sprites/LeftButton.png" type="Texture" id=1]
+[ext_resource path="res://ASSETS/Sprites/RightButton.png" type="Texture" id=2]
+[ext_resource path="res://ASSETS/Sprites/UpButton.png" type="Texture" id=3]
+[ext_resource path="res://ASSETS/Sprites/SwitchButton.png" type="Texture" id=4]
+[ext_resource path="res://ASSETS/Sprites/DownButton.png" type="Texture" id=5]
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+points = PoolVector2Array( 80, 200, 80, -200, -200, -200, -200, 200 )
+
+[sub_resource type="ConvexPolygonShape2D" id=2]
+points = PoolVector2Array( 200, 200, 200, -200, -80, -200, -80, 200 )
+
+[sub_resource type="ConvexPolygonShape2D" id=3]
+points = PoolVector2Array( 200, 200, 200, -200, -80, -200, -80, 200 )
+
+[sub_resource type="ConvexPolygonShape2D" id=4]
+points = PoolVector2Array( 80, 200, 80, -200, -200, -200, -200, 200 )
+
+[sub_resource type="ConvexPolygonShape2D" id=5]
+points = PoolVector2Array( 80, 200, 80, -200, -200, -200, -200, 200 )
+
+[node name="MobileControls" type="CanvasLayer"]
+
+[node name="Left" type="TouchScreenButton" parent="." groups=[
+"arrow_button",
+]]
+modulate = Color( 1, 1, 1, 0.392157 )
+position = Vector2( 5.54, 428.464 )
+normal = ExtResource( 1 )
+shape = SubResource( 1 )
+shape_visible = false
+passby_press = true
+action = "left"
+
+[node name="Right" type="TouchScreenButton" parent="." groups=[
+"arrow_button",
+]]
+modulate = Color( 1, 1, 1, 0.392157 )
+position = Vector2( 177.836, 428.464 )
+normal = ExtResource( 2 )
+shape = SubResource( 2 )
+shape_visible = false
+passby_press = true
+action = "right"
+
+[node name="Up" type="TouchScreenButton" parent="." groups=[
+"arrow_button",
+]]
+modulate = Color( 1, 1, 1, 0.392157 )
+position = Vector2( 1015.78, 376.712 )
+normal = ExtResource( 3 )
+shape = SubResource( 3 )
+shape_visible = false
+passby_press = true
+action = "up"
+
+[node name="Switch" type="TouchScreenButton" parent="."]
+modulate = Color( 1, 0.894118, 0.207843, 0.392157 )
+position = Vector2( 839.848, 428.464 )
+normal = ExtResource( 4 )
+shape = SubResource( 4 )
+shape_visible = false
+passby_press = true
+action = "switch"
+
+[node name="Down" type="TouchScreenButton" parent="." groups=[
+"arrow_button",
+]]
+modulate = Color( 1, 1, 1, 0.392157 )
+position = Vector2( 839.848, 428.464 )
+normal = ExtResource( 5 )
+shape = SubResource( 5 )
+shape_visible = false
+passby_press = true
+action = "down"

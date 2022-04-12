@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://ASSETS/Tilesets/Pipe/Pipe/tileset_Pipe.tres" type="TileSet" id=1]
+[ext_resource path="res://SCENES/Pipe.gd" type="Script" id=2]
+
+
+[node name="Pipe" type="TileMap"]
+scale = Vector2( 4, 4 )
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 8, 8 )
+collision_layer = 0
+collision_mask = 0
+format = 1
+script = ExtResource( 2 )

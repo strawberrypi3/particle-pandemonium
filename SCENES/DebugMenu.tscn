@@ -1,0 +1,77 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://SCENES/DebugMenu.gd" type="Script" id=1]
+
+[node name="DebugMenu" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="HydrogenButton" type="Button" parent="."]
+margin_top = 56.0
+margin_right = 124.0
+margin_bottom = 105.0
+text = "Hydrogen"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HeliumButton" type="Button" parent="."]
+margin_left = 1.4304
+margin_top = 110.92
+margin_right = 125.43
+margin_bottom = 159.92
+text = "Helium"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LithiumButton" type="Button" parent="."]
+margin_top = 168.0
+margin_right = 126.0
+margin_bottom = 220.0
+text = "Lithium"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BerylliumButton" type="Button" parent="."]
+margin_left = 1.18919
+margin_top = 228.055
+margin_right = 127.189
+margin_bottom = 280.055
+text = "Beryllium"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_right = 40.0
+margin_bottom = 14.0
+text = "DEBUG MENU"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="."]
+margin_top = 32.0
+margin_right = 81.0
+margin_bottom = 46.0
+text = "Level Select:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="."]
+margin_left = 384.0
+margin_right = 572.0
+margin_bottom = 65.0
+text = "DEBUG CONTROLS:
+\"E\" --> switch
+\"G\" --> next level
+\"H\" --> return to debug menu"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="HydrogenButton" to="." method="_on_HydrogenButton_pressed"]
+[connection signal="pressed" from="HeliumButton" to="." method="_on_HeliumButton_pressed"]
+[connection signal="pressed" from="LithiumButton" to="." method="_on_LithiumButton_pressed"]
+[connection signal="pressed" from="BerylliumButton" to="." method="_on_BerylliumButton_pressed"]

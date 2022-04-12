@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://SCENES/Sidekick.tscn" type="PackedScene" id=1]
+[ext_resource path="res://SCENES/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://SCENES/UI/UI.tscn" type="PackedScene" id=3]
+[ext_resource path="res://SCENES/Game.gd" type="Script" id=6]
+
+[node name="Game" type="Node"]
+script = ExtResource( 6 )
+
+[node name="Player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 461.032, 496.25 )
+
+[node name="Sidekick" parent="." instance=ExtResource( 1 )]
+position = Vector2( 490.173, 426.656 )
+
+[node name="UI" parent="." instance=ExtResource( 3 )]
+[connection signal="death" from="Player" to="." method="_on_Player_death"]
+[connection signal="to_player" from="Player" to="." method="_on_Player_to_player"]
+[connection signal="to_sidekick" from="Player" to="." method="_on_Player_to_sidekick"]
+[connection signal="death" from="Sidekick" to="." method="_on_Sidekick_death"]
+[connection signal="to_player" from="Sidekick" to="." method="_on_Sidekick_to_player"]
+[connection signal="to_player" from="UI" to="." method="_on_UI_to_player"]

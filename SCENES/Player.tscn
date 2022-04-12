@@ -1,0 +1,89 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://ASSETS/Sprites/Proton/ProtonWalking2.png" type="Texture" id=1]
+[ext_resource path="res://SCENES/Player.gd" type="Script" id=2]
+[ext_resource path="res://ASSETS/Sprites/Proton/ProtonWalking1.png" type="Texture" id=3]
+[ext_resource path="res://ASSETS/Sprites/Proton/ProtonWalking3.png" type="Texture" id=4]
+[ext_resource path="res://ASSETS/Sprites/Proton/ProtonDeath4.png" type="Texture" id=5]
+[ext_resource path="res://ASSETS/Sprites/Proton/ProtonDeath3.png" type="Texture" id=6]
+[ext_resource path="res://ASSETS/Sprites/Proton/ProtonDeath2.png" type="Texture" id=7]
+[ext_resource path="res://ASSETS/Sprites/Proton/ProtonDeath6.png" type="Texture" id=8]
+[ext_resource path="res://ASSETS/Sprites/Proton/ProtonDeath7.png" type="Texture" id=9]
+[ext_resource path="res://ASSETS/Sprites/Proton/ProtonDeath8.png" type="Texture" id=11]
+[ext_resource path="res://ASSETS/Sprites/Proton/ProtonDeath5.png" type="Texture" id=12]
+[ext_resource path="res://ASSETS/Sprites/Proton/ProtonDeath1.png" type="Texture" id=13]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "idle",
+"speed": 2.0
+}, {
+"frames": [ ExtResource( 13 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 12 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 11 ), ExtResource( 11 ) ],
+"loop": false,
+"name": "death",
+"speed": 25.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 1 ), ExtResource( 4 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "walking",
+"speed": 7.0
+} ]
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 37.878
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 39.8342
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 100.0
+
+[node name="Player" type="KinematicBody2D"]
+collision_layer = 2147483649
+collision_mask = 18
+collision/safe_margin = 0.005
+script = ExtResource( 2 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 1.00089, 1 )
+frames = SubResource( 1 )
+animation = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 0.227265 )
+shape = SubResource( 2 )
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 2147483648
+collision_mask = 72
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2( -0.0700734, 0.0215849 )
+shape = SubResource( 3 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+limit_left = 0
+limit_top = 0
+limit_right = 4800
+limit_bottom = 1200
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+editor_draw_limits = true
+editor_draw_drag_margin = true
+
+[node name="Control" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="Control"]
+shape = SubResource( 4 )
+shape_centered = false
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
+[connection signal="area_exited" from="Hurtbox" to="." method="_on_Hurtbox_area_exited"]
+[connection signal="body_entered" from="Hurtbox" to="." method="_on_Hurtbox_body_entered"]
+[connection signal="pressed" from="Control/TouchScreenButton" to="." method="_on_TouchScreenButton_pressed"]
