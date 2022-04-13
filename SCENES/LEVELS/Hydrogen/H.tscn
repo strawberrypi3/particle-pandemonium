@@ -3,9 +3,12 @@
 [ext_resource path="res://tres/Tilesets/Spikes.tres" type="TileSet" id=1]
 [ext_resource path="res://ASSETS/Tilesets/BlueStar/tileset_BlueStar.tres" type="TileSet" id=2]
 [ext_resource path="res://tres/Animations/SpaceBG.tres" type="SpriteFrames" id=3]
-[ext_resource path="res://SCENES/Door.tscn" type="PackedScene" id=4]
-[ext_resource path="res://SCENES/LEVELS/Level.gd" type="Script" id=5]
-[ext_resource path="res://SCENES/Background.gd" type="Script" id=6]
+[ext_resource path="res://SCENES/door.tscn" type="PackedScene" id=4]
+[ext_resource path="res://SCENES/LEVELS/level.gd" type="Script" id=5]
+[ext_resource path="res://SCENES/background.gd" type="Script" id=6]
+
+
+
 
 [node name="Level" type="Node2D"]
 script = ExtResource( 5 )

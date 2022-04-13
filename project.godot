@@ -16,12 +16,12 @@ _global_script_class_icons={
 [application]
 
 config/name="Mobile Game"
-run/main_scene="res://SCENES/DebugMenu.tscn"
+run/main_scene="res://SCENES/debug_menu.tscn"
 config/icon="res://ASSETS/Sprites/icon.png"
 
 [autoload]
 
-Global="*res://SCENES/Global.gd"
+Global="*res://SCENES/global.gd"
 
 [display]
 

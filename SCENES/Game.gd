@@ -43,7 +43,7 @@ func _physics_process(delta):
 				$Sidekick.move_state(delta) # Sidekick is controlled
 			$UI.countdown_state(delta) # UI counts down, "unstable" state
 	
-	if Global.world == "Hydrogen":
+	if Global.world == "hydrogen":
 		$UI/MobileControls/Switch.hide()
 
 	if Input.is_action_just_pressed("reset"):
@@ -155,7 +155,7 @@ func transition(new_level_number):
 	
 	# Prevents extra buffer flicker frame between showing switch button (above)
 	# and subsequently hiding it in _physics_process:
-	if Global.world == "Hydrogen":
+	if Global.world == "hydrogen":
 		$UI/MobileControls/Switch.hide()
 
 

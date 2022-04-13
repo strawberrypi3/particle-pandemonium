@@ -1,4 +1,4 @@
-# State machine is controlled by res://SCENES/Game.gd
+# State machine is controlled by res://SCENES/game.gd
 # A Player node MUST be present!
 # Sidekick follows behind the Player by default, and can be switched to a 
 # controllable state.
@@ -151,14 +151,14 @@ func _on_WallSensor_body_exited(body):
 
 
 func _on_Hurtbox_area_entered(area):
-	if area.get_filename() == "res://SCENES/ButtonTouchOverride.tscn":
+	if area.get_filename() == "res://SCENES/button_touch_override.tscn":
 		button_count += 1
 		return
 	_on_Hurtbox_body_entered(area)
 
 
 func _on_Hurtbox_area_exited(area):
-	if area.get_filename() == "res://SCENES/ButtonTouchOverride.tscn":
+	if area.get_filename() == "res://SCENES/button_touch_override.tscn":
 		button_count -= 1
 
 

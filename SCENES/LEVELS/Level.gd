@@ -33,17 +33,17 @@ func _ready():
 	# Connect all necessary signals of instantiated nodes (which may or may
 	# not be children)
 	for child in get_children():
-		if child.get_filename() == "res://SCENES/Key.tscn":
+		if child.get_filename() == "res://SCENES/key.tscn":
 			child.connect("collected", self, "_on_Key_collected")
 		
-		if child.get_filename() == "res://SCENES/FloorSwitch.tscn":
+		if child.get_filename() == "res://SCENES/floor_switch.tscn":
 			child.connect("pressed", self, "_on_FloorSwitch_pressed")
 			child.connect("released", self, "_on_FloorSwitch_released")
 			
-		if child.get_filename() == "res://SCENES/EnergyBoost.tscn":
+		if child.get_filename() == "res://SCENES/energy_boost.tscn":
 			child.connect("collected", get_parent(), "_on_EnergyBoost_collected")
 		
-		if child.get_filename() == "res://SCENES/ElectronSwitch.tscn":
+		if child.get_filename() == "res://SCENES/electron_switch.tscn":
 			child.connect("entered", self, "_on_ElectronSwitch_entered")
 			child.connect("exited", self, "_on_ElectronSwitch_exited")
 
@@ -54,7 +54,7 @@ func _ready():
 func _on_Door_body_entered(body):
 	# The following two checks prevent player from entering door upon instancing
 	# level if door is in the same place as the player just was (nice sentence)
-	if body.get_filename() == "res://SCENES/Player.tscn":
+	if body.get_filename() == "res://SCENES/player.tscn":
 		if body.sensing: # This is set to false during level transitions
 			emit_signal("level_complete")
 
@@ -67,11 +67,11 @@ func _on_FloorSwitch_pressed(floor_switch_id):
 	# Unlock gate(s) if ids match:
 	for child in get_children():
 		# Unlock gate:
-		if child.get_filename() == "res://SCENES/Gate.tscn":
+		if child.get_filename() == "res://SCENES/gate.tscn":
 			if child.id == floor_switch_id:
 				child.switch_pressed()
 		# Change pipe color:
-		if child.get_filename() == "res://SCENES/Pipe.tscn":
+		if child.get_filename() == "res://SCENES/pipe.tscn":
 			if child.id == floor_switch_id:
 				child.activated = true
 
@@ -80,30 +80,30 @@ func _on_FloorSwitch_released(floor_switch_id):
 	# Lock gate(s) if ids match:
 	for child in get_children():
 		# Lock gate:
-		if child.get_filename() == "res://SCENES/Gate.tscn":
+		if child.get_filename() == "res://SCENES/gate.tscn":
 			if child.id == floor_switch_id:
 				child.switch_released()
 		# Change pipe color:
-		if child.get_filename() == "res://SCENES/Pipe.tscn":
+		if child.get_filename() == "res://SCENES/pipe.tscn":
 			if child.id == floor_switch_id:
 				child.activated = false
 
 
 func _on_ElectronSwitch_entered(electron_switch_id):
 	for child in get_children():
-		if child.get_filename() == "res://SCENES/ElectricPlatform.tscn":
+		if child.get_filename() == "res://SCENES/electric_platform.tscn":
 			if child.id == electron_switch_id:
 				child.activate()
 
 
 func _on_ElectronSwitch_exited(electron_switch_id):
 	for child in get_children():
-		if child.get_filename() == "res://SCENES/ElectricPlatform.tscn":
+		if child.get_filename() == "res://SCENES/electric_platform.tscn":
 			if child.id == electron_switch_id:
 				child.deactivate()
 
 
 func reset_energy_boosts():
 	for child in get_children():
-		if child.get_filename() == "res://SCENES/EnergyBoost.tscn":
+		if child.get_filename() == "res://SCENES/energy_boost.tscn":
 			child.activated = true

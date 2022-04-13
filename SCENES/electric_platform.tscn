@@ -8,7 +8,8 @@
 [ext_resource path="res://ASSETS/Sprites/ElectricPlatform/On5.png" type="Texture" id=6]
 [ext_resource path="res://ASSETS/Sprites/ElectricPlatform/On7.png" type="Texture" id=7]
 [ext_resource path="res://ASSETS/Sprites/ElectricPlatform/Off.png" type="Texture" id=8]
-[ext_resource path="res://SCENES/ElectricPlatform.gd" type="Script" id=9]
+[ext_resource path="res://SCENES/electric_platform.gd" type="Script" id=9]
+
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 128.003, 15.3727 )

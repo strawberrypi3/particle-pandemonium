@@ -1,11 +1,19 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://SCENES/LEVELS/Lithium/Li.tscn" type="PackedScene" id=1]
-[ext_resource path="res://SCENES/FloorSwitch.tscn" type="PackedScene" id=2]
-[ext_resource path="res://SCENES/Gate.tscn" type="PackedScene" id=3]
-[ext_resource path="res://SCENES/Key.tscn" type="PackedScene" id=4]
-[ext_resource path="res://SCENES/Pipe.tscn" type="PackedScene" id=5]
-[ext_resource path="res://SCENES/Balloon.tscn" type="PackedScene" id=6]
+[ext_resource path="res://SCENES/LEVELS/lithium/li.tscn" type="PackedScene" id=1]
+[ext_resource path="res://SCENES/floor_switch.tscn" type="PackedScene" id=2]
+[ext_resource path="res://SCENES/gate.tscn" type="PackedScene" id=3]
+[ext_resource path="res://SCENES/key.tscn" type="PackedScene" id=4]
+[ext_resource path="res://SCENES/pipe.tscn" type="PackedScene" id=5]
+[ext_resource path="res://SCENES/balloon.tscn" type="PackedScene" id=6]
+
+
+
+
+
+
+
+
 
 [node name="Level" instance=ExtResource( 1 )]
 

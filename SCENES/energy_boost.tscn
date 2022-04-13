@@ -1,9 +1,10 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://ASSETS/Sprites/EnergyBoost.png" type="Texture" id=1]
-[ext_resource path="res://SCENES/EnergyBoost.gd" type="Script" id=2]
+[ext_resource path="res://SCENES/energy_boost.gd" type="Script" id=2]
 [ext_resource path="res://float_animation.tres" type="Animation" id=3]
 [ext_resource path="res://ASSETS/Sprites/EnergyBoostGray.png" type="Texture" id=4]
+
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 20.8272

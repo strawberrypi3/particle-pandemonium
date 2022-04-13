@@ -14,7 +14,7 @@ func _physics_process(delta):
 func _on_Key_body_entered(body):
 	# The following two checks prevent player from collecting key upon
 	# instancing level if player is in same place as the key just was
-	if body.get_filename() == "res://SCENES/Player.tscn":
+	if body.get_filename() == "res://SCENES/player.tscn":
 		if !body.sensing:
 			return # bye bye function
 	emit_signal("collected")

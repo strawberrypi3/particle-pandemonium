@@ -1,4 +1,4 @@
-# State machine is controlled by res://SCENES/Game.gd
+# State machine is controlled by res://SCENES/game.gd
 extends KinematicBody2D
 
 signal to_sidekick
@@ -153,7 +153,7 @@ func randomize_position(var actual_position):
 
 
 func _on_Hurtbox_body_entered(body):
-	if body.get_filename() == "res://SCENES/ElectronSwitch.tscn":
+	if body.get_filename() == "res://SCENES/electron_switch.tscn":
 		return
 	dying = true
 	can_move = false
@@ -162,18 +162,18 @@ func _on_Hurtbox_body_entered(body):
 
 func _on_Hurtbox_area_entered(area):
 	# if the area was a floor switch
-	if area.get_parent().get_filename() == "res://SCENES/FloorSwitch.tscn":
+	if area.get_parent().get_filename() == "res://SCENES/floor_switch.tscn":
 		is_on_switch = true
-	if area.get_filename() == "res://SCENES/ButtonTouchOverride.tscn":
+	if area.get_filename() == "res://SCENES/button_touch_override.tscn":
 		button_count += 1
 	
 
 
 func _on_Hurtbox_area_exited(area):
 	# if the area was a floor switch
-	if area.get_parent().get_filename() == "res://SCENES/FloorSwitch.tscn":
+	if area.get_parent().get_filename() == "res://SCENES/floor_switch.tscn":
 		is_on_switch = false
-	if area.get_filename() == "res://SCENES/ButtonTouchOverride.tscn":
+	if area.get_filename() == "res://SCENES/button_touch_override.tscn":
 		button_count -= 1
 
 

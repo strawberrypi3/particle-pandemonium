@@ -1,8 +1,13 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://SCENES/LEVELS/Helium/He.tscn" type="PackedScene" id=1]
-[ext_resource path="res://SCENES/Key.tscn" type="PackedScene" id=2]
-[ext_resource path="res://SCENES/EnergyBoost.tscn" type="PackedScene" id=4]
+[ext_resource path="res://SCENES/LEVELS/helium/he.tscn" type="PackedScene" id=1]
+[ext_resource path="res://SCENES/key.tscn" type="PackedScene" id=2]
+[ext_resource path="res://SCENES/energy_boost.tscn" type="PackedScene" id=4]
+
+
+
+
+
 
 [node name="Level" instance=ExtResource( 1 )]
 

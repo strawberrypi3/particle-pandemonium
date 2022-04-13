@@ -1,7 +1,8 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://ASSETS/Tilesets/Pipe/Pipe/tileset_Pipe.tres" type="TileSet" id=1]
-[ext_resource path="res://SCENES/Pipe.gd" type="Script" id=2]
+[ext_resource path="res://SCENES/pipe.gd" type="Script" id=2]
+
 
 
 [node name="Pipe" type="TileMap"]

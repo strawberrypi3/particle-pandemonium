@@ -1,10 +1,16 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://SCENES/Key.tscn" type="PackedScene" id=1]
-[ext_resource path="res://SCENES/LEVELS/Hydrogen/H.tscn" type="PackedScene" id=2]
+[ext_resource path="res://SCENES/key.tscn" type="PackedScene" id=1]
+[ext_resource path="res://SCENES/LEVELS/hydrogen/h.tscn" type="PackedScene" id=2]
 [ext_resource path="res://tres/Animations/BigSpaceBG.tres" type="SpriteFrames" id=3]
-[ext_resource path="res://SCENES/Background.gd" type="Script" id=4]
-[ext_resource path="res://SCENES/Camera.gd" type="Script" id=5]
+[ext_resource path="res://SCENES/background.gd" type="Script" id=4]
+[ext_resource path="res://SCENES/camera.gd" type="Script" id=5]
+
+
+
+
+
+
 
 [node name="Level" instance=ExtResource( 2 )]
 follow_player = true
