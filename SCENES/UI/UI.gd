@@ -13,8 +13,8 @@ const COUNTDOWN_LENGTH = 6.0 # in seconds. Visual timer will still count from 5
 var state = REGULAR
 var timer_running = false
 var switch_button_visible = true
-var reg_state_time = 0
 var can_switch = false
+var sidekick_in_range = false
 
 
 func _ready():
@@ -22,8 +22,7 @@ func _ready():
 
 
 func regular_state(delta):
-	reg_state_time += delta # increases by 1 per second
-	if reg_state_time > TIME_BEFORE_SWITCH and switch_button_visible:
+	if switch_button_visible and sidekick_in_range:
 		$MobileControls/Switch.show()
 		can_switch = true
 	$MobileControls/Down.hide()
@@ -35,7 +34,6 @@ func regular_state(delta):
 
 func countdown_state(delta):
 	can_switch = false
-	reg_state_time = 0
 	
 	if !timer_running:
 		$SidekickTimer.wait_time = COUNTDOWN_LENGTH

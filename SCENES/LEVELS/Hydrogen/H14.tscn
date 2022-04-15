@@ -4,13 +4,22 @@
 [ext_resource path="res://tres/Animations/BigSpaceBG.tres" type="SpriteFrames" id=2]
 [ext_resource path="res://SCENES/key.tscn" type="PackedScene" id=3]
 [ext_resource path="res://SCENES/background.gd" type="Script" id=4]
-[ext_resource path="res://SCENES/camera.gd" type="Script" id=5]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Camera2D
+
+
+export var follow_player = false
+
+
+func _physics_process(delta):
+	if follow_player:
+		anchor_mode = ANCHOR_MODE_DRAG_CENTER
+		position = get_parent().get_parent().get_node(\"Player\").position
 
 
 
-
-
-
+"
 
 [node name="Level" instance=ExtResource( 1 )]
 follow_player = true
@@ -48,7 +57,7 @@ position = Vector2( 424, 976 )
 [node name="Camera2D" parent="." index="6"]
 current = true
 zoom = Vector2( 1.5, 1.5 )
-script = ExtResource( 5 )
+script = SubResource( 1 )
 follow_player = true
 
 [node name="Key" parent="." index="7" instance=ExtResource( 3 )]

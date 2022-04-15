@@ -16,6 +16,8 @@ const MAX_V_DRIFT = 40*4
 const MAX_SPEED = 80*4
 const ACCELERATION = 600*4
 
+const RANGE = 200 # Range (pxls) that sidekick must be within in order to switch
+
 enum {
 	FOLLOW,
 	MOVE
@@ -27,9 +29,15 @@ var drift_offset = Vector2(0,0)
 var accepts_control = false
 var wall_count = 0 # +1 every time a wall is entered, -1 when one is exited
 var button_count = 0 # Wall count but for ButtonTouchOverride
-var is_within_threshold
+var is_in_range = false
 var is_in_wall = false
 var dying = false
+
+# Camera:
+var follow_player = false setget set_camera
+var camera_zoom = Vector2(1,1)
+var bottom_right_point = Vector2(1200, 2400)
+var top_left_point = Vector2(0, 0)
 
 onready var target = get_parent().get_node("Player")
 
@@ -37,7 +45,7 @@ onready var target = get_parent().get_node("Player")
 func _physics_process(delta):
 	is_in_wall = wall_count > 0
 	$Control/TouchScreenButton.visible = button_count < 1
-	is_within_threshold = check_range(20)
+	is_in_range = check_range(RANGE)
 
 
 func follow_state(delta):
@@ -68,7 +76,7 @@ func follow_state(delta):
 
 func move_state(delta):
 	if !accepts_control:
-		if !check_range(20) and is_in_wall: # if player is outside threshold
+		if !check_range(RANGE) and is_in_wall: # if player is outside threshold
 			velocity = (target.position - position) * 5 # zip to player
 		else:
 			accepts_control = true
@@ -137,6 +145,17 @@ func get_drift_offset(var v_timer, var h_timer, var v_amp, var h_amp):
 	return new_vector
 
 
+func set_camera(follow_player_local):
+	if follow_player_local:
+		$Camera2D.zoom = camera_zoom
+		$Camera2D.limit_right = bottom_right_point.x
+		$Camera2D.limit_bottom = bottom_right_point.y
+		$Camera2D.limit_left = top_left_point.x
+		$Camera2D.limit_top = top_left_point.y
+	else:
+		$Camera2D.current = false
+
+
 func _on_Hurtbox_body_entered(body):
 	dying = true
 	emit_signal("death")
@@ -170,6 +189,3 @@ func check_range(threshold):
 func _on_TouchScreenButton_pressed():
 	if accepts_control:
 		emit_signal("to_player")
-
-
-

@@ -112,10 +112,10 @@ func move_state(delta):
 		var ui = get_parent().get_node("UI")
 		if ui.can_switch == true:
 			emit_signal("to_sidekick")
-		else: # Wait until electron is allowed to switch
-			yield(get_tree().create_timer(ui.TIME_BEFORE_SWITCH -
-					ui.reg_state_time), "timeout")
-			emit_signal("to_sidekick")
+#		else: # Wait until electron is allowed to switch
+#			yield(get_tree().create_timer(ui.TIME_BEFORE_SWITCH -
+#					ui.reg_state_time), "timeout")
+#			emit_signal("to_sidekick")
 	
 	if dying:
 		$AnimatedSprite.play("death")

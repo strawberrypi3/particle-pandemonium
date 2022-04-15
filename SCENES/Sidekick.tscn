@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://SCENES/sidekick.gd" type="Script" id=1]
 [ext_resource path="res://ASSETS/Sprites/Electron/Electron.png" type="Texture" id=2]
@@ -8,7 +8,7 @@
 [ext_resource path="res://ASSETS/Sprites/Electron/ElectronDeath3.png" type="Texture" id=6]
 [ext_resource path="res://ASSETS/Sprites/Electron/ElectronDeath1.png" type="Texture" id=7]
 [ext_resource path="res://tres/Shapes/Sidekick.tres" type="Shape2D" id=8]
-
+[ext_resource path="res://ASSETS/Sprites/PlainOverlay.png" type="Texture" id=9]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -79,6 +79,15 @@ __meta__ = {
 [node name="TouchScreenButton" type="TouchScreenButton" parent="Control"]
 shape = ExtResource( 8 )
 shape_centered = false
+
+[node name="Camera2D" type="Camera2D" parent="."]
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+editor_draw_drag_margin = true
+
+[node name="Sprite" type="Sprite" parent="Camera2D"]
+scale = Vector2( 0.0177777, 0.0355556 )
+texture = ExtResource( 9 )
 [connection signal="body_entered" from="WallSensor" to="." method="_on_WallSensor_body_entered"]
 [connection signal="body_exited" from="WallSensor" to="." method="_on_WallSensor_body_exited"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
