@@ -16,17 +16,16 @@ extends Node2D
 signal level_complete
 signal shift_camera
 
+# CAMERA VARIABLES:
 # When set to true, camera scrolls following player instead of staying static:
 export var follow_player = false
 
-# Camera zoom when follow_player == true:
-export var player_camera_zoom = Vector2(1,1)
-
-# The bottom right point of the screen border when follow_player == true:
-export var bottom_right_point = Vector2(1200, 2400)
-
-# The top left point of the screen border when follow_player == true:
-export var top_left_point = Vector2(0, 0)
+export var move_speed = 0.5 # camera position lerp speed
+export var zoom_speed = 0.25 # camera zoom lerp speed
+export var min_zoom = 1.5 # camera won't zoom closer than this
+export var max_zoom = 5 # camera won't move further than this
+export var margin = Vector2(400, 200) # include some buffer area around targets
+export var limit_rect = Rect2(Vector2.ZERO, Vector2.ZERO) # Camera limits
 
 
 func _ready():

@@ -6,16 +6,9 @@
 [ext_resource path="res://SCENES/background.gd" type="Script" id=4]
 [ext_resource path="res://SCENES/camera.gd" type="Script" id=5]
 
-
-
-
-
-
-
 [node name="Level" instance=ExtResource( 2 )]
 follow_player = true
-player_camera_zoom = Vector2( 1.5, 1.5 )
-bottom_right_point = Vector2( 1800, 5024 )
+limit_rect = Rect2( 0, 0, 1800, 5225 )
 
 [node name="StarBackground" parent="." index="0"]
 position = Vector2( 1496, 16 )
@@ -53,7 +46,6 @@ zoom = Vector2( 1.5, 1.5 )
 limit_left = 0
 editor_draw_limits = true
 script = ExtResource( 5 )
-follow_player = true
 
 [node name="Key" parent="." index="7" instance=ExtResource( 1 )]
 position = Vector2( 488, 728 )

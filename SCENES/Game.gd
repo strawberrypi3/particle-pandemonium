@@ -12,7 +12,6 @@ extends Node
 enum {
 	PLAYER # When Player is in control
 	SIDEKICK # When Sidekick is in control
-	TRANSITION # During transitions between levels
 }
 
 var state = PLAYER
@@ -25,6 +24,8 @@ onready var current_level_instance = load(current_level_path).instance()
 
 func _ready():
 	set_level(load(current_level_path))
+	$MultitargetCamera.targets.append($Player)
+	$MultitargetCamera.targets.append($Sidekick)
 
 
 func _physics_process(delta):
@@ -36,12 +37,14 @@ func _physics_process(delta):
 			if get_node_or_null("Sidekick") != null:
 				$Sidekick.follow_state(delta) # Sidekick follows
 			$UI.regular_state(delta) # UI acts normally
+			$MultitargetCamera.player_state(delta) # Camera only follows player
 			
 		SIDEKICK:
 			$Player.vibrate_state(delta) # Player vibrates
 			if get_node_or_null("Sidekick") != null:
 				$Sidekick.move_state(delta) # Sidekick is controlled
 			$UI.countdown_state(delta) # UI counts down, "unstable" state
+			$MultitargetCamera.sidekick_state(delta) # Camera follows player and sidekick
 	
 	if Global.world == "hydrogen":
 		$UI/MobileControls/Switch.hide()
@@ -85,10 +88,14 @@ func set_level(level):
 	add_child(current_level_instance)
 	move_child(current_level_instance, 0) # Moves level node up in scene tree
 	
-	$Player.camera_zoom = current_level_instance.player_camera_zoom
-	$Player.bottom_right_point = current_level_instance.bottom_right_point
-	$Player.top_left_point = current_level_instance.top_left_point
-	$Player.follow_player = current_level_instance.follow_player
+	if current_level_instance.follow_player:
+		$MultitargetCamera.make_current()
+		$MultitargetCamera.move_speed = current_level_instance.move_speed
+		$MultitargetCamera.zoom_speed = current_level_instance.zoom_speed
+		$MultitargetCamera.min_zoom = current_level_instance.min_zoom
+		$MultitargetCamera.max_zoom = current_level_instance.max_zoom
+		$MultitargetCamera.margin = current_level_instance.margin
+		$MultitargetCamera.limit_rect = current_level_instance.limit_rect
 	
 	# Set up player position and orientation correctly:
 	var start_pos = current_level_instance.get_node("PlayerPosition").position
@@ -126,6 +133,7 @@ func generate_level_path(world_full, world_abbrv, level_number):
 # level (based on param level_number). Can transition to same current level.
 func transition(new_level_number):
 	state = PLAYER
+	$MultitargetCamera.smoothing_enabled = false
 	$Player.sensing = false
 	$UI.set_button_visibility(false)
 	$UI/CanvasLayer/BlackOverlay.show()
@@ -152,6 +160,7 @@ func transition(new_level_number):
 	$Sidekick/Hurtbox/CollisionShape2D.disabled = false
 	$UI.set_button_visibility(true)
 	$Player.sensing = true
+	$MultitargetCamera.smoothing_enabled = true
 	
 	# Prevents extra buffer flicker frame between showing switch button (above)
 	# and subsequently hiding it in _physics_process:

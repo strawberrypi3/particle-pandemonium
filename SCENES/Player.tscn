@@ -13,7 +13,6 @@
 [ext_resource path="res://ASSETS/Sprites/Proton/ProtonDeath5.png" type="Texture" id=12]
 [ext_resource path="res://ASSETS/Sprites/Proton/ProtonDeath1.png" type="Texture" id=13]
 
-
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 3 ), ExtResource( 1 ) ],
@@ -63,16 +62,6 @@ collision_mask = 72
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2( -0.0700734, 0.0215849 )
 shape = SubResource( 3 )
-
-[node name="Camera2D" type="Camera2D" parent="."]
-limit_left = 0
-limit_top = 0
-limit_right = 4800
-limit_bottom = 1200
-drag_margin_h_enabled = true
-drag_margin_v_enabled = true
-editor_draw_limits = true
-editor_draw_drag_margin = true
 
 [node name="Control" type="Control" parent="."]
 margin_right = 40.0

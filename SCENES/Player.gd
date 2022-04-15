@@ -30,22 +30,6 @@ var sensing = true # don't delete, used by Key, Game, and Door
 var coyote_timer = 0
 var buffer_frames_left = 0
 var can_jump = false
-var follow_player = false setget set_camera
-var camera_zoom = Vector2(1,1)
-var bottom_right_point = Vector2(1200, 2400)
-var top_left_point = Vector2(0, 0)
-
-
-func set_camera(state):
-	if state == true:
-		$Camera2D.make_current()
-		$Camera2D.zoom = camera_zoom
-		$Camera2D.limit_right = bottom_right_point.x
-		$Camera2D.limit_bottom = bottom_right_point.y
-		$Camera2D.limit_left = top_left_point.x
-		$Camera2D.limit_top = top_left_point.y
-	else:
-		$Camera2D.current = false
 
 
 func _physics_process(delta):
