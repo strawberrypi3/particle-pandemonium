@@ -1,4 +1,6 @@
 extends Camera2D
+# Lots of code borrowed from https://kidscancode.org/godot_recipes/2d/
+# multi_target_camera/
 
 var move_speed = 0.5 # camera position lerp speed
 var zoom_speed = 0.25 # camera zoom lerp speed

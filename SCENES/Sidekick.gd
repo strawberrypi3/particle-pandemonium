@@ -16,6 +16,8 @@ const MAX_V_DRIFT = 40*4
 const MAX_SPEED = 80*4
 const ACCELERATION = 600*4
 
+const RANGE = 200 # Range (pxls) that sidekick must be within in order to switch
+
 enum {
 	FOLLOW,
 	MOVE
@@ -37,7 +39,7 @@ onready var target = get_parent().get_node("Player")
 func _physics_process(delta):
 	is_in_wall = wall_count > 0
 	$Control/TouchScreenButton.visible = button_count < 1
-	is_within_threshold = check_range(20)
+	is_within_threshold = check_range(RANGE)
 
 
 func follow_state(delta):

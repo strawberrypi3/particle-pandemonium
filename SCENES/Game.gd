@@ -55,6 +55,9 @@ func _physics_process(delta):
 	# FOR TESTING CONVENIENCE (DELETE LATER):
 	if Input.is_action_just_pressed("g"):
 		transition(Global.level_number + 1)
+	
+	
+	$UI.sidekick_in_range = $Sidekick.is_within_threshold
 
 
 func _on_Player_to_sidekick():
