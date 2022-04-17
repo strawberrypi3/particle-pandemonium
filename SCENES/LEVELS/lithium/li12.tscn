@@ -7,14 +7,6 @@
 [ext_resource path="res://SCENES/pipe.tscn" type="PackedScene" id=5]
 [ext_resource path="res://SCENES/energy_boost.tscn" type="PackedScene" id=6]
 
-
-
-
-
-
-
-
-
 [node name="Level" instance=ExtResource( 2 )]
 
 [node name="MetalBackground" parent="." index="0"]
