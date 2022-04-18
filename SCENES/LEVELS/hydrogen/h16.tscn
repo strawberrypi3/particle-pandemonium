@@ -8,6 +8,7 @@
 
 [node name="Level" instance=ExtResource( 2 )]
 follow_player = true
+move_speed = 0.5
 limit_rect = Rect2( 0, 0, 1800, 5225 )
 
 [node name="StarBackground" parent="." index="0"]
