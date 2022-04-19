@@ -1,8 +1,64 @@
-[gd_scene format=2]
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://ASSETS/Fonts/PressStart2P.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://ASSETS/Fonts/MunroSmall-wPZw.ttf" type="DynamicFontData" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 48
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 30
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 20
+font_data = ExtResource( 2 )
 
 [node name="TitleScreen" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="."]
+margin_left = 108.353
+margin_top = 88.1945
+margin_right = 1116.35
+margin_bottom = 136.194
+custom_fonts/font = SubResource( 1 )
+text = "PARTICLE PANDEMONIUM!"
+
+[node name="Subtitle" type="Label" parent="."]
+margin_left = 363.26
+margin_top = 152.48
+margin_right = 794.26
+margin_bottom = 198.48
+custom_fonts/font = SubResource( 2 )
+text = "One Proton's Journey to Greatness"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PressToStart" type="Label" parent="."]
+margin_left = 404.837
+margin_top = 273.433
+margin_right = 835.837
+margin_bottom = 319.433
+custom_fonts/font = SubResource( 2 )
+text = "- Press Anywhere To Start -"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 12.8096
+margin_top = 568.732
+margin_right = 146.81
+margin_bottom = 592.732
+custom_fonts/font = SubResource( 3 )
+text = "Alpha 0.0"
 __meta__ = {
 "_edit_use_anchors_": false
 }
