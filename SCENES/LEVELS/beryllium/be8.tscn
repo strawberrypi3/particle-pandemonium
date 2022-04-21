@@ -11,6 +11,8 @@
 [ext_resource path="res://SCENES/wire.tscn" type="PackedScene" id=9]
 
 [node name="Level" instance=ExtResource( 2 )]
+min_zoom = 1.7
+limit_rect = Rect2( 0, 0, 2400, 1200 )
 
 [node name="RockBackground" parent="." index="0"]
 scale = Vector2( 8.10667, 8.32 )

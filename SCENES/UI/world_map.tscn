@@ -43,6 +43,16 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="ChallengeButton" type="Button" parent="."]
+margin_left = 143.349
+margin_top = 53.1913
+margin_right = 269.349
+margin_bottom = 105.191
+text = "Challenge"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="Label" type="Label" parent="."]
 margin_right = 40.0
 margin_bottom = 14.0
@@ -75,3 +85,4 @@ __meta__ = {
 [connection signal="pressed" from="HeliumButton" to="." method="_on_HeliumButton_pressed"]
 [connection signal="pressed" from="LithiumButton" to="." method="_on_LithiumButton_pressed"]
 [connection signal="pressed" from="BerylliumButton" to="." method="_on_BerylliumButton_pressed"]
+[connection signal="pressed" from="ChallengeButton" to="." method="_on_ChallengeButton_pressed"]

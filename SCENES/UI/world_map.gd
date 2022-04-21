@@ -28,3 +28,10 @@ func _on_BerylliumButton_pressed():
 	Global.world_abbrv = "be"
 	Global.level_number = 1
 	get_tree().change_scene("res://SCENES/game.tscn")
+
+
+func _on_ChallengeButton_pressed():
+	Global.world = "challenge"
+	Global.world_abbrv = "c_h"
+	Global.level_number = 1
+	get_tree().change_scene("res://SCENES/game.tscn")
