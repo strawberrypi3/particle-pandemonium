@@ -1,53 +1,121 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://SCENES/UI/world_map.gd" type="Script" id=1]
+[ext_resource path="res://ASSETS/Sprites/WorldMap/Base.png" type="Texture" id=2]
+[ext_resource path="res://ASSETS/Sprites/SelectionBar/Unavailable.png" type="Texture" id=4]
+[ext_resource path="res://ASSETS/Sprites/WorldMap/1.png" type="Texture" id=5]
+[ext_resource path="res://ASSETS/Sprites/WorldMap/10.png" type="Texture" id=6]
+[ext_resource path="res://ASSETS/Sprites/WorldMap/3.png" type="Texture" id=7]
+[ext_resource path="res://ASSETS/Sprites/WorldMap/4.png" type="Texture" id=8]
+[ext_resource path="res://ASSETS/Sprites/WorldMap/11.png" type="Texture" id=9]
+[ext_resource path="res://ASSETS/Sprites/WorldMap/5.png" type="Texture" id=10]
+[ext_resource path="res://ASSETS/Sprites/WorldMap/7.png" type="Texture" id=11]
+[ext_resource path="res://ASSETS/Sprites/WorldMap/8.png" type="Texture" id=12]
+[ext_resource path="res://ASSETS/Sprites/WorldMap/6.png" type="Texture" id=13]
+[ext_resource path="res://ASSETS/Sprites/WorldMap/9.png" type="Texture" id=14]
+[ext_resource path="res://ASSETS/Sprites/WorldMap/2.png" type="Texture" id=15]
+[ext_resource path="res://ASSETS/Sprites/SelectionBar/Start.png" type="Texture" id=16]
+[ext_resource path="res://ASSETS/Sprites/DeltaArrow.png" type="Texture" id=17]
+[ext_resource path="res://ASSETS/Sprites/Cursor.png" type="Texture" id=18]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 11 ) ],
+"loop": false,
+"name": "7",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ) ],
+"loop": false,
+"name": "5",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 13 ) ],
+"loop": false,
+"name": "6",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ) ],
+"loop": false,
+"name": "4",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ) ],
+"loop": false,
+"name": "3",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 14 ) ],
+"loop": false,
+"name": "9",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 15 ) ],
+"loop": false,
+"name": "2",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ) ],
+"loop": false,
+"name": "11",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 12 ) ],
+"loop": false,
+"name": "8",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": false,
+"name": "1",
+"speed": 0.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": false,
+"name": "10",
+"speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=3]
+animations = [ {
+"frames": [ ExtResource( 4 ) ],
+"loop": false,
+"name": "Unavailable",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 16 ) ],
+"loop": false,
+"name": "Start",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 125, 100 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 13.359, 20.415 )
 
 [node name="DebugMenu" type="Node2D"]
 script = ExtResource( 1 )
 
-[node name="HydrogenButton" type="Button" parent="."]
-margin_top = 56.0
-margin_right = 124.0
-margin_bottom = 105.0
-text = "Hydrogen"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="PeriodicTable" type="Node2D" parent="."]
 
-[node name="HeliumButton" type="Button" parent="."]
-margin_left = 1.4304
-margin_top = 110.92
-margin_right = 125.43
-margin_bottom = 159.92
-text = "Helium"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Base" type="Sprite" parent="PeriodicTable"]
+scale = Vector2( 4, 4 )
+texture = ExtResource( 2 )
+centered = false
 
-[node name="LithiumButton" type="Button" parent="."]
-margin_top = 168.0
-margin_right = 126.0
-margin_bottom = 220.0
-text = "Lithium"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="BerylliumButton" type="Button" parent="."]
-margin_left = 1.18919
-margin_top = 228.055
-margin_right = 127.189
-margin_bottom = 280.055
-text = "Beryllium"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Top" type="AnimatedSprite" parent="PeriodicTable"]
+scale = Vector2( 4, 4 )
+frames = SubResource( 2 )
+animation = "1"
+centered = false
 
 [node name="ChallengeButton" type="Button" parent="."]
-margin_left = 143.349
-margin_top = 53.1913
-margin_right = 269.349
-margin_bottom = 105.191
+margin_left = 838.631
+margin_top = 96.0511
+margin_right = 964.631
+margin_bottom = 148.051
 text = "Challenge"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -81,8 +149,39 @@ text = "DEBUG CONTROLS:
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="HydrogenButton" to="." method="_on_HydrogenButton_pressed"]
-[connection signal="pressed" from="HeliumButton" to="." method="_on_HeliumButton_pressed"]
-[connection signal="pressed" from="LithiumButton" to="." method="_on_LithiumButton_pressed"]
-[connection signal="pressed" from="BerylliumButton" to="." method="_on_BerylliumButton_pressed"]
+
+[node name="SelectionBarSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 608, 520 )
+scale = Vector2( 4, 4 )
+frames = SubResource( 3 )
+animation = "Unavailable"
+
+[node name="SelectionBarButton" type="TouchScreenButton" parent="."]
+position = Vector2( 608, 520 )
+shape = SubResource( 5 )
+shape_centered = false
+action = "enter"
+
+[node name="LeftArrow" type="TouchScreenButton" parent="."]
+position = Vector2( 488, 584 )
+rotation = 3.14159
+scale = Vector2( 4, 4 )
+normal = ExtResource( 17 )
+shape = SubResource( 4 )
+passby_press = true
+action = "left"
+
+[node name="RightArrow" type="TouchScreenButton" parent="."]
+position = Vector2( 728, 456 )
+scale = Vector2( 4, 4 )
+normal = ExtResource( 17 )
+shape = SubResource( 4 )
+action = "right"
+
+[node name="Cursor" type="Sprite" parent="."]
+position = Vector2( 120, 152 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 18 )
 [connection signal="pressed" from="ChallengeButton" to="." method="_on_ChallengeButton_pressed"]
+[connection signal="pressed" from="LeftArrow" to="." method="_on_LeftArrow_pressed"]
+[connection signal="pressed" from="RightArrow" to="." method="_on_RightArrow_pressed"]
