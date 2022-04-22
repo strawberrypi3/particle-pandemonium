@@ -1,11 +1,18 @@
 # For easily testing different levels
-extends Node2D
+extends Control
 
 var stage = 4 # Incremented every time a level is completed for the first time
 var cursor_stage = 1 # Stage that the cursor (arrow) is currently pointing to
 
+var levels = {1 : ["hydrogen", "h"], 2 : ["helium", "he"], 
+		3 : ["lithium", "li"], 4 : ["beryllium", "be"], 5 : ["boron", "b"],
+		6 : ["carbon", "c"], 7 : ["nitrogen", "n"], 8 : ["oxygen", "o"],
+		9 : ["flourine", "f"], 10 : ["neon", "ne"]}
+
 
 func _ready():
+	$PopUp.hide()
+	
 	set_cursor_position(cursor_stage)
 	
 	if stage < cursor_stage:
@@ -41,48 +48,30 @@ func _physics_process(delta):
 	
 	if Input.is_action_just_pressed("enter"):
 		if stage >= cursor_stage: # level is unlocked
-			open_level(cursor_stage)
+			choose_level(cursor_stage)
+#			open_level(cursor_stage)
 
 
-func open_level(level_number):
-	# Maybe replace the following with dictionary stuff, or at least rename the
-	# functions
-	if level_number == 1:
-		_on_HydrogenButton_pressed()
-	elif level_number == 2:
-		_on_HeliumButton_pressed()
-	elif level_number == 3:
-		_on_LithiumButton_pressed()
-	elif level_number == 4:
-		_on_BerylliumButton_pressed()
-
-
-func _on_HydrogenButton_pressed():
-	Global.world = "hydrogen"
-	Global.world_abbrv = "h"
-	Global.level_number = 1
-	get_tree().change_scene("res://SCENES/game.tscn")
-
-
-func _on_HeliumButton_pressed():
-	Global.world = "helium"
-	Global.world_abbrv = "he"
-	Global.level_number = 1
-	get_tree().change_scene("res://SCENES/game.tscn")
-
-
-func _on_LithiumButton_pressed():
-	Global.world = "lithium"
-	Global.world_abbrv = "li"
-	Global.level_number = 1
-	get_tree().change_scene("res://SCENES/game.tscn")
-
-
-func _on_BerylliumButton_pressed():
-	Global.world = "beryllium"
-	Global.world_abbrv = "be"
-	Global.level_number = 1
-	get_tree().change_scene("res://SCENES/game.tscn")
+func choose_level(level_number):
+	# Initialize global level values:
+	var level_name = levels[level_number]
+	Global.world = level_name[0]
+	Global.world_abbrv = level_name[1]
+	Global.level_number = level_number
+	
+	# Show pre-level popup and element-specific information:
+	$PopUp.show()
+	for label in get_tree().get_nodes_in_group("element_info"):
+		label.hide()
+	if (get_node_or_null(str("PopUp/", level_name[1].capitalize())) != 
+			null):
+		get_node(str("PopUp/", level_name[1].capitalize())).show()
+	
+	# Hide other buttons:
+	$SelectionBarButton.hide()
+	$SelectionBarSprite.hide()
+	$LeftArrow.hide()
+	$RightArrow.hide()
 
 
 func _on_ChallengeButton_pressed():
@@ -102,3 +91,14 @@ func set_cursor_position(current_stage):
 	elif current_stage > 4 and current_stage <= 10: # Between B and Ne
 		$Cursor.position = Vector2(680 + 80*(current_stage - 5), 232)
 
+
+func _on_TouchScreenButton_pressed(): # Popup (second) play button
+	get_tree().change_scene("res://SCENES/game.tscn")
+
+
+func _on_XButton_pressed():
+	$PopUp.hide()
+	$SelectionBarButton.show()
+	$SelectionBarSprite.show()
+	$LeftArrow.show()
+	$RightArrow.show()
