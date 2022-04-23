@@ -5,18 +5,17 @@
 [ext_resource path="res://ASSETS/Sprites/E_Key.png" type="Texture" id=3]
 [ext_resource path="res://float_animation.tres" type="Animation" id=4]
 
-
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 3 ) ],
-"loop": true,
-"name": "yellow",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 1 ) ],
 "loop": false,
 "name": "red",
 "speed": 0.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "yellow",
+"speed": 5.0
 } ]
 
 [sub_resource type="Animation" id=2]

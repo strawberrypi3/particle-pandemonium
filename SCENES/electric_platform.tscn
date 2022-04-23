@@ -10,21 +10,20 @@
 [ext_resource path="res://ASSETS/Sprites/ElectricPlatform/Off.png" type="Texture" id=8]
 [ext_resource path="res://SCENES/electric_platform.gd" type="Script" id=9]
 
-
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 128.003, 15.3727 )
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 8 ) ],
-"loop": true,
-"name": "off",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 5 ), ExtResource( 1 ), ExtResource( 4 ), ExtResource( 2 ), ExtResource( 6 ), ExtResource( 3 ), ExtResource( 7 ) ],
 "loop": true,
 "name": "on",
 "speed": 20.0
+}, {
+"frames": [ ExtResource( 8 ) ],
+"loop": true,
+"name": "off",
+"speed": 5.0
 } ]
 
 [node name="ElectricPlatform" type="StaticBody2D"]

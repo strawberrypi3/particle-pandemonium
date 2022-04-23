@@ -1,13 +1,20 @@
 # For easily testing different levels
 extends Control
 
-var stage = 4 # Incremented every time a level is completed for the first time
+var stage = 5 # Incremented every time a level is completed for the first time
 var cursor_stage = 1 # Stage that the cursor (arrow) is currently pointing to
 
-var levels = {1 : ["hydrogen", "h"], 2 : ["helium", "he"], 
-		3 : ["lithium", "li"], 4 : ["beryllium", "be"], 5 : ["boron", "b"],
-		6 : ["carbon", "c"], 7 : ["nitrogen", "n"], 8 : ["oxygen", "o"],
-		9 : ["flourine", "f"], 10 : ["neon", "ne"]}
+var levels = {
+		1 : ["hydrogen", "h"], 
+		2 : ["helium", "he"], 
+		3 : ["lithium", "li"], 
+		4 : ["beryllium", "be"], 
+		5 : ["boron", "b"],
+		6 : ["carbon", "c"], 
+		7 : ["nitrogen", "n"], 
+		8 : ["oxygen", "o"],
+		9 : ["flourine", "f"], 
+		10 : ["neon", "ne"]}
 
 
 func _ready():
