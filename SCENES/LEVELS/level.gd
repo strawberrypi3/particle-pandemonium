@@ -23,7 +23,7 @@ export var follow_player = false
 export var move_speed = 0.5 # camera position lerp speed
 export var zoom_speed = 0.25 # camera zoom lerp speed
 export var min_zoom = 1.5 # camera won't zoom closer than this
-export var max_zoom = 5 # camera won't move further than this
+export var max_zoom = 5.0 # camera won't move further than this
 export var margin = Vector2(400, 200) # include some buffer area around targets
 export var limit_rect = Rect2(Vector2.ZERO, Vector2.ZERO) # Camera limits
 

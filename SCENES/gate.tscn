@@ -20,7 +20,7 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 16.0276, 96.0996 )
 
-[node name="Gate" type="StaticBody2D"]
+[node name="Gate" type="KinematicBody2D"]
 collision_layer = 2
 script = ExtResource( 3 )
 

@@ -10,10 +10,7 @@
 [ext_resource path="res://ASSETS/Sprites/ElectricPlatform/Off.png" type="Texture" id=8]
 [ext_resource path="res://SCENES/electric_platform.gd" type="Script" id=9]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 128.003, 15.3727 )
-
-[sub_resource type="SpriteFrames" id=2]
+[sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 5 ), ExtResource( 1 ), ExtResource( 4 ), ExtResource( 2 ), ExtResource( 6 ), ExtResource( 3 ), ExtResource( 7 ) ],
 "loop": true,
@@ -26,18 +23,21 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[node name="ElectricPlatform" type="StaticBody2D"]
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 128.003, 15.3727 )
+
+[node name="ElectricPlatform" type="KinematicBody2D"]
 collision_layer = 2
 collision_mask = 0
 script = ExtResource( 9 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
-
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 4, 4 )
-frames = SubResource( 2 )
+frames = SubResource( 1 )
 animation = "on"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )
 
 [node name="Tween" type="Tween" parent="."]
 [connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]

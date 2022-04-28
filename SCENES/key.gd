@@ -16,7 +16,7 @@ func _on_Key_body_entered(body):
 	# instancing level if player is in same place as the key just was
 	if body.get_filename() == "res://SCENES/player.tscn":
 		if !body.sensing:
-			return # bye bye function
+			return
 	emit_signal("collected")
 	$AnimatedSprite/AnimationPlayer.play("collected")
 

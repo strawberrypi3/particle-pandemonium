@@ -64,7 +64,7 @@ func choose_level(level_number):
 	var level_name = levels[level_number]
 	Global.world = level_name[0]
 	Global.world_abbrv = level_name[1]
-	Global.level_number = level_number
+	Global.level_number = 1
 	
 	# Show pre-level popup and element-specific information:
 	$PopUp.show()
@@ -73,6 +73,10 @@ func choose_level(level_number):
 	if (get_node_or_null(str("PopUp/", level_name[1].capitalize())) != 
 			null):
 		get_node(str("PopUp/", level_name[1].capitalize())).show()
+	
+	$PopUp/Nucleus.play(str(level_name[1].capitalize()))
+	
+	$PopUp/Nucleus/AnimationPlayer.play("rotate")
 	
 	# Hide other buttons:
 	$SelectionBarButton.hide()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://SCENES/UI/world_map.gd" type="Script" id=1]
 [ext_resource path="res://ASSETS/Sprites/WorldMap/Base.png" type="Texture" id=2]
@@ -22,12 +22,26 @@
 [ext_resource path="res://ASSETS/Fonts/MunroSmall-wPZw.ttf" type="DynamicFontData" id=20]
 [ext_resource path="res://ASSETS/Sprites/PlayButton.png" type="Texture" id=21]
 [ext_resource path="res://ASSETS/Sprites/XButton.png" type="Texture" id=22]
+[ext_resource path="res://ASSETS/Sprites/ElementDrawings/Hydrogen.png" type="Texture" id=23]
+[ext_resource path="res://ASSETS/Sprites/ElementDrawings/Lithium.png" type="Texture" id=24]
+[ext_resource path="res://ASSETS/Sprites/ElementDrawings/Helium.png" type="Texture" id=25]
+[ext_resource path="res://ASSETS/Sprites/ElementDrawings/Beryllium.png" type="Texture" id=26]
+[ext_resource path="res://ASSETS/Sprites/ElementDrawings/Boron.png" type="Texture" id=27]
+[ext_resource path="res://ASSETS/Sprites/ElementDrawings/Carbon.png" type="Texture" id=28]
+[ext_resource path="res://ASSETS/Sprites/ElementDrawings/Nitrogen.png" type="Texture" id=29]
+[ext_resource path="res://ASSETS/Sprites/ElementDrawings/Flourine.png" type="Texture" id=30]
+[ext_resource path="res://ASSETS/Sprites/ElementDrawings/Neon.png" type="Texture" id=31]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 11 ) ],
+"frames": [ ExtResource( 9 ) ],
 "loop": false,
-"name": "7",
+"name": "11",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 14 ) ],
+"loop": false,
+"name": "9",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 8 ) ],
@@ -35,24 +49,24 @@ animations = [ {
 "name": "4",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 9 ) ],
+"frames": [ ExtResource( 10 ) ],
 "loop": false,
-"name": "11",
+"name": "5",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 12 ) ],
+"frames": [ ExtResource( 5 ) ],
 "loop": false,
-"name": "8",
+"name": "1",
+"speed": 0.0
+}, {
+"frames": [ ExtResource( 13 ) ],
+"loop": false,
+"name": "6",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 6 ) ],
 "loop": false,
 "name": "10",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 13 ) ],
-"loop": false,
-"name": "6",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 7 ) ],
@@ -65,32 +79,27 @@ animations = [ {
 "name": "2",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 14 ) ],
+"frames": [ ExtResource( 12 ) ],
 "loop": false,
-"name": "9",
+"name": "8",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 5 ) ],
+"frames": [ ExtResource( 11 ) ],
 "loop": false,
-"name": "1",
-"speed": 0.0
-}, {
-"frames": [ ExtResource( 10 ) ],
-"loop": false,
-"name": "5",
+"name": "7",
 "speed": 5.0
 } ]
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 4 ) ],
-"loop": false,
-"name": "Unavailable",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 16 ) ],
 "loop": false,
 "name": "Start",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": false,
+"name": "Unavailable",
 "speed": 5.0
 } ]
 
@@ -100,14 +109,84 @@ extents = Vector2( 125, 100 )
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 13.359, 20.415 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ ExtResource( 23 ) ],
+"loop": false,
+"name": "H",
+"speed": 0.0
+}, {
+"frames": [ ExtResource( 24 ) ],
+"loop": false,
+"name": "Li",
+"speed": 0.0
+}, {
+"frames": [ ExtResource( 30 ) ],
+"loop": false,
+"name": "F",
+"speed": 0.0
+}, {
+"frames": [ ExtResource( 31 ) ],
+"loop": false,
+"name": "Ne",
+"speed": 0.0
+}, {
+"frames": [ ExtResource( 27 ) ],
+"loop": false,
+"name": "B",
+"speed": 0.0
+}, {
+"frames": [ ExtResource( 29 ) ],
+"loop": false,
+"name": "N",
+"speed": 0.0
+}, {
+"frames": [ ExtResource( 28 ) ],
+"loop": false,
+"name": "C",
+"speed": 0.0
+}, {
+"frames": [ ExtResource( 25 ) ],
+"loop": false,
+"name": "He",
+"speed": 0.0
+}, {
+"frames": [  ],
+"loop": false,
+"name": "O",
+"speed": 0.0
+}, {
+"frames": [ ExtResource( 26 ) ],
+"loop": false,
+"name": "Be",
+"speed": 0.0
+} ]
+
+[sub_resource type="Animation" id=6]
+resource_name = "rotate"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
+
+[sub_resource type="DynamicFont" id=7]
 size = 30
 font_data = ExtResource( 20 )
 
-[sub_resource type="CircleShape2D" id=6]
+[sub_resource type="CircleShape2D" id=8]
 radius = 50.0
 
-[sub_resource type="CircleShape2D" id=7]
+[sub_resource type="CircleShape2D" id=9]
 radius = 30.0
 
 [node name="DebugMenu" type="Control"]
@@ -169,19 +248,19 @@ __meta__ = {
 }
 
 [node name="SelectionBarSprite" type="AnimatedSprite" parent="."]
-position = Vector2( 608, 520 )
+position = Vector2( 608, 448 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 2 )
 animation = "Unavailable"
 
 [node name="SelectionBarButton" type="TouchScreenButton" parent="."]
-position = Vector2( 608, 520 )
+position = Vector2( 608, 448 )
 shape = SubResource( 3 )
 shape_centered = false
 action = "enter"
 
 [node name="LeftArrow" type="TouchScreenButton" parent="."]
-position = Vector2( 488, 584 )
+position = Vector2( 488, 512 )
 rotation = 3.14159
 scale = Vector2( 4, 4 )
 normal = ExtResource( 17 )
@@ -190,7 +269,7 @@ passby_press = true
 action = "left"
 
 [node name="RightArrow" type="TouchScreenButton" parent="."]
-position = Vector2( 728, 456 )
+position = Vector2( 728, 384 )
 scale = Vector2( 4, 4 )
 normal = ExtResource( 17 )
 shape = SubResource( 4 )
@@ -202,6 +281,7 @@ scale = Vector2( 4, 4 )
 texture = ExtResource( 18 )
 
 [node name="PopUp" type="Control" parent="."]
+visible = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -217,26 +297,28 @@ position = Vector2( 600, 304 )
 scale = Vector2( 4, 4 )
 texture = ExtResource( 3 )
 
+[node name="Nucleus" type="AnimatedSprite" parent="PopUp"]
+position = Vector2( 616, 160 )
+scale = Vector2( 0.46725, 0.46725 )
+frames = SubResource( 5 )
+animation = "Ne"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PopUp/Nucleus"]
+anims/rotate = SubResource( 6 )
+
 [node name="H" type="Node2D" parent="PopUp" groups=[
 "element_info",
 ]]
 
 [node name="Description" type="RichTextLabel" parent="PopUp/H"]
 margin_left = 184.0
-margin_top = 224.0
+margin_top = 248.0
 margin_right = 1016.0
-margin_bottom = 480.0
-custom_fonts/normal_font = SubResource( 5 )
+margin_bottom = 504.0
+custom_fonts/normal_font = SubResource( 7 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
-text = "HYDROGEN (H) is the first element on the periodic table. Look at the sky at night - see those stars? That's Hydrogen, whose biggest job is creating all the other elements! That's right - you, me, everything - we're all made of stars, and Hydrogen is what made that happen."
+text = "HYDROGEN (H) is the first element on the periodic table, and was also the first element to be formed. Stars are made mostly of hydrogen, where a process called nuclear fusion forms other elements. Hydrogen and stars are the birthplace of the world as we know it!"
 scroll_active = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Reaction" type="Label" parent="PopUp/H"]
-margin_right = 40.0
-margin_bottom = 14.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -251,7 +333,7 @@ margin_left = 192.0
 margin_top = 224.0
 margin_right = 1024.0
 margin_bottom = 480.0
-custom_fonts/normal_font = SubResource( 5 )
+custom_fonts/normal_font = SubResource( 7 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "HELIUM (He) is the second element on the periodic table. It makes up part of the atmosphere, and it's often used in balloons to make them float!"
 scroll_active = false
@@ -269,7 +351,7 @@ margin_left = 192.0
 margin_top = 224.0
 margin_right = 1024.0
 margin_bottom = 480.0
-custom_fonts/normal_font = SubResource( 5 )
+custom_fonts/normal_font = SubResource( 7 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "LITHIUM (Li) is the third element on the periodic table. It is used in batteries to power electricity. Thanks to electricity, you can play this game! Thank you, electricity! Thank you, lithium!"
 scroll_active = false
@@ -287,7 +369,7 @@ margin_left = 192.0
 margin_top = 224.0
 margin_right = 1024.0
 margin_bottom = 480.0
-custom_fonts/normal_font = SubResource( 5 )
+custom_fonts/normal_font = SubResource( 7 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "BERYLLIUM (Be)  is the fourth element on the periodic table. Like many other metals, it can conduct electricity. Because of this, Beryllium lets us take electricity one step further!"
 scroll_active = false
@@ -305,7 +387,7 @@ margin_left = 192.0
 margin_top = 224.0
 margin_right = 1024.0
 margin_bottom = 480.0
-custom_fonts/normal_font = SubResource( 5 )
+custom_fonts/normal_font = SubResource( 7 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "BORON (B) is the fifth element on the periodic table. In its crystalline form, Boron forms a brittle metalloid that is easily broken. Pure elemental boron is generally only found in meteors and is not naturally part of the Earth's crust."
 scroll_active = false
@@ -317,13 +399,13 @@ __meta__ = {
 position = Vector2( 536, 424 )
 scale = Vector2( 4, 4 )
 normal = ExtResource( 21 )
-shape = SubResource( 6 )
+shape = SubResource( 8 )
 
 [node name="XButton" type="TouchScreenButton" parent="PopUp"]
 position = Vector2( 1032, 56 )
 scale = Vector2( 4, 4 )
 normal = ExtResource( 22 )
-shape = SubResource( 7 )
+shape = SubResource( 9 )
 [connection signal="pressed" from="ChallengeButton" to="." method="_on_ChallengeButton_pressed"]
 [connection signal="pressed" from="PopUp/PlayButton" to="." method="_on_TouchScreenButton_pressed"]
 [connection signal="pressed" from="PopUp/XButton" to="." method="_on_XButton_pressed"]

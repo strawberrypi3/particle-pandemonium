@@ -2,7 +2,7 @@
 # when the activated() function is called, but when deactivated(), freezes in
 # place. Activation handled by res://SCENES/LEVELS/Level.gd or other parent
 # scene.
-extends StaticBody2D
+extends KinematicBody2D
 
 export var start_position = Vector2(0,0)
 export var end_position = Vector2(0,0)

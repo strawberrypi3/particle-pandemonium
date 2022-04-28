@@ -1,4 +1,4 @@
-extends StaticBody2D
+extends KinematicBody2D
 
 export var id = 0 # Must have a matching id to a switch to connect
 export var starts_open = false
