@@ -8,7 +8,7 @@
 
 [node name="Level" instance=ExtResource( 1 )]
 follow_player = true
-limit_rect = Rect2( 0, 0, 2400, 600 )
+limit_rect = Rect2( 0, 0, 1800, 600 )
 
 [node name="Door" parent="." index="0"]
 position = Vector2( 1664, 512 )
