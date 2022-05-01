@@ -49,16 +49,6 @@ animations = [ {
 "name": "8",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 5 ) ],
-"loop": false,
-"name": "1",
-"speed": 0.0
-}, {
-"frames": [ ExtResource( 7 ) ],
-"loop": false,
-"name": "3",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 14 ) ],
 "loop": false,
 "name": "9",
@@ -69,15 +59,20 @@ animations = [ {
 "name": "5",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 6 ) ],
-"loop": false,
-"name": "10",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 11 ) ],
 "loop": false,
 "name": "7",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ) ],
+"loop": false,
+"name": "3",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": false,
+"name": "1",
+"speed": 0.0
 }, {
 "frames": [ ExtResource( 8 ) ],
 "loop": false,
@@ -87,6 +82,11 @@ animations = [ {
 "frames": [ ExtResource( 9 ) ],
 "loop": false,
 "name": "11",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": false,
+"name": "10",
 "speed": 5.0
 } ]
 
@@ -116,34 +116,24 @@ animations = [ {
 "name": "H",
 "speed": 0.0
 }, {
-"frames": [ ExtResource( 29 ) ],
-"loop": false,
-"name": "N",
-"speed": 0.0
-}, {
-"frames": [ ExtResource( 25 ) ],
-"loop": false,
-"name": "He",
-"speed": 0.0
-}, {
-"frames": [ ExtResource( 24 ) ],
-"loop": false,
-"name": "Li",
-"speed": 0.0
-}, {
-"frames": [ ExtResource( 26 ) ],
-"loop": false,
-"name": "Be",
-"speed": 0.0
-}, {
 "frames": [ ExtResource( 31 ) ],
 "loop": false,
 "name": "Ne",
 "speed": 0.0
 }, {
-"frames": [ ExtResource( 30 ) ],
+"frames": [ ExtResource( 29 ) ],
 "loop": false,
-"name": "F",
+"name": "N",
+"speed": 0.0
+}, {
+"frames": [  ],
+"loop": false,
+"name": "O",
+"speed": 0.0
+}, {
+"frames": [ ExtResource( 25 ) ],
+"loop": false,
+"name": "He",
 "speed": 0.0
 }, {
 "frames": [ ExtResource( 28 ) ],
@@ -156,9 +146,19 @@ animations = [ {
 "name": "B",
 "speed": 0.0
 }, {
-"frames": [  ],
+"frames": [ ExtResource( 26 ) ],
 "loop": false,
-"name": "O",
+"name": "Be",
+"speed": 0.0
+}, {
+"frames": [ ExtResource( 24 ) ],
+"loop": false,
+"name": "Li",
+"speed": 0.0
+}, {
+"frames": [ ExtResource( 30 ) ],
+"loop": false,
+"name": "F",
 "speed": 0.0
 } ]
 
