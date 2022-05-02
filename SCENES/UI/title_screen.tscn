@@ -1,64 +1,87 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=21 format=2]
 
-[ext_resource path="res://ASSETS/Fonts/PressStart2P.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://ASSETS/Fonts/MunroSmall-wPZw.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://SCENES/background.gd" type="Script" id=1]
+[ext_resource path="res://SCENES/UI/title_screen.gd" type="Script" id=2]
+[ext_resource path="res://float_animation.tres" type="Animation" id=3]
+[ext_resource path="res://ASSETS/Sprites/Backgrounds/Cloud/Cloud4.png" type="Texture" id=4]
+[ext_resource path="res://ASSETS/Sprites/Backgrounds/Cloud/Cloud2.png" type="Texture" id=5]
+[ext_resource path="res://ASSETS/Sprites/Backgrounds/Cloud/Cloud6.png" type="Texture" id=6]
+[ext_resource path="res://ASSETS/Sprites/Backgrounds/Cloud/Cloud3.png" type="Texture" id=7]
+[ext_resource path="res://ASSETS/Sprites/Backgrounds/Cloud/Cloud5.png" type="Texture" id=8]
+[ext_resource path="res://ASSETS/Sprites/Backgrounds/Space/Space2.png" type="Texture" id=9]
+[ext_resource path="res://ASSETS/Sprites/Backgrounds/Space/Space4.png" type="Texture" id=10]
+[ext_resource path="res://ASSETS/Sprites/TitleCard.png" type="Texture" id=11]
+[ext_resource path="res://ASSETS/Sprites/Backgrounds/Cloud/Cloud7.png" type="Texture" id=12]
+[ext_resource path="res://ASSETS/Sprites/Backgrounds/Cloud/Cloud8.png" type="Texture" id=13]
+[ext_resource path="res://ASSETS/Sprites/Backgrounds/Space/Space1.png" type="Texture" id=14]
+[ext_resource path="res://ASSETS/Sprites/Backgrounds/Space/Space3.png" type="Texture" id=15]
+[ext_resource path="res://ASSETS/Sprites/Backgrounds/Cloud/Cloud1.png" type="Texture" id=16]
+[ext_resource path="res://ASSETS/Fonts/PressStart2P.ttf" type="DynamicFontData" id=17]
 
-[sub_resource type="DynamicFont" id=1]
-size = 48
-font_data = ExtResource( 1 )
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 16 ), ExtResource( 5 ), ExtResource( 7 ), ExtResource( 4 ), ExtResource( 8 ), ExtResource( 6 ), ExtResource( 12 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "2",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 14 ), ExtResource( 9 ), ExtResource( 15 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "1",
+"speed": 5.0
+} ]
 
 [sub_resource type="DynamicFont" id=2]
-size = 30
-font_data = ExtResource( 2 )
+font_data = ExtResource( 17 )
 
-[sub_resource type="DynamicFont" id=3]
-size = 20
-font_data = ExtResource( 2 )
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 600, 300 )
 
 [node name="TitleScreen" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Title" type="Label" parent="."]
-margin_left = 108.353
-margin_top = 88.1945
-margin_right = 1116.35
-margin_bottom = 136.194
-custom_fonts/font = SubResource( 1 )
-text = "PARTICLE PANDEMONIUM!"
+[node name="Background" type="AnimatedSprite" parent="."]
+position = Vector2( -15, 0 )
+scale = Vector2( 4.1, 4.1 )
+frames = SubResource( 1 )
+animation = "1"
+centered = false
+script = ExtResource( 1 )
+max_shift = Vector2( -15, 0 )
+start_position = Vector2( -15, 0 )
+duration = 6.0
 
-[node name="Subtitle" type="Label" parent="."]
-margin_left = 363.26
-margin_top = 152.48
-margin_right = 794.26
-margin_bottom = 198.48
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2( 632, 276 )
+
+[node name="TitleCard" type="Sprite" parent="Node2D"]
+texture = ExtResource( 11 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D/TitleCard"]
+autoplay = "float_animation"
+anims/float_animation = ExtResource( 3 )
+
+[node name="TapToStart" type="Label" parent="."]
+margin_left = 488.0
+margin_top = 436.0
+margin_right = 712.0
+margin_bottom = 452.0
 custom_fonts/font = SubResource( 2 )
-text = "One Proton's Journey to Greatness"
+text = "[Tap to start]"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PressToStart" type="Label" parent="."]
-margin_left = 404.837
-margin_top = 273.433
-margin_right = 835.837
-margin_bottom = 319.433
-custom_fonts/font = SubResource( 2 )
-text = "- Press Anywhere To Start -"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Timer" type="Timer" parent="TapToStart"]
+wait_time = 0.8
+autostart = true
 
-[node name="Label" type="Label" parent="."]
-margin_left = 12.8096
-margin_top = 568.732
-margin_right = 146.81
-margin_bottom = 592.732
-custom_fonts/font = SubResource( 3 )
-text = "Alpha 0.0"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
+shape = SubResource( 3 )
+action = "ui_accept"
+[connection signal="timeout" from="TapToStart/Timer" to="." method="_on_Timer_timeout"]

@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Mobile Game"
-run/main_scene="res://SCENES/UI/world_map.tscn"
+run/main_scene="res://SCENES/UI/title_screen.tscn"
 config/icon="res://ASSETS/Sprites/icon.png"
 
 [autoload]

@@ -3,6 +3,7 @@ extends Node
 var world = "hydrogen"
 var world_abbrv = "h"
 var level_number = 1
+var level_unlocked = 1
 
 
 func _physics_process(delta):

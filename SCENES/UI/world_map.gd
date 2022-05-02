@@ -26,6 +26,8 @@ func _ready():
 		$SelectionBarSprite.play("Unavailable")
 	else:
 		$SelectionBarSprite.play("Start")
+	
+	$PeriodicTable/Waves.play("default")
 
 
 func _physics_process(delta):

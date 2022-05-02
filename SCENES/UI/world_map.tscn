@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=2]
+[gd_scene load_steps=49 format=2]
 
 [ext_resource path="res://SCENES/UI/world_map.gd" type="Script" id=1]
 [ext_resource path="res://ASSETS/Sprites/WorldMap/Base.png" type="Texture" id=2]
@@ -31,6 +31,13 @@
 [ext_resource path="res://ASSETS/Sprites/ElementDrawings/Nitrogen.png" type="Texture" id=29]
 [ext_resource path="res://ASSETS/Sprites/ElementDrawings/Flourine.png" type="Texture" id=30]
 [ext_resource path="res://ASSETS/Sprites/ElementDrawings/Neon.png" type="Texture" id=31]
+[ext_resource path="res://ASSETS/Sprites/WorldMap/waves4.png" type="Texture" id=32]
+[ext_resource path="res://ASSETS/Sprites/WorldMap/waves3.png" type="Texture" id=33]
+[ext_resource path="res://ASSETS/Sprites/WorldMap/waves1.png" type="Texture" id=34]
+[ext_resource path="res://ASSETS/Sprites/WorldMap/waves5.png" type="Texture" id=35]
+[ext_resource path="res://ASSETS/Sprites/WorldMap/waves2.png" type="Texture" id=36]
+[ext_resource path="res://ASSETS/Sprites/WorldMap/waves7.png" type="Texture" id=37]
+[ext_resource path="res://ASSETS/Sprites/WorldMap/waves6.png" type="Texture" id=38]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -88,6 +95,14 @@ animations = [ {
 "loop": false,
 "name": "11",
 "speed": 5.0
+} ]
+
+[sub_resource type="SpriteFrames" id=10]
+animations = [ {
+"frames": [ ExtResource( 34 ), ExtResource( 36 ), ExtResource( 33 ), ExtResource( 32 ), ExtResource( 35 ), ExtResource( 38 ), ExtResource( 37 ) ],
+"loop": true,
+"name": "default",
+"speed": 15.0
 } ]
 
 [sub_resource type="SpriteFrames" id=2]
@@ -208,41 +223,18 @@ frames = SubResource( 1 )
 animation = "1"
 centered = false
 
+[node name="Waves" type="AnimatedSprite" parent="PeriodicTable"]
+position = Vector2( 440, 404 )
+scale = Vector2( 4, 4 )
+frames = SubResource( 10 )
+frame = 4
+
 [node name="ChallengeButton" type="Button" parent="."]
-margin_left = 838.631
-margin_top = 96.0511
-margin_right = 964.631
-margin_bottom = 148.051
+margin_left = 1272.0
+margin_top = 72.0
+margin_right = 1398.0
+margin_bottom = 124.0
 text = "Challenge"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label" type="Label" parent="."]
-margin_right = 40.0
-margin_bottom = 14.0
-text = "DEBUG MENU"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label2" type="Label" parent="."]
-margin_top = 32.0
-margin_right = 81.0
-margin_bottom = 46.0
-text = "Level Select:"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Label3" type="Label" parent="."]
-margin_left = 384.0
-margin_right = 572.0
-margin_bottom = 65.0
-text = "DEBUG CONTROLS:
-\"E\" --> switch
-\"G\" --> next level
-\"H\" --> return to debug menu"
 __meta__ = {
 "_edit_use_anchors_": false
 }
