@@ -81,6 +81,14 @@ __meta__ = {
 wait_time = 0.8
 autostart = true
 
+[node name="Label" type="Label" parent="."]
+margin_right = 85.0
+margin_bottom = 14.0
+text = "Ver 0.0 Alpha"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="TouchScreenButton" type="TouchScreenButton" parent="."]
 shape = SubResource( 3 )
 action = "ui_accept"

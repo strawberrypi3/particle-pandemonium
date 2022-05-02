@@ -7,8 +7,6 @@ export var end_position = Vector2(0,0)
 export var duration = 1
 export var type = 1 # 1 for green, 2 for red (w/ spikes)
 
-var velocity = Vector2.ZERO
-
 onready var tween_positions = [start_position, end_position]
 
 
@@ -34,10 +32,12 @@ func _on_Tween_tween_completed(object, key):
 
 
 func _physics_process(delta):
+	# Set y-position of AnimatedSprite and CollisionShape based on cos function:
 	var v_amp = MAX_FLOAT / abs(start_position.y - end_position.y + 1)
-	velocity = Vector2(0, get_cos_height($FloatTimer.time_left, 
-			$FloatTimer.wait_time, v_amp))
-	$AnimatedSprite.position.y = velocity.y
+	var y_pos = get_cos_height($FloatTimer.time_left, $FloatTimer.wait_time, 
+			v_amp)
+	$AnimatedSprite.position.y = y_pos
+	$CollisionShape2D.position.y = y_pos
 
 
 # Returns the y-value of point x on a cosine graph of defined transformation

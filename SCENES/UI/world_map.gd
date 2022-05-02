@@ -3,6 +3,7 @@ extends Control
 
 var stage = 5 # Incremented every time a level is completed for the first time
 var cursor_stage = 1 # Stage that the cursor (arrow) is currently pointing to
+var time = 0.0
 
 var levels = {
 		1 : ["hydrogen", "h"], 
@@ -31,6 +32,9 @@ func _ready():
 
 
 func _physics_process(delta):
+	time += delta
+#	$ParallaxBackground/HexagonBackground.position = Vector2(60*time, 0)
+	
 	$PeriodicTable/Top.play(str(stage))
 	
 	if Input.is_action_just_pressed("left"):

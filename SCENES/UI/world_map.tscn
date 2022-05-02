@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=2]
+[gd_scene load_steps=51 format=2]
 
 [ext_resource path="res://SCENES/UI/world_map.gd" type="Script" id=1]
 [ext_resource path="res://ASSETS/Sprites/WorldMap/Base.png" type="Texture" id=2]
@@ -38,6 +38,24 @@
 [ext_resource path="res://ASSETS/Sprites/WorldMap/waves2.png" type="Texture" id=36]
 [ext_resource path="res://ASSETS/Sprites/WorldMap/waves7.png" type="Texture" id=37]
 [ext_resource path="res://ASSETS/Sprites/WorldMap/waves6.png" type="Texture" id=38]
+[ext_resource path="res://ASSETS/Sprites/HexagonBackground.png" type="Texture" id=39]
+
+[sub_resource type="Animation" id=11]
+resource_name = "scroll"
+length = 40.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 40 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -1520, 0 ) ]
+}
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -210,6 +228,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="HexagonBackground" type="Sprite" parent="."]
+scale = Vector2( 4, 4 )
+texture = ExtResource( 39 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 760, 150 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HexagonBackground"]
+autoplay = "scroll"
+anims/scroll = SubResource( 11 )
+
 [node name="PeriodicTable" type="Node2D" parent="."]
 
 [node name="Base" type="Sprite" parent="PeriodicTable"]
@@ -230,10 +259,10 @@ frames = SubResource( 10 )
 frame = 4
 
 [node name="ChallengeButton" type="Button" parent="."]
-margin_left = 1272.0
-margin_top = 72.0
-margin_right = 1398.0
-margin_bottom = 124.0
+margin_left = 1012.0
+margin_top = 28.0
+margin_right = 1138.0
+margin_bottom = 79.9999
 text = "Challenge"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -327,7 +356,7 @@ margin_right = 1024.0
 margin_bottom = 480.0
 custom_fonts/normal_font = SubResource( 7 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
-text = "HELIUM (He) is the second element on the periodic table. It makes up part of the atmosphere, and it's often used in balloons to make them float!"
+text = "HELIUM (He) is the second element on the periodic table. It makes up a very small part of the atmosphere and is often used in balloons to make them float!"
 scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
@@ -345,7 +374,7 @@ margin_right = 1024.0
 margin_bottom = 480.0
 custom_fonts/normal_font = SubResource( 7 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
-text = "LITHIUM (Li) is the third element on the periodic table. It is used in batteries to power electricity. Thanks to electricity, you can play this game! Thank you, electricity! Thank you, lithium!"
+text = "LITHIUM (Li) is the third element on the periodic table. Lithium ions are commonly used in batteries to power electricity. Thanks to electricity, you are playing this game!"
 scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
