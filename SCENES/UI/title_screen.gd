@@ -1,7 +1,7 @@
 extends Control
 
 func _ready():
-	$Background.play(str(Global.level_unlocked))
+	$Background.play(str(Global.world_unlocked))
 
 
 func _physics_process(delta):

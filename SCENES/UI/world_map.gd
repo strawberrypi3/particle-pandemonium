@@ -1,32 +1,18 @@
 # For easily testing different levels
 extends Control
 
-var stage = 5 # Incremented every time a level is completed for the first time
-var cursor_stage = 1 # Stage that the cursor (arrow) is currently pointing to
+
 var time = 0.0
 
-var levels = {
-		1 : ["hydrogen", "h"], 
-		2 : ["helium", "he"], 
-		3 : ["lithium", "li"], 
-		4 : ["beryllium", "be"], 
-		5 : ["boron", "b"],
-		6 : ["carbon", "c"], 
-		7 : ["nitrogen", "n"], 
-		8 : ["oxygen", "o"],
-		9 : ["flourine", "f"], 
-		10 : ["neon", "ne"]}
 
+onready var cursor_stage = Global.world_unlocked # Stage that the cursor (arrow) is currently pointing to
 
 func _ready():
 	$PopUp.hide()
 	
 	set_cursor_position(cursor_stage)
 	
-	if stage < cursor_stage:
-		$SelectionBarSprite.play("Unavailable")
-	else:
-		$SelectionBarSprite.play("Start")
+	update_selection_bar()
 	
 	$PeriodicTable/Waves.play("default")
 
@@ -35,7 +21,7 @@ func _physics_process(delta):
 	time += delta
 #	$ParallaxBackground/HexagonBackground.position = Vector2(60*time, 0)
 	
-	$PeriodicTable/Top.play(str(stage))
+	$PeriodicTable/Top.play(str(Global.world_unlocked))
 	
 	if Input.is_action_just_pressed("left"):
 		if cursor_stage > 1:
@@ -43,10 +29,7 @@ func _physics_process(delta):
 			
 			set_cursor_position(cursor_stage)
 			
-			if stage < cursor_stage:
-				$SelectionBarSprite.play("Unavailable")
-			else:
-				$SelectionBarSprite.play("Start")
+			update_selection_bar()
 			
 	if Input.is_action_just_pressed("right"):
 		if cursor_stage < 10:
@@ -54,33 +37,38 @@ func _physics_process(delta):
 			
 			set_cursor_position(cursor_stage)
 			
-			if stage < cursor_stage:
-				$SelectionBarSprite.play("Unavailable")
-			else:
-				$SelectionBarSprite.play("Start")
+			update_selection_bar()
 	
 	if Input.is_action_just_pressed("enter"):
-		if stage >= cursor_stage: # level is unlocked
-			choose_level(cursor_stage)
-#			open_level(cursor_stage)
+		if Global.world_unlocked >= cursor_stage: # level is unlocked
+			choose_world(cursor_stage)
 
 
-func choose_level(level_number):
+func update_selection_bar():
+	if Global.world_unlocked < cursor_stage:
+		$SelectionBarSprite.play("Unavailable")
+	else:
+		$SelectionBarSprite.play("Start")
+
+
+func choose_world(world_number):
 	# Initialize global level values:
-	var level_name = levels[level_number]
-	Global.world = level_name[0]
-	Global.world_abbrv = level_name[1]
-	Global.level_number = 1
+	var world_name = Global.worlds[Global.world]
+	Global.world = world_number
+	if world_number == Global.world_unlocked: # Furthest-unlocked world chosen
+		Global.level_number = Global.level_unlocked
+	else:
+		Global.level_number = 1
 	
 	# Show pre-level popup and element-specific information:
 	$PopUp.show()
 	for label in get_tree().get_nodes_in_group("element_info"):
 		label.hide()
-	if (get_node_or_null(str("PopUp/", level_name[1].capitalize())) != 
+	if (get_node_or_null(str("PopUp/", world_name[1].capitalize())) != 
 			null):
-		get_node(str("PopUp/", level_name[1].capitalize())).show()
+		get_node(str("PopUp/", world_name[1].capitalize())).show()
 	
-	$PopUp/Nucleus.play(str(level_name[1].capitalize()))
+	$PopUp/Nucleus.play(str(world_name[1].capitalize()))
 	
 	$PopUp/Nucleus/AnimationPlayer.play("rotate")
 	
@@ -92,10 +80,7 @@ func choose_level(level_number):
 
 
 func _on_ChallengeButton_pressed():
-	Global.world = "challenge"
-	Global.world_abbrv = "c_h"
-	Global.level_number = 1
-	get_tree().change_scene("res://SCENES/game.tscn")
+	pass
 
 
 func set_cursor_position(current_stage):

@@ -228,14 +228,23 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HexagonBackground" type="Sprite" parent="."]
+[node name="Background" type="Node2D" parent="."]
+position = Vector2( -1520, 0 )
+
+[node name="HexagonBackground" type="Sprite" parent="Background"]
 scale = Vector2( 4, 4 )
 texture = ExtResource( 39 )
 centered = false
-region_enabled = true
 region_rect = Rect2( 0, 0, 760, 150 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="HexagonBackground"]
+[node name="HexagonBackground2" type="Sprite" parent="Background"]
+position = Vector2( 1520, 0 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 39 )
+centered = false
+region_rect = Rect2( 0, 0, 760, 150 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Background"]
 autoplay = "scroll"
 anims/scroll = SubResource( 11 )
 
