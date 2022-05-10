@@ -27,6 +27,9 @@ func _ready():
 	set_level(current_level_path)
 	$MultitargetCamera.targets.append($Player)
 	$MultitargetCamera.targets.append($Sidekick)
+	$Player.sensing = false
+	yield(get_tree().create_timer(0), "timeout")
+	$Player.sensing = true
 
 
 func _physics_process(delta):
@@ -166,7 +169,6 @@ func transition(new_level_number):
 	current_level_path = generate_level_path(current_world[0], current_world[1], 
 			Global.level_number)
 	set_level(current_level_path)
-		
 	
 	$UI/CanvasLayer/BlackOverlay/AnimationPlayer.play("SlideOut")
 	

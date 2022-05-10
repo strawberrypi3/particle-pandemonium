@@ -46,14 +46,27 @@ func _physics_process(delta):
 
 func update_selection_bar():
 	if Global.world_unlocked < cursor_stage:
-		$SelectionBarSprite.play("Unavailable")
+		$SelectionBar/SelectionBarSprite.play("Unavailable")
+		$SelectionBar/Resume.hide()
+		$SelectionBar/Start.show()
+		$SelectionBar/Start.set("custom_colors/font_color", 
+				Color(0.15, 0.15, 0.15)) # Gray
+	elif Global.world_unlocked == cursor_stage:
+		$SelectionBar/SelectionBarSprite.play("Yellow")
+		if Global.level_unlocked > 1:
+			$SelectionBar/Start.hide()
+			$SelectionBar/Resume.show()
 	else:
-		$SelectionBarSprite.play("Start")
+		$SelectionBar/SelectionBarSprite.play("Start")
+		$SelectionBar/Resume.hide()
+		$SelectionBar/Start.show()
+		$SelectionBar/Start.set("custom_colors/font_color", 
+				Color(0, 0, 0)) # Black
 
 
 func choose_world(world_number):
 	# Initialize global level values:
-	var world_name = Global.worlds[Global.world]
+	var world_name = Global.worlds[int(world_number)]
 	Global.world = world_number
 	if world_number == Global.world_unlocked: # Furthest-unlocked world chosen
 		Global.level_number = Global.level_unlocked
@@ -73,8 +86,7 @@ func choose_world(world_number):
 	$PopUp/Nucleus/AnimationPlayer.play("rotate")
 	
 	# Hide other buttons:
-	$SelectionBarButton.hide()
-	$SelectionBarSprite.hide()
+	$SelectionBar.hide()
 	$LeftArrow.hide()
 	$RightArrow.hide()
 
@@ -100,7 +112,6 @@ func _on_TouchScreenButton_pressed(): # Popup (second) play button
 
 func _on_XButton_pressed():
 	$PopUp.hide()
-	$SelectionBarButton.show()
-	$SelectionBarSprite.show()
+	$SelectionBar.show()
 	$LeftArrow.show()
 	$RightArrow.show()

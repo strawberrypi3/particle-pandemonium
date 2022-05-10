@@ -21,11 +21,11 @@ tile_data = PoolIntArray( -1, 0, 0, -65536, 0, 1, -65535, 0, 1, -65534, 0, 1, -6
 position = Vector2( 952, 352 )
 
 [node name="BrittlePlatform" parent="." index="5" instance=ExtResource( 2 )]
-position = Vector2( 544, 416 )
+position = Vector2( 544, 480 )
 ignore_platform = true
 
 [node name="BrittlePlatform2" parent="." index="6" instance=ExtResource( 2 )]
-position = Vector2( 544, 480 )
+position = Vector2( 544, 416 )
 ignore_platform = true
 
 [node name="Key" parent="." index="7" instance=ExtResource( 3 )]

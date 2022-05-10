@@ -147,7 +147,6 @@ func _on_Hurtbox_area_entered(area):
 		is_on_switch = true
 	if area.get_filename() == "res://SCENES/button_touch_override.tscn":
 		button_count += 1
-	
 
 
 func _on_Hurtbox_area_exited(area):

@@ -16,22 +16,23 @@
 [ext_resource path="res://ASSETS/Sprites/Backgrounds/Space/Space1.png" type="Texture" id=14]
 [ext_resource path="res://ASSETS/Sprites/Backgrounds/Space/Space3.png" type="Texture" id=15]
 [ext_resource path="res://ASSETS/Sprites/Backgrounds/Cloud/Cloud1.png" type="Texture" id=16]
-[ext_resource path="res://ASSETS/Fonts/PressStart2P.ttf" type="DynamicFontData" id=17]
+[ext_resource path="res://ASSETS/Fonts/RulerGold.ttf" type="DynamicFontData" id=17]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 14 ), ExtResource( 9 ), ExtResource( 15 ), ExtResource( 10 ) ],
-"loop": true,
-"name": "1",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 16 ), ExtResource( 5 ), ExtResource( 7 ), ExtResource( 4 ), ExtResource( 8 ), ExtResource( 6 ), ExtResource( 12 ), ExtResource( 13 ) ],
 "loop": true,
 "name": "2",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 14 ), ExtResource( 9 ), ExtResource( 15 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "1",
+"speed": 5.0
 } ]
 
 [sub_resource type="DynamicFont" id=2]
+size = 32
 font_data = ExtResource( 17 )
 
 [sub_resource type="RectangleShape2D" id=3]
@@ -67,10 +68,10 @@ autoplay = "float_animation"
 anims/float_animation = ExtResource( 3 )
 
 [node name="TapToStart" type="Label" parent="."]
-margin_left = 488.0
-margin_top = 436.0
-margin_right = 712.0
-margin_bottom = 452.0
+margin_left = 496.0
+margin_top = 424.0
+margin_right = 799.0
+margin_bottom = 466.0
 custom_fonts/font = SubResource( 2 )
 text = "[Tap to start]"
 __meta__ = {
