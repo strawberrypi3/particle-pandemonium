@@ -121,6 +121,9 @@ pointing/emulate_touch_from_mouse=true
 2d_physics/layer_7="Switch"
 2d_physics/layer_8="Brittle Platform"
 2d_physics/layer_9="Brittle Platform Killer"
+2d_physics/layer_10="Photon"
+2d_physics/layer_11="Refractor"
+2d_physics/layer_12="Plant"
 
 [rendering]
 

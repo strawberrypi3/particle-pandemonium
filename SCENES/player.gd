@@ -134,7 +134,8 @@ func randomize_position(var actual_position):
 
 func _on_Hurtbox_body_entered(body):
 	if (body.get_filename() == "res://SCENES/electron_switch.tscn" or 
-			body.get_filename() == "res://SCENES/brittle_platform.tscn"):
+			body.get_filename() == "res://SCENES/brittle_platform.tscn" or
+			body.get_parent().get_filename() == "res://SCENES/plant.tscn"):
 		return
 	dying = true
 	can_move = false
