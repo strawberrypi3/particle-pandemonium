@@ -9,8 +9,7 @@
 # as children to a specific instance of a level, they should connect and
 # function as intended. Level will still function without them.
 #
-# Specific levels that are more complicated may extend from this script (ex.
-# boss fights)
+# Specific levels that are more complicated may extend from this script
 extends Node2D
 
 signal level_complete

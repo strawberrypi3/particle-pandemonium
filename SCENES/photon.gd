@@ -3,53 +3,55 @@ extends KinematicBody2D
 var speed = 1000
 var direction : Vector2 # will be normalized when necessary
 var velocity : Vector2
+var reflections = 1 # Number of times it will reflect before dissapearing
 
 
 func _ready():
-	# Rotate:
-	var t = 0
-	direction = direction.normalized() # for good measure
-	t = atan2(direction.y, direction.x)
-	rotation_degrees = t * 180 / PI
-
+	direction = direction.normalized()
+	rotate_to_direction()
 
 
 func _physics_process(delta):
-	# Rotate:
+	rotate_to_direction()
+	
+	velocity = direction * Vector2(speed, speed)
+	velocity = move_and_slide(velocity, direction)
+	
+#	for i in get_slide_count():
+	if get_slide_collision(0) != null:
+		var collision = get_slide_collision(0)
+		if collision.collider.get_collision_layer_bit(11): # plant
+			collision.collider.get_parent().grow()
+			queue_free()
+		
+		elif collision.collider.get_collision_layer_bit(10): # refractor
+			refract(collision, collision.collider.num_refractions)
+			
+		elif collision.collider.get_collision_layer_bit(1): # platform
+			reflect(collision)
+		
+		else:
+			queue_free()
+
+
+func rotate_to_direction():
 	var t = 0
 	direction = direction.normalized() # for good measure
 	t = atan2(direction.y, direction.x)
 	rotation_degrees = t * 180 / PI
-	
-	velocity = direction * Vector2(speed, speed)
-	velocity = move_and_slide(velocity, direction)
-	
-	for i in get_slide_count():
-		var collision = get_slide_collision(i)
-		if collision != null:
-			# If collided with reflector, reflect:
-			if collision.collider.get_collision_layer_bit(1): # platform
-				reflect(collision)
-			
-			elif collision.collider.get_collision_layer_bit(10): # refractor
-				refract(collision, 30)
-
-		# If collided with plant, be absorbed:
-			elif collision.collider.get_collision_layer_bit(11): # plant
-				collision.collider.get_parent().grow()
-				queue_free()
-			
-			else:
-				queue_free()
 
 
 func reflect(collision : KinematicCollision2D):
-	var axis = collision.normal
-	direction = direction.bounce(axis)
+	reflections -= 1
+	if reflections < 0:
+		queue_free()
+	else:
+		var axis = collision.normal
+		direction = direction.bounce(axis)
 	
-	# Prevent double collision:
-	velocity = direction * Vector2(speed, speed)
-	velocity = move_and_slide(velocity, direction)
+		# Prevent double collision:
+		velocity = direction * Vector2(speed, speed)
+		velocity = move_and_slide(velocity, direction)
 
 
 func refract(collision : KinematicCollision2D, num_refractions : int):
@@ -63,14 +65,13 @@ func refract(collision : KinematicCollision2D, num_refractions : int):
 		var total_arc = arc + angle
 		var new_direction = Vector2(cos(total_arc), sin(total_arc))
 		
-		# Create second "refracted" photon that moves along axis
+		# Create new photon that follows new_direction's trajectory
 		var photon = load("res://SCENES/photon.tscn")
 		photon = photon.instance()
 		photon.direction = new_direction
 		photon.speed = self.speed
+		photon.reflections = self.reflections
 		get_parent().add_child(photon)
-		
-		# Set new photon position
 		photon.position = position
 	
 	queue_free()
