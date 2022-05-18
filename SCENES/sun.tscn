@@ -15,11 +15,11 @@ animations = [ {
 } ]
 
 [node name="Sun" type="StaticBody2D"]
-position = Vector2( 144, 248 )
 collision_layer = 8
 collision_mask = 0
 script = ExtResource( 2 )
 direction = Vector2( 1, 0 )
+photon_speed = 700
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
@@ -30,11 +30,4 @@ frames = SubResource( 2 )
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-collision_layer = 2147484672
-collision_mask = 512
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
-polygon = PoolVector2Array( 400, -112, 528, 40, 760, -88 )
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

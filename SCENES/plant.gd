@@ -7,6 +7,7 @@ export var height : = 2 # Number of stem tiles of height
 func _ready():
 	if height == 0:
 		$Top.hide()
+		$Top/CollisionShape2D.disabled = true
 		$Pot/AnimatedSprite.play("empty")
 	else:
 		var temp = height
@@ -25,6 +26,7 @@ func grow():
 	if height == 1:
 		$Top.position = Vector2(16, -80)
 		$Top.show()
+		$Top/CollisionShape2D.disabled = false
 	else:
 		$Top.position.y -= 32
 	

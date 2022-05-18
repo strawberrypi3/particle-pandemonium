@@ -20,14 +20,14 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 14 ), ExtResource( 9 ), ExtResource( 15 ), ExtResource( 10 ) ],
-"loop": true,
-"name": "1",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 16 ), ExtResource( 5 ), ExtResource( 7 ), ExtResource( 4 ), ExtResource( 8 ), ExtResource( 6 ), ExtResource( 12 ), ExtResource( 13 ) ],
 "loop": true,
 "name": "2",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 14 ), ExtResource( 9 ), ExtResource( 15 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "1",
 "speed": 5.0
 } ]
 
