@@ -15,3 +15,7 @@ texture = ExtResource( 1 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 polygon = PoolVector2Array( -60, -40, -8, 64, 8, 64, 60, -40, 40, -64, -40, -64 )
+
+[node name="CooldownTimer" type="Timer" parent="."]
+one_shot = true
+[connection signal="timeout" from="CooldownTimer" to="." method="_on_CooldownTimer_timeout"]

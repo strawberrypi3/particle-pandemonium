@@ -11,6 +11,14 @@ export var id = 0 # Must match other objects to connect
 export var trans_type = Tween.TRANS_SINE
 export var ease_type = Tween.EASE_IN_OUT
 
+var colors = {
+	0 : Color.darkgreen,
+	1 : Color.darkred,
+	2 : Color.darkblue,
+	3 : Color.chocolate,
+	4 : Color.gold
+}
+
 var disabled = false
 
 onready var tween_positions = [start_position, end_position]
@@ -19,6 +27,8 @@ onready var tween_positions = [start_position, end_position]
 func _ready():
 	start_tween()
 	deactivate()
+	if id in colors:
+		$Center.modulate = colors[id]
 
 
 func start_tween():

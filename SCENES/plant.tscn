@@ -88,3 +88,9 @@ texture = ExtResource( 5 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Top"]
 position = Vector2( 0, 8 )
 shape = SubResource( 5 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="Top"]
+position = Vector2( -0.999999, 6 )
+scale = Vector2( 4.75, 1 )
+
+[connection signal="screen_exited" from="Top/VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

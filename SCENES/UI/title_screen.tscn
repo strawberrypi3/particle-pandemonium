@@ -1,35 +1,27 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://SCENES/background.gd" type="Script" id=1]
 [ext_resource path="res://SCENES/UI/title_screen.gd" type="Script" id=2]
 [ext_resource path="res://float_animation.tres" type="Animation" id=3]
-[ext_resource path="res://ASSETS/Sprites/Backgrounds/Cloud/Cloud4.png" type="Texture" id=4]
-[ext_resource path="res://ASSETS/Sprites/Backgrounds/Cloud/Cloud2.png" type="Texture" id=5]
-[ext_resource path="res://ASSETS/Sprites/Backgrounds/Cloud/Cloud6.png" type="Texture" id=6]
-[ext_resource path="res://ASSETS/Sprites/Backgrounds/Cloud/Cloud3.png" type="Texture" id=7]
-[ext_resource path="res://ASSETS/Sprites/Backgrounds/Cloud/Cloud5.png" type="Texture" id=8]
-[ext_resource path="res://ASSETS/Sprites/Backgrounds/Space/Space2.png" type="Texture" id=9]
-[ext_resource path="res://ASSETS/Sprites/Backgrounds/Space/Space4.png" type="Texture" id=10]
 [ext_resource path="res://ASSETS/Sprites/TitleCard.png" type="Texture" id=11]
-[ext_resource path="res://ASSETS/Sprites/Backgrounds/Cloud/Cloud7.png" type="Texture" id=12]
-[ext_resource path="res://ASSETS/Sprites/Backgrounds/Cloud/Cloud8.png" type="Texture" id=13]
-[ext_resource path="res://ASSETS/Sprites/Backgrounds/Space/Space1.png" type="Texture" id=14]
-[ext_resource path="res://ASSETS/Sprites/Backgrounds/Space/Space3.png" type="Texture" id=15]
-[ext_resource path="res://ASSETS/Sprites/Backgrounds/Cloud/Cloud1.png" type="Texture" id=16]
 [ext_resource path="res://ASSETS/Fonts/RulerGold.ttf" type="DynamicFontData" id=17]
+[ext_resource path="res://ASSETS/Sprites/HexagonBackground.png" type="Texture" id=18]
 
-[sub_resource type="SpriteFrames" id=1]
-animations = [ {
-"frames": [ ExtResource( 14 ), ExtResource( 9 ), ExtResource( 15 ), ExtResource( 10 ) ],
-"loop": true,
-"name": "1",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 16 ), ExtResource( 5 ), ExtResource( 7 ), ExtResource( 4 ), ExtResource( 8 ), ExtResource( 6 ), ExtResource( 12 ), ExtResource( 13 ) ],
-"loop": true,
-"name": "2",
-"speed": 5.0
-} ]
+[sub_resource type="Animation" id=4]
+resource_name = "scroll"
+length = 40.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 40 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -1520, 0 ) ]
+}
 
 [sub_resource type="DynamicFont" id=2]
 size = 32
@@ -46,16 +38,25 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Background" type="AnimatedSprite" parent="."]
-position = Vector2( -15, 0 )
-scale = Vector2( 4.1, 4.1 )
-frames = SubResource( 1 )
-animation = "1"
+[node name="Background" type="Node2D" parent="."]
+position = Vector2( -1520, 0 )
+
+[node name="HexagonBackground" type="Sprite" parent="Background"]
+scale = Vector2( 4, 4 )
+texture = ExtResource( 18 )
 centered = false
-script = ExtResource( 1 )
-max_shift = Vector2( -15, 0 )
-start_position = Vector2( -15, 0 )
-duration = 6.0
+region_rect = Rect2( 0, 0, 760, 150 )
+
+[node name="HexagonBackground2" type="Sprite" parent="Background"]
+position = Vector2( 1520, 0 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 18 )
+centered = false
+region_rect = Rect2( 0, 0, 760, 150 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Background"]
+autoplay = "scroll"
+anims/scroll = SubResource( 4 )
 
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2( 632, 276 )
@@ -93,4 +94,5 @@ __meta__ = {
 [node name="TouchScreenButton" type="TouchScreenButton" parent="."]
 shape = SubResource( 3 )
 action = "ui_accept"
+
 [connection signal="timeout" from="TapToStart/Timer" to="." method="_on_Timer_timeout"]

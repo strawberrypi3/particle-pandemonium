@@ -1,8 +1,5 @@
 extends Control
 
-func _ready():
-	$Background.play(str(Global.world_unlocked))
-
 
 func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_accept"):

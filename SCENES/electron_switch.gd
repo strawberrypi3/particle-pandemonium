@@ -13,6 +13,18 @@ export var id = 0 # Must have matching id to a platform to connect
 
 var state = OFF
 
+var colors = {
+	0 : Color.darkgreen,
+	1 : Color.darkred,
+	2 : Color.darkblue,
+	3 : Color.chocolate,
+	4 : Color.gold
+}
+
+func _ready():
+	if id in colors:
+		$AnimatedSprite.modulate = colors[id]
+
 
 func _physics_process(delta):
 #	if body_count > 0:

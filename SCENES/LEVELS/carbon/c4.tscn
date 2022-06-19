@@ -16,6 +16,7 @@ scale = Vector2( 8, 8 )
 position = Vector2( 756, 72 )
 direction = Vector2( -0.4, 0.85 )
 interval = 1.0
+start_time = 1.0
 photon_speed = 750
 num_reflections = 5
 
@@ -23,6 +24,7 @@ num_reflections = 5
 position = Vector2( 756, 72 )
 direction = Vector2( 0, 1 )
 interval = 1.0
+start_time = 1.0
 photon_speed = 650
 num_reflections = 5
 
@@ -30,6 +32,7 @@ num_reflections = 5
 position = Vector2( 756, 72 )
 direction = Vector2( 0.4, 0.85 )
 interval = 1.0
+start_time = 1.0
 photon_speed = 750
 num_reflections = 5
 

@@ -3,6 +3,7 @@ extends StaticBody2D
 
 export var direction = Vector2.ZERO # direction that photon will be shot
 export var interval = 2.0 # time between shooting photons
+export var oneshot = false
 export var start_time = 2.0 # time before first photon is shot
 export var photon_speed = 200
 export var num_reflections : = 1 # number of photon bounces before dissapearing
@@ -15,8 +16,9 @@ func _ready():
 
 func _on_Timer_timeout():
 	shoot_photon()
-	$Timer.wait_time = interval
-	$Timer.start()
+	if not oneshot:
+		$Timer.wait_time = interval
+		$Timer.start()
 
 
 func shoot_photon():

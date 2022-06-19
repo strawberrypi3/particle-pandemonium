@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ElectronSwitchOn.png-3adc4b0d3b0ecfb3c25f51bda1b7326d.stex"
+path="res://.import/center.png-7e68a00cb61a41b156c18fdc5bcd76c2.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ASSETS/Sprites/ElectronSwitchOn.png"
-dest_files=[ "res://.import/ElectronSwitchOn.png-3adc4b0d3b0ecfb3c25f51bda1b7326d.stex" ]
+source_file="res://ASSETS/Sprites/ElectricPlatform/center.png"
+dest_files=[ "res://.import/center.png-7e68a00cb61a41b156c18fdc5bcd76c2.stex" ]
 
 [params]
 

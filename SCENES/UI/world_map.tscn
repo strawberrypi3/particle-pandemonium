@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=2]
+[gd_scene load_steps=52 format=2]
 
 [ext_resource path="res://SCENES/UI/world_map.gd" type="Script" id=1]
 [ext_resource path="res://ASSETS/Sprites/WorldMap/Base.png" type="Texture" id=2]
@@ -38,57 +38,19 @@
 [ext_resource path="res://ASSETS/Sprites/WorldMap/waves2.png" type="Texture" id=36]
 [ext_resource path="res://ASSETS/Sprites/WorldMap/waves7.png" type="Texture" id=37]
 [ext_resource path="res://ASSETS/Sprites/WorldMap/waves6.png" type="Texture" id=38]
-[ext_resource path="res://ASSETS/Sprites/HexagonBackground.png" type="Texture" id=39]
 [ext_resource path="res://ASSETS/Fonts/RedeemGold.ttf" type="DynamicFontData" id=40]
 [ext_resource path="res://ASSETS/Sprites/SelectionBar/Resume.png" type="Texture" id=41]
 
-[sub_resource type="Animation" id=1]
-resource_name = "scroll"
-length = 40.0
-loop = true
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 40 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( -1520, 0 ) ]
-}
-
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 15 ) ],
-"loop": false,
-"name": "2",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 5 ) ],
 "loop": false,
 "name": "1",
 "speed": 0.0
 }, {
-"frames": [ ExtResource( 7 ) ],
+"frames": [ ExtResource( 15 ) ],
 "loop": false,
-"name": "3",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 13 ) ],
-"loop": false,
-"name": "6",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 14 ) ],
-"loop": false,
-"name": "9",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 8 ) ],
-"loop": false,
-"name": "4",
+"name": "2",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 11 ) ],
@@ -96,9 +58,9 @@ animations = [ {
 "name": "7",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 6 ) ],
+"frames": [ ExtResource( 9 ) ],
 "loop": false,
-"name": "10",
+"name": "11",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 10 ) ],
@@ -106,14 +68,34 @@ animations = [ {
 "name": "5",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 9 ) ],
+"frames": [ ExtResource( 14 ) ],
 "loop": false,
-"name": "11",
+"name": "9",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ) ],
+"loop": false,
+"name": "3",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 12 ) ],
 "loop": false,
 "name": "8",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ) ],
+"loop": false,
+"name": "4",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": false,
+"name": "10",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 13 ) ],
+"loop": false,
+"name": "6",
 "speed": 5.0
 } ]
 
@@ -127,11 +109,6 @@ animations = [ {
 
 [sub_resource type="SpriteFrames" id=4]
 animations = [ {
-"frames": [ ExtResource( 4 ) ],
-"loop": false,
-"name": "Unavailable",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 16 ) ],
 "loop": false,
 "name": "Start",
@@ -140,6 +117,11 @@ animations = [ {
 "frames": [ ExtResource( 41 ) ],
 "loop": true,
 "name": "Yellow",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": false,
+"name": "Unavailable",
 "speed": 5.0
 } ]
 
@@ -155,9 +137,34 @@ extents = Vector2( 13.359, 20.415 )
 
 [sub_resource type="SpriteFrames" id=7]
 animations = [ {
-"frames": [ ExtResource( 23 ) ],
+"frames": [ ExtResource( 26 ) ],
 "loop": false,
-"name": "H",
+"name": "Be",
+"speed": 0.0
+}, {
+"frames": [ ExtResource( 30 ) ],
+"loop": false,
+"name": "F",
+"speed": 0.0
+}, {
+"frames": [ ExtResource( 29 ) ],
+"loop": false,
+"name": "N",
+"speed": 0.0
+}, {
+"frames": [ ExtResource( 27 ) ],
+"loop": false,
+"name": "B",
+"speed": 0.0
+}, {
+"frames": [ ExtResource( 31 ) ],
+"loop": false,
+"name": "Ne",
+"speed": 0.0
+}, {
+"frames": [ ExtResource( 24 ) ],
+"loop": false,
+"name": "Li",
 "speed": 0.0
 }, {
 "frames": [ ExtResource( 28 ) ],
@@ -175,34 +182,9 @@ animations = [ {
 "name": "He",
 "speed": 0.0
 }, {
-"frames": [ ExtResource( 27 ) ],
+"frames": [ ExtResource( 23 ) ],
 "loop": false,
-"name": "B",
-"speed": 0.0
-}, {
-"frames": [ ExtResource( 26 ) ],
-"loop": false,
-"name": "Be",
-"speed": 0.0
-}, {
-"frames": [ ExtResource( 24 ) ],
-"loop": false,
-"name": "Li",
-"speed": 0.0
-}, {
-"frames": [ ExtResource( 29 ) ],
-"loop": false,
-"name": "N",
-"speed": 0.0
-}, {
-"frames": [ ExtResource( 30 ) ],
-"loop": false,
-"name": "F",
-"speed": 0.0
-}, {
-"frames": [ ExtResource( 31 ) ],
-"loop": false,
-"name": "Ne",
+"name": "H",
 "speed": 0.0
 } ]
 
@@ -237,26 +219,6 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Background" type="Node2D" parent="."]
-position = Vector2( -1520, 0 )
-
-[node name="HexagonBackground" type="Sprite" parent="Background"]
-scale = Vector2( 4, 4 )
-texture = ExtResource( 39 )
-centered = false
-region_rect = Rect2( 0, 0, 760, 150 )
-
-[node name="HexagonBackground2" type="Sprite" parent="Background"]
-position = Vector2( 1520, 0 )
-scale = Vector2( 4, 4 )
-texture = ExtResource( 39 )
-centered = false
-region_rect = Rect2( 0, 0, 760, 150 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Background"]
-autoplay = "scroll"
-anims/scroll = SubResource( 1 )
 
 [node name="PeriodicTable" type="Node2D" parent="."]
 
@@ -306,8 +268,8 @@ margin_left = 560.0
 margin_top = 424.0
 margin_right = 704.0
 margin_bottom = 466.0
-custom_fonts/font = SubResource( 12 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 12 )
 text = "Start"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -319,8 +281,8 @@ margin_left = 540.0
 margin_top = 424.0
 margin_right = 684.0
 margin_bottom = 466.0
-custom_fonts/font = SubResource( 12 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 12 )
 text = "Resume"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -373,26 +335,22 @@ animation = "Ne"
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PopUp/Nucleus"]
 anims/rotate = SubResource( 8 )
 
-[node name="H" type="Node2D" parent="PopUp" groups=[
-"element_info",
-]]
+[node name="H" type="Node2D" parent="PopUp" groups=["element_info"]]
 
 [node name="Description" type="RichTextLabel" parent="PopUp/H"]
 margin_left = 184.0
 margin_top = 248.0
 margin_right = 1016.0
 margin_bottom = 504.0
-custom_fonts/normal_font = SubResource( 9 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 9 )
 text = "HYDROGEN (H) is the first element on the periodic table, and was also the first element to be formed. Stars are made mostly of hydrogen, where a process called nuclear fusion forms other elements. Hydrogen and stars are the birthplace of the world as we know it!"
 scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="He" type="Node2D" parent="PopUp" groups=[
-"element_info",
-]]
+[node name="He" type="Node2D" parent="PopUp" groups=["element_info"]]
 visible = false
 
 [node name="Description" type="RichTextLabel" parent="PopUp/He"]
@@ -400,17 +358,15 @@ margin_left = 192.0
 margin_top = 224.0
 margin_right = 1024.0
 margin_bottom = 480.0
-custom_fonts/normal_font = SubResource( 9 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 9 )
 text = "HELIUM (He) is the second element on the periodic table. It makes up a very small part of the atmosphere and is often used in balloons to make them float!"
 scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Li" type="Node2D" parent="PopUp" groups=[
-"element_info",
-]]
+[node name="Li" type="Node2D" parent="PopUp" groups=["element_info"]]
 visible = false
 
 [node name="Description" type="RichTextLabel" parent="PopUp/Li"]
@@ -418,17 +374,15 @@ margin_left = 192.0
 margin_top = 224.0
 margin_right = 1024.0
 margin_bottom = 480.0
-custom_fonts/normal_font = SubResource( 9 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 9 )
 text = "LITHIUM (Li) is the third element on the periodic table. Lithium ions are commonly used in batteries to power electricity. Thanks to electricity, you are playing this game!"
 scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Be" type="Node2D" parent="PopUp" groups=[
-"element_info",
-]]
+[node name="Be" type="Node2D" parent="PopUp" groups=["element_info"]]
 visible = false
 
 [node name="Description" type="RichTextLabel" parent="PopUp/Be"]
@@ -436,17 +390,15 @@ margin_left = 192.0
 margin_top = 224.0
 margin_right = 1024.0
 margin_bottom = 480.0
-custom_fonts/normal_font = SubResource( 9 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 9 )
 text = "BERYLLIUM (Be)  is the fourth element on the periodic table. Like many other metals, it can conduct electricity. Because of this, Beryllium lets us take electricity one step further!"
 scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="B" type="Node2D" parent="PopUp" groups=[
-"element_info",
-]]
+[node name="B" type="Node2D" parent="PopUp" groups=["element_info"]]
 visible = false
 
 [node name="Description" type="RichTextLabel" parent="PopUp/B"]
@@ -454,8 +406,8 @@ margin_left = 192.0
 margin_top = 224.0
 margin_right = 1024.0
 margin_bottom = 480.0
-custom_fonts/normal_font = SubResource( 9 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 9 )
 text = "BORON (B) is the fifth element on the periodic table. In its crystalline form, Boron forms a brittle metalloid that is easily broken. Pure elemental boron is generally only found in meteors and is not naturally part of the Earth's crust."
 scroll_active = false
 __meta__ = {
@@ -473,6 +425,7 @@ position = Vector2( 1032, 56 )
 scale = Vector2( 4, 4 )
 normal = ExtResource( 22 )
 shape = SubResource( 11 )
+
 [connection signal="pressed" from="ChallengeButton" to="." method="_on_ChallengeButton_pressed"]
 [connection signal="pressed" from="PopUp/PlayButton" to="." method="_on_TouchScreenButton_pressed"]
 [connection signal="pressed" from="PopUp/XButton" to="." method="_on_XButton_pressed"]
