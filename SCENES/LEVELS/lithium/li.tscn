@@ -2,20 +2,26 @@
 
 [ext_resource path="res://tres/Tilesets/Spikes.tres" type="TileSet" id=1]
 [ext_resource path="res://ASSETS/Tilesets/GlassMetal/GlassMetal/tileset_GlassMetal.tres" type="TileSet" id=2]
-[ext_resource path="res://ASSETS/Sprites/PlainOverlay.png" type="Texture" id=3]
+[ext_resource path="res://ASSETS/Sprites/Backgrounds/lithium.png" type="Texture" id=3]
 [ext_resource path="res://SCENES/door.tscn" type="PackedScene" id=4]
 [ext_resource path="res://SCENES/LEVELS/level.gd" type="Script" id=5]
-
-
 
 [node name="Level" type="Node2D"]
 script = ExtResource( 5 )
 
-[node name="MetalBackground" type="Sprite" parent="."]
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2( 0.5, 0.5 )
+motion_mirroring = Vector2( 2400, 1200 )
+
+[node name="MetalBackground" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
 modulate = Color( 0.458824, 0.521569, 0.533333, 1 )
 scale = Vector2( 4, 4 )
 texture = ExtResource( 3 )
 centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 600.248, 300 )
 
 [node name="Spikes" type="TileMap" parent="."]
 modulate = Color( 0.496094, 0.496094, 0.496094, 1 )
@@ -42,4 +48,5 @@ position = Vector2( 320, 544 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
+
 [connection signal="body_entered" from="Door" to="." method="_on_Door_body_entered"]

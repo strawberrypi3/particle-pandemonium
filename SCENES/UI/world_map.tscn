@@ -1,9 +1,9 @@
-[gd_scene load_steps=52 format=2]
+[gd_scene load_steps=69 format=2]
 
 [ext_resource path="res://SCENES/UI/world_map.gd" type="Script" id=1]
 [ext_resource path="res://ASSETS/Sprites/WorldMap/Base.png" type="Texture" id=2]
 [ext_resource path="res://ASSETS/Sprites/LevelPopUpWindow.png" type="Texture" id=3]
-[ext_resource path="res://ASSETS/Sprites/SelectionBar/Unavailable.png" type="Texture" id=4]
+[ext_resource path="res://tres/Animations/SpaceBG.tres" type="SpriteFrames" id=4]
 [ext_resource path="res://ASSETS/Sprites/WorldMap/1.png" type="Texture" id=5]
 [ext_resource path="res://ASSETS/Sprites/WorldMap/10.png" type="Texture" id=6]
 [ext_resource path="res://ASSETS/Sprites/WorldMap/3.png" type="Texture" id=7]
@@ -15,8 +15,8 @@
 [ext_resource path="res://ASSETS/Sprites/WorldMap/6.png" type="Texture" id=13]
 [ext_resource path="res://ASSETS/Sprites/WorldMap/9.png" type="Texture" id=14]
 [ext_resource path="res://ASSETS/Sprites/WorldMap/2.png" type="Texture" id=15]
-[ext_resource path="res://ASSETS/Sprites/SelectionBar/Start.png" type="Texture" id=16]
-[ext_resource path="res://ASSETS/Sprites/DeltaArrow.png" type="Texture" id=17]
+[ext_resource path="res://tres/Animations/SmallSkyNoBalloons.tres" type="SpriteFrames" id=16]
+[ext_resource path="res://ASSETS/Sprites/RightButton.png" type="Texture" id=17]
 [ext_resource path="res://ASSETS/Sprites/Cursor.png" type="Texture" id=18]
 [ext_resource path="res://ASSETS/Sprites/PlainOverlay.png" type="Texture" id=19]
 [ext_resource path="res://ASSETS/Fonts/MunroSmall-wPZw.ttf" type="DynamicFontData" id=20]
@@ -38,8 +38,205 @@
 [ext_resource path="res://ASSETS/Sprites/WorldMap/waves2.png" type="Texture" id=36]
 [ext_resource path="res://ASSETS/Sprites/WorldMap/waves7.png" type="Texture" id=37]
 [ext_resource path="res://ASSETS/Sprites/WorldMap/waves6.png" type="Texture" id=38]
-[ext_resource path="res://ASSETS/Fonts/RedeemGold.ttf" type="DynamicFontData" id=40]
-[ext_resource path="res://ASSETS/Sprites/SelectionBar/Resume.png" type="Texture" id=41]
+[ext_resource path="res://ASSETS/Sprites/WorldMap/hexagon.png" type="Texture" id=39]
+[ext_resource path="res://ASSETS/Sprites/LeftButton.png" type="Texture" id=40]
+[ext_resource path="res://ASSETS/Sprites/LevelPopUpWindowSmall.png" type="Texture" id=41]
+[ext_resource path="res://ASSETS/Sprites/WorldMap/level_connector.png" type="Texture" id=42]
+[ext_resource path="res://SCENES/UI/level_hexagon.gd" type="Script" id=43]
+[ext_resource path="res://ASSETS/Sprites/Backgrounds/lithium.png" type="Texture" id=44]
+
+[sub_resource type="Animation" id=28]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=29]
+resource_name = "scroll"
+length = 20.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 20 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -64 ), Vector2( -2400, -64 ) ]
+}
+
+[sub_resource type="Theme" id=21]
+
+[sub_resource type="StyleBoxEmpty" id=22]
+
+[sub_resource type="StyleBoxEmpty" id=23]
+
+[sub_resource type="StyleBoxEmpty" id=24]
+
+[sub_resource type="StyleBoxEmpty" id=25]
+
+[sub_resource type="StyleBoxEmpty" id=26]
+
+[sub_resource type="SpriteFrames" id=7]
+animations = [ {
+"frames": [ ExtResource( 26 ) ],
+"loop": false,
+"name": "Be",
+"speed": 0.0
+}, {
+"frames": [ ExtResource( 30 ) ],
+"loop": false,
+"name": "F",
+"speed": 0.0
+}, {
+"frames": [ ExtResource( 29 ) ],
+"loop": false,
+"name": "N",
+"speed": 0.0
+}, {
+"frames": [ ExtResource( 27 ) ],
+"loop": false,
+"name": "B",
+"speed": 0.0
+}, {
+"frames": [ ExtResource( 31 ) ],
+"loop": false,
+"name": "Ne",
+"speed": 0.0
+}, {
+"frames": [ ExtResource( 24 ) ],
+"loop": false,
+"name": "Li",
+"speed": 0.0
+}, {
+"frames": [ ExtResource( 28 ) ],
+"loop": false,
+"name": "C",
+"speed": 0.0
+}, {
+"frames": [  ],
+"loop": false,
+"name": "O",
+"speed": 0.0
+}, {
+"frames": [ ExtResource( 25 ) ],
+"loop": false,
+"name": "He",
+"speed": 0.0
+}, {
+"frames": [ ExtResource( 23 ) ],
+"loop": false,
+"name": "H",
+"speed": 0.0
+} ]
+
+[sub_resource type="Animation" id=15]
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
+
+[sub_resource type="Animation" id=16]
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
+
+[sub_resource type="Animation" id=17]
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
+
+[sub_resource type="Animation" id=18]
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
+
+[sub_resource type="Animation" id=19]
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
+
+[sub_resource type="Animation" id=20]
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -107,86 +304,15 @@ animations = [ {
 "speed": 15.0
 } ]
 
-[sub_resource type="SpriteFrames" id=4]
-animations = [ {
-"frames": [ ExtResource( 16 ) ],
-"loop": false,
-"name": "Start",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 41 ) ],
-"loop": true,
-"name": "Yellow",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 4 ) ],
-"loop": false,
-"name": "Unavailable",
-"speed": 5.0
-} ]
+[sub_resource type="DynamicFont" id=27]
+size = 20
+font_data = ExtResource( 20 )
 
-[sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 125, 100 )
+[sub_resource type="ConvexPolygonShape2D" id=1]
+points = PoolVector2Array( 80, 200, 80, -200, -200, -200, -200, 200 )
 
-[sub_resource type="DynamicFont" id=12]
-size = 48
-font_data = ExtResource( 40 )
-
-[sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 13.359, 20.415 )
-
-[sub_resource type="SpriteFrames" id=7]
-animations = [ {
-"frames": [ ExtResource( 26 ) ],
-"loop": false,
-"name": "Be",
-"speed": 0.0
-}, {
-"frames": [ ExtResource( 30 ) ],
-"loop": false,
-"name": "F",
-"speed": 0.0
-}, {
-"frames": [ ExtResource( 29 ) ],
-"loop": false,
-"name": "N",
-"speed": 0.0
-}, {
-"frames": [ ExtResource( 27 ) ],
-"loop": false,
-"name": "B",
-"speed": 0.0
-}, {
-"frames": [ ExtResource( 31 ) ],
-"loop": false,
-"name": "Ne",
-"speed": 0.0
-}, {
-"frames": [ ExtResource( 24 ) ],
-"loop": false,
-"name": "Li",
-"speed": 0.0
-}, {
-"frames": [ ExtResource( 28 ) ],
-"loop": false,
-"name": "C",
-"speed": 0.0
-}, {
-"frames": [  ],
-"loop": false,
-"name": "O",
-"speed": 0.0
-}, {
-"frames": [ ExtResource( 25 ) ],
-"loop": false,
-"name": "He",
-"speed": 0.0
-}, {
-"frames": [ ExtResource( 23 ) ],
-"loop": false,
-"name": "H",
-"speed": 0.0
-} ]
+[sub_resource type="ConvexPolygonShape2D" id=12]
+points = PoolVector2Array( 200, 200, 200, -200, -80, -200, -80, 200 )
 
 [sub_resource type="Animation" id=8]
 length = 2.0
@@ -220,26 +346,38 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PeriodicTable" type="Node2D" parent="."]
+[node name="BGLayer" type="CanvasLayer" parent="."]
+layer = -1
 
-[node name="Base" type="Sprite" parent="PeriodicTable"]
+[node name="1" type="AnimatedSprite" parent="BGLayer"]
 scale = Vector2( 4, 4 )
-texture = ExtResource( 2 )
+frames = ExtResource( 4 )
+frame = 1
+playing = true
 centered = false
 
-[node name="Top" type="AnimatedSprite" parent="PeriodicTable"]
+[node name="2" type="AnimatedSprite" parent="BGLayer"]
 scale = Vector2( 4, 4 )
-frames = SubResource( 2 )
-animation = "1"
+frames = ExtResource( 16 )
+playing = true
 centered = false
 
-[node name="Waves" type="AnimatedSprite" parent="PeriodicTable"]
-position = Vector2( 440, 404 )
+[node name="3" type="Sprite" parent="BGLayer"]
 scale = Vector2( 4, 4 )
-frames = SubResource( 3 )
-frame = 4
+texture = ExtResource( 44 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 1200, 300 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BGLayer/3"]
+autoplay = "scroll"
+anims/RESET = SubResource( 28 )
+anims/scroll = SubResource( 29 )
+
+[node name="Tween" type="Tween" parent="BGLayer"]
 
 [node name="ChallengeButton" type="Button" parent="."]
+visible = false
 margin_left = 1012.0
 margin_top = 28.0
 margin_right = 1138.0
@@ -249,95 +387,331 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SelectionBar" type="Node2D" parent="."]
+[node name="Map" type="Node2D" parent="."]
 
-[node name="SelectionBarSprite" type="AnimatedSprite" parent="SelectionBar"]
-position = Vector2( 608, 448 )
+[node name="LC1" type="Sprite" parent="Map"]
+modulate = Color( 0.482353, 0.603922, 0.788235, 1 )
+position = Vector2( 619, 321 )
 scale = Vector2( 4, 4 )
-frames = SubResource( 4 )
-animation = "Yellow"
+texture = ExtResource( 42 )
 
-[node name="SelectionBarButton" type="TouchScreenButton" parent="SelectionBar"]
-position = Vector2( 608, 448 )
-shape = SubResource( 5 )
-shape_centered = false
-action = "enter"
+[node name="LC2" type="Sprite" parent="Map"]
+modulate = Color( 0.482353, 0.603922, 0.788235, 1 )
+position = Vector2( 1411, 321 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 42 )
+flip_h = true
 
-[node name="Start" type="Label" parent="SelectionBar"]
-margin_left = 560.0
-margin_top = 424.0
-margin_right = 704.0
-margin_bottom = 466.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 12 )
-text = "Start"
+[node name="LC3" type="Sprite" parent="Map"]
+modulate = Color( 0.482353, 0.603922, 0.788235, 1 )
+position = Vector2( 2275, 321 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 42 )
+
+[node name="LC4" type="Sprite" parent="Map"]
+modulate = Color( 0.482353, 0.603922, 0.788235, 1 )
+position = Vector2( 3067, 321 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 42 )
+flip_h = true
+
+[node name="LC5" type="Sprite" parent="Map"]
+modulate = Color( 0.482353, 0.603922, 0.788235, 1 )
+position = Vector2( 3930, 321 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 42 )
+
+[node name="1" type="Sprite" parent="Map"]
+position = Vector2( 187, 425 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 39 )
+script = ExtResource( 43 )
+
+[node name="Button" type="Button" parent="Map/1"]
+margin_left = -58.0
+margin_top = -48.0
+margin_right = 57.0
+margin_bottom = 47.0
+theme = SubResource( 21 )
+custom_styles/hover = SubResource( 22 )
+custom_styles/pressed = SubResource( 23 )
+custom_styles/focus = SubResource( 24 )
+custom_styles/disabled = SubResource( 25 )
+custom_styles/normal = SubResource( 26 )
+flat = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Resume" type="Label" parent="SelectionBar"]
+[node name="Atom" type="AnimatedSprite" parent="Map"]
+position = Vector2( 188, 426 )
+scale = Vector2( 0.46725, 0.46725 )
+frames = SubResource( 7 )
+animation = "H"
+playing = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Map/Atom"]
+autoplay = "rotate"
+anims/rotate = SubResource( 15 )
+
+[node name="2" type="Sprite" parent="Map"]
+position = Vector2( 1015, 177 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 39 )
+script = ExtResource( 43 )
+
+[node name="Button" type="Button" parent="Map/2"]
+margin_left = -61.5
+margin_top = -47.75
+margin_right = 53.5
+margin_bottom = 47.25
+theme = SubResource( 21 )
+custom_styles/hover = SubResource( 22 )
+custom_styles/pressed = SubResource( 23 )
+custom_styles/focus = SubResource( 24 )
+custom_styles/disabled = SubResource( 25 )
+custom_styles/normal = SubResource( 26 )
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Atom2" type="AnimatedSprite" parent="Map"]
+position = Vector2( 1014, 173 )
+scale = Vector2( 0.46725, 0.46725 )
+frames = SubResource( 7 )
+animation = "He"
+playing = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Map/Atom2"]
+root_node = NodePath("../../Atom2")
+autoplay = "rotate"
+anims/rotate = SubResource( 16 )
+
+[node name="3" type="Sprite" parent="Map"]
+position = Vector2( 1843, 425 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 39 )
+script = ExtResource( 43 )
+
+[node name="Button" type="Button" parent="Map/3"]
+margin_left = -58.5
+margin_top = -51.75
+margin_right = 56.5
+margin_bottom = 43.25
+theme = SubResource( 21 )
+custom_styles/hover = SubResource( 22 )
+custom_styles/pressed = SubResource( 23 )
+custom_styles/focus = SubResource( 24 )
+custom_styles/disabled = SubResource( 25 )
+custom_styles/normal = SubResource( 26 )
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Atom3" type="AnimatedSprite" parent="Map"]
+position = Vector2( 1845, 425 )
+scale = Vector2( 0.46725, 0.46725 )
+frames = SubResource( 7 )
+animation = "Li"
+playing = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Map/Atom3"]
+root_node = NodePath("../../Atom3")
+autoplay = "rotate"
+anims/rotate = SubResource( 17 )
+
+[node name="4" type="Sprite" parent="Map"]
+position = Vector2( 2671, 177 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 39 )
+script = ExtResource( 43 )
+
+[node name="Button" type="Button" parent="Map/4"]
+margin_left = -58.0
+margin_top = -47.75
+margin_right = 57.0
+margin_bottom = 47.25
+theme = SubResource( 21 )
+custom_styles/hover = SubResource( 22 )
+custom_styles/pressed = SubResource( 23 )
+custom_styles/focus = SubResource( 24 )
+custom_styles/disabled = SubResource( 25 )
+custom_styles/normal = SubResource( 26 )
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Atom4" type="AnimatedSprite" parent="Map"]
+position = Vector2( 2674, 170 )
+scale = Vector2( 0.46725, 0.46725 )
+frames = SubResource( 7 )
+animation = "Be"
+playing = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Map/Atom4"]
+root_node = NodePath("../../Atom4")
+autoplay = "rotate"
+anims/rotate = SubResource( 18 )
+
+[node name="5" type="Sprite" parent="Map"]
+position = Vector2( 3498, 425 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 39 )
+script = ExtResource( 43 )
+
+[node name="Button" type="Button" parent="Map/5"]
+margin_left = -62.25
+margin_top = -50.5
+margin_right = 52.75
+margin_bottom = 44.5
+theme = SubResource( 21 )
+custom_styles/hover = SubResource( 22 )
+custom_styles/pressed = SubResource( 23 )
+custom_styles/focus = SubResource( 24 )
+custom_styles/disabled = SubResource( 25 )
+custom_styles/normal = SubResource( 26 )
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Atom5" type="AnimatedSprite" parent="Map"]
+position = Vector2( 3502, 424 )
+scale = Vector2( 0.46725, 0.46725 )
+frames = SubResource( 7 )
+animation = "B"
+playing = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Map/Atom5"]
+root_node = NodePath("../../Atom5")
+autoplay = "rotate"
+anims/rotate = SubResource( 19 )
+
+[node name="6" type="Sprite" parent="Map"]
+position = Vector2( 4326, 177 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 39 )
+script = ExtResource( 43 )
+
+[node name="Button" type="Button" parent="Map/6"]
+margin_left = -61.5
+margin_top = -47.0
+margin_right = 53.5
+margin_bottom = 48.0
+theme = SubResource( 21 )
+custom_styles/hover = SubResource( 22 )
+custom_styles/pressed = SubResource( 23 )
+custom_styles/focus = SubResource( 24 )
+custom_styles/disabled = SubResource( 25 )
+custom_styles/normal = SubResource( 26 )
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Atom6" type="AnimatedSprite" parent="Map"]
+position = Vector2( 4327, 175 )
+scale = Vector2( 0.46725, 0.46725 )
+frames = SubResource( 7 )
+animation = "C"
+playing = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Map/Atom6"]
+root_node = NodePath("../../Atom6")
+autoplay = "rotate"
+anims/rotate = SubResource( 20 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Window2" type="Sprite" parent="CanvasLayer"]
+position = Vector2( 165, 89 )
+texture = ExtResource( 3 )
+
+[node name="PeriodicTable" type="Node2D" parent="CanvasLayer"]
+position = Vector2( 16, 12 )
+
+[node name="Base" type="Sprite" parent="CanvasLayer/PeriodicTable"]
+texture = ExtResource( 2 )
+centered = false
+
+[node name="Top" type="AnimatedSprite" parent="CanvasLayer/PeriodicTable"]
+frames = SubResource( 2 )
+animation = "1"
+centered = false
+
+[node name="Waves" type="AnimatedSprite" parent="CanvasLayer/PeriodicTable"]
+position = Vector2( 110, 101 )
+frames = SubResource( 3 )
+frame = 4
+
+[node name="Cursor" type="Sprite" parent="CanvasLayer/PeriodicTable"]
+position = Vector2( 29, 30 )
+texture = ExtResource( 18 )
+
+[node name="Label" type="Label" parent="CanvasLayer/PeriodicTable"]
 visible = false
-margin_left = 540.0
-margin_top = 424.0
-margin_right = 684.0
-margin_bottom = 466.0
+margin_left = 88.0
+margin_top = 4.0
+margin_right = 260.0
+margin_bottom = 39.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 12 )
-text = "Resume"
+custom_fonts/font = SubResource( 27 )
+text = "Periodic Table"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LeftArrow" type="TouchScreenButton" parent="."]
-position = Vector2( 488, 512 )
-rotation = 3.14159
-scale = Vector2( 4, 4 )
-normal = ExtResource( 17 )
-shape = SubResource( 6 )
+[node name="Left" type="TouchScreenButton" parent="CanvasLayer" groups=["arrow_button"]]
+modulate = Color( 1, 1, 1, 0.690196 )
+position = Vector2( 32, 416 )
+normal = ExtResource( 40 )
+shape = SubResource( 1 )
+shape_visible = false
 passby_press = true
 action = "left"
 
-[node name="RightArrow" type="TouchScreenButton" parent="."]
-position = Vector2( 728, 384 )
-scale = Vector2( 4, 4 )
+[node name="Right" type="TouchScreenButton" parent="CanvasLayer" groups=["arrow_button"]]
+modulate = Color( 1, 1, 1, 0.690196 )
+position = Vector2( 1016, 416 )
 normal = ExtResource( 17 )
-shape = SubResource( 6 )
+shape = SubResource( 12 )
+shape_visible = false
+passby_press = true
 action = "right"
 
-[node name="Cursor" type="Sprite" parent="."]
-position = Vector2( 120, 152 )
-scale = Vector2( 4, 4 )
-texture = ExtResource( 18 )
-
-[node name="PopUp" type="Control" parent="."]
+[node name="PopUp" type="Control" parent="CanvasLayer"]
 visible = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Fade" type="Sprite" parent="PopUp"]
+[node name="Fade" type="Sprite" parent="CanvasLayer/PopUp"]
 modulate = Color( 0, 0, 0, 0.54902 )
 position = Vector2( 600, 320 )
 scale = Vector2( 4, 4.26667 )
 texture = ExtResource( 19 )
 
-[node name="Window" type="Sprite" parent="PopUp"]
+[node name="Window" type="Sprite" parent="CanvasLayer/PopUp"]
 position = Vector2( 600, 304 )
 scale = Vector2( 4, 4 )
-texture = ExtResource( 3 )
+texture = ExtResource( 41 )
 
-[node name="Nucleus" type="AnimatedSprite" parent="PopUp"]
+[node name="Nucleus" type="AnimatedSprite" parent="CanvasLayer/PopUp"]
 position = Vector2( 616, 160 )
 scale = Vector2( 0.46725, 0.46725 )
 frames = SubResource( 7 )
 animation = "Ne"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="PopUp/Nucleus"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/PopUp/Nucleus"]
 anims/rotate = SubResource( 8 )
 
-[node name="H" type="Node2D" parent="PopUp" groups=["element_info"]]
+[node name="H" type="Node2D" parent="CanvasLayer/PopUp" groups=["element_info"]]
+visible = false
 
-[node name="Description" type="RichTextLabel" parent="PopUp/H"]
+[node name="Description" type="RichTextLabel" parent="CanvasLayer/PopUp/H"]
 margin_left = 184.0
 margin_top = 248.0
 margin_right = 1016.0
@@ -350,10 +724,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="He" type="Node2D" parent="PopUp" groups=["element_info"]]
+[node name="He" type="Node2D" parent="CanvasLayer/PopUp" groups=["element_info"]]
 visible = false
 
-[node name="Description" type="RichTextLabel" parent="PopUp/He"]
+[node name="Description" type="RichTextLabel" parent="CanvasLayer/PopUp/He"]
 margin_left = 192.0
 margin_top = 224.0
 margin_right = 1024.0
@@ -366,10 +740,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Li" type="Node2D" parent="PopUp" groups=["element_info"]]
+[node name="Li" type="Node2D" parent="CanvasLayer/PopUp" groups=["element_info"]]
 visible = false
 
-[node name="Description" type="RichTextLabel" parent="PopUp/Li"]
+[node name="Description" type="RichTextLabel" parent="CanvasLayer/PopUp/Li"]
 margin_left = 192.0
 margin_top = 224.0
 margin_right = 1024.0
@@ -382,10 +756,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Be" type="Node2D" parent="PopUp" groups=["element_info"]]
+[node name="Be" type="Node2D" parent="CanvasLayer/PopUp" groups=["element_info"]]
 visible = false
 
-[node name="Description" type="RichTextLabel" parent="PopUp/Be"]
+[node name="Description" type="RichTextLabel" parent="CanvasLayer/PopUp/Be"]
 margin_left = 192.0
 margin_top = 224.0
 margin_right = 1024.0
@@ -398,10 +772,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="B" type="Node2D" parent="PopUp" groups=["element_info"]]
+[node name="B" type="Node2D" parent="CanvasLayer/PopUp" groups=["element_info"]]
 visible = false
 
-[node name="Description" type="RichTextLabel" parent="PopUp/B"]
+[node name="Description" type="RichTextLabel" parent="CanvasLayer/PopUp/B"]
 margin_left = 192.0
 margin_top = 224.0
 margin_right = 1024.0
@@ -414,18 +788,31 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PlayButton" type="TouchScreenButton" parent="PopUp"]
+[node name="PlayButton" type="TouchScreenButton" parent="CanvasLayer/PopUp"]
 position = Vector2( 536, 424 )
 scale = Vector2( 4, 4 )
 normal = ExtResource( 21 )
 shape = SubResource( 10 )
 
-[node name="XButton" type="TouchScreenButton" parent="PopUp"]
+[node name="XButton" type="TouchScreenButton" parent="CanvasLayer/PopUp"]
 position = Vector2( 1032, 56 )
 scale = Vector2( 4, 4 )
 normal = ExtResource( 22 )
 shape = SubResource( 11 )
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 188, 426 )
+current = true
+
+[node name="Tween" type="Tween" parent="Camera2D"]
+
 [connection signal="pressed" from="ChallengeButton" to="." method="_on_ChallengeButton_pressed"]
-[connection signal="pressed" from="PopUp/PlayButton" to="." method="_on_TouchScreenButton_pressed"]
-[connection signal="pressed" from="PopUp/XButton" to="." method="_on_XButton_pressed"]
+[connection signal="pressed" from="Map/1/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Map/2/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Map/3/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Map/4/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Map/5/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="Map/6/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="CanvasLayer/PopUp/PlayButton" to="." method="_on_TouchScreenButton_pressed"]
+[connection signal="pressed" from="CanvasLayer/PopUp/XButton" to="." method="_on_XButton_pressed"]
+[connection signal="tween_completed" from="Camera2D/Tween" to="." method="_on_Tween_tween_completed"]

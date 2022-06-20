@@ -1,70 +1,102 @@
 # For easily testing different levels
 extends Control
 
+const TRANSITION_TIME = 0.3 # time while camera moves between levels
 
-var time = 0.0
+var transitioning : bool = false
+# Stage that the cursor (arrow) is currently pointing to:
+var cursor_stage : int setget set_cursor_stage 
+var background : int setget set_background
 
-
-onready var cursor_stage = Global.world_unlocked # Stage that the cursor (arrow) is currently pointing to
 
 func _ready():
-	$PopUp.hide()
+	$CanvasLayer/PopUp.hide()
 	
-	set_cursor_position(cursor_stage)
+	set_camera_position(cursor_stage, false)
+	set_background(cursor_stage, false)
+	set_cursor_stage(Global.world_unlocked, false)
 	
-	update_selection_bar()
-	
-	$PeriodicTable/Waves.play("default")
+	$CanvasLayer/PeriodicTable/Waves.play("default")
 
 
 func _physics_process(delta):
-	time += delta
-#	$ParallaxBackground/HexagonBackground.position = Vector2(60*time, 0)
-	
-	$PeriodicTable/Top.play(str(Global.world_unlocked))
+	$CanvasLayer/PeriodicTable/Top.play(str(Global.world_unlocked))
 	
 	if Input.is_action_just_pressed("left"):
 		if cursor_stage > 1:
-			cursor_stage -= 1
-			
-			set_cursor_position(cursor_stage)
-			
-			update_selection_bar()
-			
+			set_cursor_stage(cursor_stage - 1)
+	
 	if Input.is_action_just_pressed("right"):
-		if cursor_stage < 10:
-			cursor_stage += 1
-			
-			set_cursor_position(cursor_stage)
-			
-			update_selection_bar()
+		if cursor_stage < Global.world_unlocked:
+			set_cursor_stage(cursor_stage + 1)
 	
 	if Input.is_action_just_pressed("enter"):
-		if Global.world_unlocked >= cursor_stage: # level is unlocked
+		if Global.world_unlocked >= cursor_stage and not transitioning: # level is unlocked
 			choose_world(cursor_stage)
 
 
-func update_selection_bar():
-	if Global.world_unlocked < cursor_stage:
-		$SelectionBar/SelectionBarSprite.play("Unavailable")
-		$SelectionBar/Resume.hide()
-		$SelectionBar/Start.show()
-		$SelectionBar/Start.set("custom_colors/font_color", 
-				Color(0.15, 0.15, 0.15)) # Gray
-	elif Global.world_unlocked == cursor_stage:
-		$SelectionBar/SelectionBarSprite.play("Yellow")
-		if Global.level_unlocked > 1:
-			$SelectionBar/Start.hide()
-			$SelectionBar/Resume.show()
+func set_cursor_stage(stage, animated : bool = true):
+	if stage > 6 or stage < 1:
+		return
+	
+	cursor_stage = stage
+	if cursor_stage == 1:
+		$CanvasLayer/PeriodicTable/Cursor.position = Vector2(30, 38)
+	elif cursor_stage == 2:
+		$CanvasLayer/PeriodicTable/Cursor.position = Vector2(270, 38)
+	elif cursor_stage > 2 and cursor_stage <= 4: # Li or Be
+		$CanvasLayer/PeriodicTable/Cursor.position = Vector2(30 + 
+				20*(cursor_stage - 3), 58)
+	elif cursor_stage > 4 and cursor_stage <= 10: # Between B and Ne
+		$CanvasLayer/PeriodicTable/Cursor.position = Vector2(170 + 
+				20*(cursor_stage - 5), 58)
+	
+	$CanvasLayer/Right.show()
+	$CanvasLayer/Left.show()
+	if cursor_stage == 1:
+		$CanvasLayer/Left.hide()
+	if cursor_stage == Global.world_unlocked:
+		$CanvasLayer/Right.hide()
+
+	
+	set_camera_position(cursor_stage, animated)
+	
+	set_background(cursor_stage, animated)
+	
+	
+
+
+func set_camera_position(stage : int, animated : bool = true):
+	var target_position : Vector2
+	var target = $Map.get_node_or_null(str(stage))
+	if target:
+		target_position = target.global_position
+	
+	if not animated:
+		$Camera2D.position = target_position
 	else:
-		$SelectionBar/SelectionBarSprite.play("Start")
-		$SelectionBar/Resume.hide()
-		$SelectionBar/Start.show()
-		$SelectionBar/Start.set("custom_colors/font_color", 
-				Color(0, 0, 0)) # Black
+		$Camera2D/Tween.interpolate_property($Camera2D, "position", 
+				$Camera2D.position, target_position, TRANSITION_TIME, Tween.TRANS_QUAD, 
+				Tween.EASE_IN_OUT)
+		$Camera2D/Tween.start()
+		transitioning = true
 
 
-func choose_world(world_number):
+func set_background(stage : int, animated : bool = true):
+	# get current background:
+	var old = get_node_or_null("BGLayer/" + str(background))
+	var new = get_node_or_null("BGLayer/" + str(stage))
+	
+	$BGLayer/Tween.interpolate_property(old, "modulate", Color(1, 1, 1, 1), 
+			Color(1, 1, 1, 0), TRANSITION_TIME)
+	$BGLayer/Tween.interpolate_property(new, "modulate", Color(1, 1, 1, 0), 
+			Color(1, 1, 1, 1), TRANSITION_TIME)
+	$BGLayer/Tween.start()
+	
+	background = stage
+
+
+func choose_world(world_number : int):
 	# Initialize global level values:
 	var world_name = Global.worlds[int(world_number)]
 	Global.world = world_number
@@ -74,36 +106,24 @@ func choose_world(world_number):
 		Global.level_number = 1
 	
 	# Show pre-level popup and element-specific information:
-	$PopUp.show()
+	$CanvasLayer/PopUp.show()
 	for label in get_tree().get_nodes_in_group("element_info"):
 		label.hide()
-	if (get_node_or_null(str("PopUp/", world_name[1].capitalize())) != 
-			null):
-		get_node(str("PopUp/", world_name[1].capitalize())).show()
+	var element = get_node_or_null(str("CanvasLayer/PopUp/", 
+			world_name[1].capitalize()))
+	if element:
+		element.show()
 	
-	$PopUp/Nucleus.play(str(world_name[1].capitalize()))
+	$CanvasLayer/PopUp/Nucleus.play(str(world_name[1].capitalize()))
 	
-	$PopUp/Nucleus/AnimationPlayer.play("rotate")
+	$CanvasLayer/PopUp/Nucleus/AnimationPlayer.play("rotate")
 	
-	# Hide other buttons:
-	$SelectionBar.hide()
-	$LeftArrow.hide()
-	$RightArrow.hide()
+	$CanvasLayer/Left.hide()
+	$CanvasLayer/Right.hide()
 
 
 func _on_ChallengeButton_pressed():
 	pass
-
-
-func set_cursor_position(current_stage):
-	if current_stage == 1:
-		$Cursor.position = Vector2(120, 152)
-	elif current_stage == 2:
-		$Cursor.position = Vector2(1080, 152)
-	elif current_stage > 2 and current_stage <= 4: # Li or Be
-		$Cursor.position = Vector2(120 + 80*(current_stage - 3), 232)
-	elif current_stage > 4 and current_stage <= 10: # Between B and Ne
-		$Cursor.position = Vector2(680 + 80*(current_stage - 5), 232)
 
 
 func _on_TouchScreenButton_pressed(): # Popup (second) play button
@@ -111,7 +131,15 @@ func _on_TouchScreenButton_pressed(): # Popup (second) play button
 
 
 func _on_XButton_pressed():
-	$PopUp.hide()
-	$SelectionBar.show()
-	$LeftArrow.show()
-	$RightArrow.show()
+	$CanvasLayer/PopUp.hide()
+#	$SelectionBar.show()
+	set_cursor_stage(cursor_stage)
+
+
+func _on_Button_pressed():
+	if Global.world_unlocked >= cursor_stage and not transitioning: # level is unlocked
+		choose_world(cursor_stage)
+
+
+func _on_Tween_tween_completed(object, key):
+	transitioning = false

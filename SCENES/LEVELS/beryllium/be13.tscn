@@ -46,7 +46,7 @@ duration = 3.0
 position = Vector2( 832, 800 )
 start_position = Vector2( 832, 800 )
 end_position = Vector2( 832, 560 )
-duration = 3.0
+duration = 1.5
 id = 1
 
 [node name="ElectronSwitch" parent="." index="10" instance=ExtResource( 1 )]
