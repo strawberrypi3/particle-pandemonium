@@ -10,10 +10,12 @@ var background : int setget set_background
 
 
 func _ready():
+	for child in $BGLayer.get_children():
+		if child is Sprite or child is AnimatedSprite:
+			child.modulate.a = 0
 	$CanvasLayer/PopUp.hide()
 	
-	set_camera_position(cursor_stage, false)
-	set_background(cursor_stage, false)
+	set_camera_position(Global.world_unlocked, false)
 	set_cursor_stage(Global.world_unlocked, false)
 	
 	$CanvasLayer/PeriodicTable/Waves.play("default")
@@ -40,6 +42,7 @@ func set_cursor_stage(stage, animated : bool = true):
 		return
 	
 	cursor_stage = stage
+	
 	if cursor_stage == 1:
 		$CanvasLayer/PeriodicTable/Cursor.position = Vector2(30, 38)
 	elif cursor_stage == 2:
@@ -88,14 +91,21 @@ func set_camera_position(stage : int, animated : bool = true):
 
 
 func set_background(stage : int, animated : bool = true):
+	print(stage)
 	# get current background:
 	var old = get_node_or_null("BGLayer/" + str(background))
 	var new = get_node_or_null("BGLayer/" + str(stage))
 	
-	$BGLayer/Tween.interpolate_property(old, "modulate", Color(1, 1, 1, 1), 
-			Color(1, 1, 1, 0), TRANSITION_TIME)
-	$BGLayer/Tween.interpolate_property(new, "modulate", Color(1, 1, 1, 0), 
-			Color(1, 1, 1, 1), TRANSITION_TIME)
+	print("new: " + str(new))
+	print("old: " + str(old))
+	
+	if old:
+		$BGLayer/Tween.interpolate_property(old, "modulate", Color(1, 1, 1, 1), 
+				Color(1, 1, 1, 0), TRANSITION_TIME)
+	
+	if new:
+		$BGLayer/Tween.interpolate_property(new, "modulate", Color(1, 1, 1, 0), 
+				Color(1, 1, 1, 1), TRANSITION_TIME)
 	$BGLayer/Tween.start()
 	
 	background = stage

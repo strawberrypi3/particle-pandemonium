@@ -47,7 +47,6 @@ collision/safe_margin = 0.005
 script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
-scale = Vector2( 1.00089, 1 )
 frames = SubResource( 1 )
 animation = "idle"
 
@@ -73,6 +72,7 @@ __meta__ = {
 [node name="TouchScreenButton" type="TouchScreenButton" parent="Control"]
 shape = SubResource( 4 )
 shape_centered = false
+
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
 [connection signal="area_exited" from="Hurtbox" to="." method="_on_Hurtbox_area_exited"]
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_Hurtbox_body_entered"]

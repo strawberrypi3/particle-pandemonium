@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=2]
+[gd_scene load_steps=72 format=2]
 
 [ext_resource path="res://SCENES/UI/world_map.gd" type="Script" id=1]
 [ext_resource path="res://ASSETS/Sprites/WorldMap/Base.png" type="Texture" id=2]
@@ -44,6 +44,7 @@
 [ext_resource path="res://ASSETS/Sprites/WorldMap/level_connector.png" type="Texture" id=42]
 [ext_resource path="res://SCENES/UI/level_hexagon.gd" type="Script" id=43]
 [ext_resource path="res://ASSETS/Sprites/Backgrounds/lithium.png" type="Texture" id=44]
+[ext_resource path="res://ASSETS/Sprites/Backgrounds/beryllium.png" type="Texture" id=45]
 
 [sub_resource type="Animation" id=28]
 length = 0.001
@@ -77,6 +78,38 @@ tracks/0/keys = {
 "values": [ Vector2( 0, -64 ), Vector2( -2400, -64 ) ]
 }
 
+[sub_resource type="Animation" id=30]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=31]
+resource_name = "scroll"
+length = 20.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 20 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -64 ), Vector2( -2352, -64 ) ]
+}
+
 [sub_resource type="Theme" id=21]
 
 [sub_resource type="StyleBoxEmpty" id=22]
@@ -91,14 +124,9 @@ tracks/0/keys = {
 
 [sub_resource type="SpriteFrames" id=7]
 animations = [ {
-"frames": [ ExtResource( 26 ) ],
+"frames": [ ExtResource( 23 ) ],
 "loop": false,
-"name": "Be",
-"speed": 0.0
-}, {
-"frames": [ ExtResource( 30 ) ],
-"loop": false,
-"name": "F",
+"name": "H",
 "speed": 0.0
 }, {
 "frames": [ ExtResource( 29 ) ],
@@ -106,14 +134,14 @@ animations = [ {
 "name": "N",
 "speed": 0.0
 }, {
+"frames": [ ExtResource( 28 ) ],
+"loop": false,
+"name": "C",
+"speed": 0.0
+}, {
 "frames": [ ExtResource( 27 ) ],
 "loop": false,
 "name": "B",
-"speed": 0.0
-}, {
-"frames": [ ExtResource( 31 ) ],
-"loop": false,
-"name": "Ne",
 "speed": 0.0
 }, {
 "frames": [ ExtResource( 24 ) ],
@@ -121,14 +149,19 @@ animations = [ {
 "name": "Li",
 "speed": 0.0
 }, {
-"frames": [ ExtResource( 28 ) ],
-"loop": false,
-"name": "C",
-"speed": 0.0
-}, {
 "frames": [  ],
 "loop": false,
 "name": "O",
+"speed": 0.0
+}, {
+"frames": [ ExtResource( 31 ) ],
+"loop": false,
+"name": "Ne",
+"speed": 0.0
+}, {
+"frames": [ ExtResource( 26 ) ],
+"loop": false,
+"name": "Be",
 "speed": 0.0
 }, {
 "frames": [ ExtResource( 25 ) ],
@@ -136,9 +169,9 @@ animations = [ {
 "name": "He",
 "speed": 0.0
 }, {
-"frames": [ ExtResource( 23 ) ],
+"frames": [ ExtResource( 30 ) ],
 "loop": false,
-"name": "H",
+"name": "F",
 "speed": 0.0
 } ]
 
@@ -240,10 +273,30 @@ tracks/0/keys = {
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 5 ) ],
+"frames": [ ExtResource( 10 ) ],
 "loop": false,
-"name": "1",
-"speed": 0.0
+"name": "5",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ) ],
+"loop": false,
+"name": "4",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ) ],
+"loop": false,
+"name": "3",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ) ],
+"loop": false,
+"name": "10",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 14 ) ],
+"loop": false,
+"name": "9",
+"speed": 5.0
 }, {
 "frames": [ ExtResource( 15 ) ],
 "loop": false,
@@ -255,44 +308,24 @@ animations = [ {
 "name": "7",
 "speed": 5.0
 }, {
+"frames": [ ExtResource( 5 ) ],
+"loop": false,
+"name": "1",
+"speed": 0.0
+}, {
+"frames": [ ExtResource( 13 ) ],
+"loop": false,
+"name": "6",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 9 ) ],
 "loop": false,
 "name": "11",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 10 ) ],
-"loop": false,
-"name": "5",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 14 ) ],
-"loop": false,
-"name": "9",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 7 ) ],
-"loop": false,
-"name": "3",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 12 ) ],
 "loop": false,
 "name": "8",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 8 ) ],
-"loop": false,
-"name": "4",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 6 ) ],
-"loop": false,
-"name": "10",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 13 ) ],
-"loop": false,
-"name": "6",
 "speed": 5.0
 } ]
 
@@ -352,6 +385,7 @@ layer = -1
 [node name="1" type="AnimatedSprite" parent="BGLayer"]
 scale = Vector2( 4, 4 )
 frames = ExtResource( 4 )
+frame = 3
 playing = true
 centered = false
 
@@ -372,6 +406,18 @@ region_rect = Rect2( 0, 0, 1200, 300 )
 autoplay = "scroll"
 anims/RESET = SubResource( 28 )
 anims/scroll = SubResource( 29 )
+
+[node name="4" type="Sprite" parent="BGLayer"]
+scale = Vector2( 4, 4 )
+texture = ExtResource( 45 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 1176, 274.412 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BGLayer/4"]
+autoplay = "scroll"
+anims/RESET = SubResource( 30 )
+anims/scroll = SubResource( 31 )
 
 [node name="Tween" type="Tween" parent="BGLayer"]
 
@@ -626,7 +672,7 @@ anims/rotate = SubResource( 20 )
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Window2" type="Sprite" parent="CanvasLayer"]
-position = Vector2( 165, 89 )
+position = Vector2( 160, 96 )
 texture = ExtResource( 3 )
 
 [node name="PeriodicTable" type="Node2D" parent="CanvasLayer"]
