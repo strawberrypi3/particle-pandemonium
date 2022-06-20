@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=2]
+[gd_scene load_steps=75 format=2]
 
 [ext_resource path="res://SCENES/UI/world_map.gd" type="Script" id=1]
 [ext_resource path="res://ASSETS/Sprites/WorldMap/Base.png" type="Texture" id=2]
@@ -45,6 +45,7 @@
 [ext_resource path="res://SCENES/UI/level_hexagon.gd" type="Script" id=43]
 [ext_resource path="res://ASSETS/Sprites/Backgrounds/lithium.png" type="Texture" id=44]
 [ext_resource path="res://ASSETS/Sprites/Backgrounds/beryllium.png" type="Texture" id=45]
+[ext_resource path="res://ASSETS/Sprites/Backgrounds/BoronBG.png" type="Texture" id=46]
 
 [sub_resource type="Animation" id=28]
 length = 0.001
@@ -108,6 +109,38 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, -64 ), Vector2( -2352, -64 ) ]
+}
+
+[sub_resource type="Animation" id=32]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=33]
+resource_name = "scroll"
+length = 20.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 20 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -300 ), Vector2( -2352, -300 ) ]
 }
 
 [sub_resource type="Theme" id=21]
@@ -385,7 +418,7 @@ layer = -1
 [node name="1" type="AnimatedSprite" parent="BGLayer"]
 scale = Vector2( 4, 4 )
 frames = ExtResource( 4 )
-frame = 3
+frame = 2
 playing = true
 centered = false
 
@@ -418,6 +451,18 @@ region_rect = Rect2( 0, 0, 1176, 274.412 )
 autoplay = "scroll"
 anims/RESET = SubResource( 30 )
 anims/scroll = SubResource( 31 )
+
+[node name="5" type="Sprite" parent="BGLayer"]
+scale = Vector2( 4, 4 )
+texture = ExtResource( 46 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 1176, 274.412 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BGLayer/5"]
+autoplay = "scroll"
+anims/RESET = SubResource( 32 )
+anims/scroll = SubResource( 33 )
 
 [node name="Tween" type="Tween" parent="BGLayer"]
 
@@ -728,7 +773,6 @@ passby_press = true
 action = "right"
 
 [node name="PopUp" type="Control" parent="CanvasLayer"]
-visible = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -811,14 +855,13 @@ margin_right = 1024.0
 margin_bottom = 480.0
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 custom_fonts/normal_font = SubResource( 9 )
-text = "BERYLLIUM (Be)  is the fourth element on the periodic table. Like many other metals, it can conduct electricity. Because of this, Beryllium lets us take electricity one step further!"
+text = "BERYLLIUM (Be)  is the fourth element on the periodic table. Like many other metals, it can conduct electricity. It is also often used as gears and springs in vehicles."
 scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="B" type="Node2D" parent="CanvasLayer/PopUp" groups=["element_info"]]
-visible = false
 
 [node name="Description" type="RichTextLabel" parent="CanvasLayer/PopUp/B"]
 margin_left = 192.0
@@ -827,7 +870,7 @@ margin_right = 1024.0
 margin_bottom = 480.0
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 custom_fonts/normal_font = SubResource( 9 )
-text = "BORON (B) is the fifth element on the periodic table. In its crystalline form, Boron forms a brittle metalloid that is easily broken. Pure elemental boron is generally only found in meteors and is not naturally part of the Earth's crust."
+text = "BORON (B) is the fifth element on the periodic table. In its crystalline form, Boron forms a brittle metalloid that is easily broken. In its crystal form, Boron is dark, but when burned it produces a bright green flame!"
 scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false
