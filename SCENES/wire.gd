@@ -15,4 +15,6 @@ func _ready():
 	if id in colors:
 		modulate = colors[id]
 	modulate.a = 0.5
+	if id == 1:
+		modulate.a = 0.2
 

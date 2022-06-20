@@ -91,13 +91,9 @@ func set_camera_position(stage : int, animated : bool = true):
 
 
 func set_background(stage : int, animated : bool = true):
-	print(stage)
 	# get current background:
 	var old = get_node_or_null("BGLayer/" + str(background))
 	var new = get_node_or_null("BGLayer/" + str(stage))
-	
-	print("new: " + str(new))
-	print("old: " + str(old))
 	
 	if old:
 		$BGLayer/Tween.interpolate_property(old, "modulate", Color(1, 1, 1, 1), 

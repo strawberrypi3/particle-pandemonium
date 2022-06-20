@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tileset_LightRock.png-07e611ddd47b43da08e70a2f2c970678.stex"
+path="res://.import/3.png-43b1da06c63a3e783b7f49423e0fc636.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ASSETS/Tilesets/LightRock/tileset_LightRock.png"
-dest_files=[ "res://.import/tileset_LightRock.png-07e611ddd47b43da08e70a2f2c970678.stex" ]
+source_file="res://ASSETS/Sprites/GreenFire/3.png"
+dest_files=[ "res://.import/3.png-43b1da06c63a3e783b7f49423e0fc636.stex" ]
 
 [params]
 
@@ -31,5 +31,5 @@ process/invert_color=false
 process/normal_map_invert_y=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0
