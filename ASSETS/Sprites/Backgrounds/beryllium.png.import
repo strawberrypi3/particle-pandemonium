@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/ElectronSwitchOn.png-3adc4b0d3b0ecfb3c25f51bda1b7326d.stex"
+path="res://.import/beryllium.png-4d845f5db21b3c88c4e9c472b87b23a9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ASSETS/Sprites/ElectronSwitchOn.png"
-dest_files=[ "res://.import/ElectronSwitchOn.png-3adc4b0d3b0ecfb3c25f51bda1b7326d.stex" ]
+source_file="res://ASSETS/Sprites/Backgrounds/beryllium.png"
+dest_files=[ "res://.import/beryllium.png-4d845f5db21b3c88c4e9c472b87b23a9.stex" ]
 
 [params]
 

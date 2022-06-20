@@ -1,18 +1,30 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://tres/Tilesets/Spikes.tres" type="TileSet" id=1]
 [ext_resource path="res://ASSETS/Tilesets/GrayRock/GrayRock/tileset_GrayRock.tres" type="TileSet" id=2]
 [ext_resource path="res://ASSETS/Sprites/PlainOverlay.png" type="Texture" id=3]
 [ext_resource path="res://SCENES/door.tscn" type="PackedScene" id=4]
 [ext_resource path="res://SCENES/LEVELS/level.gd" type="Script" id=5]
+[ext_resource path="res://ASSETS/Sprites/Backgrounds/beryllium.png" type="Texture" id=6]
 
 [node name="Level" type="Node2D"]
 script = ExtResource( 5 )
 
-[node name="RockBackground" type="Sprite" parent="."]
-modulate = Color( 0.486275, 0.486275, 0.486275, 1 )
-scale = Vector2( 4, 4 )
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 2352, 1096 )
+
+[node name="PlainOverlay" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+modulate = Color( 0.368627, 0.368627, 0.368627, 1 )
+position = Vector2( 1176, 548 )
+scale = Vector2( 7.84, 7.30667 )
 texture = ExtResource( 3 )
+
+[node name="Gears" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+modulate = Color( 1, 1, 1, 0.47451 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 6 )
 centered = false
 
 [node name="Door" parent="." instance=ExtResource( 4 )]
@@ -27,6 +39,7 @@ collision_mask = 5
 format = 1
 
 [node name="TileMap" type="TileMap" parent="."]
+modulate = Color( 0.721569, 0.721569, 0.721569, 1 )
 scale = Vector2( 4, 4 )
 tile_set = ExtResource( 2 )
 cell_size = Vector2( 16, 16 )
@@ -41,4 +54,5 @@ position = Vector2( 320, 544 )
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
 current = true
+
 [connection signal="body_entered" from="Door" to="." method="_on_Door_body_entered"]

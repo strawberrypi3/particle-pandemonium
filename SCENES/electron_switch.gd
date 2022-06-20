@@ -8,15 +8,15 @@ enum {
 	OFF
 }
 
-var body_count = 0 # amazing name
+var body_count = 0 # lol
 export var id = 0 # Must have matching id to a platform to connect
 
 var state = OFF
 
 var colors = {
-	0 : Color.darkgreen,
-	1 : Color.darkred,
-	2 : Color.darkblue,
+	0 : Color.darkblue,
+	1 : Color.cyan,
+	2 : Color.darkred,
 	3 : Color.chocolate,
 	4 : Color.gold
 }

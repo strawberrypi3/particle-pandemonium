@@ -12,9 +12,9 @@ export var trans_type = Tween.TRANS_SINE
 export var ease_type = Tween.EASE_IN_OUT
 
 var colors = {
-	0 : Color.darkgreen,
-	1 : Color.darkred,
-	2 : Color.darkblue,
+	0 : Color.darkblue,
+	1 : Color.cyan,
+	2 : Color.darkred,
 	3 : Color.chocolate,
 	4 : Color.gold
 }

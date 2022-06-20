@@ -352,7 +352,6 @@ layer = -1
 [node name="1" type="AnimatedSprite" parent="BGLayer"]
 scale = Vector2( 4, 4 )
 frames = ExtResource( 4 )
-frame = 1
 playing = true
 centered = false
 
@@ -390,13 +389,13 @@ __meta__ = {
 [node name="Map" type="Node2D" parent="."]
 
 [node name="LC1" type="Sprite" parent="Map"]
-modulate = Color( 0.482353, 0.603922, 0.788235, 1 )
+modulate = Color( 0, 0.552941, 0.278431, 1 )
 position = Vector2( 619, 321 )
 scale = Vector2( 4, 4 )
 texture = ExtResource( 42 )
 
 [node name="LC2" type="Sprite" parent="Map"]
-modulate = Color( 0.482353, 0.603922, 0.788235, 1 )
+modulate = Color( 0.388235, 0.388235, 0.388235, 1 )
 position = Vector2( 1411, 321 )
 scale = Vector2( 4, 4 )
 texture = ExtResource( 42 )

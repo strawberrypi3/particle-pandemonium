@@ -63,7 +63,12 @@ func set_cursor_stage(stage, animated : bool = true):
 	
 	set_background(cursor_stage, animated)
 	
-	
+	for i in 5:
+		var connector = get_node_or_null("Map/LC" + str(i))
+		if i < Global.world_unlocked and connector:
+			connector.modulate = Color("008d47")
+		elif connector:
+			connector.modulate = Color("636363")
 
 
 func set_camera_position(stage : int, animated : bool = true):
