@@ -94,8 +94,7 @@ func set_level(level_path : String):
 	
 	# Instance new level node:
 	if packed_level == null:
-		Global.world_complete()
-		get_tree().change_scene("res://SCENES/UI/world_map.tscn") # Replace with animation later
+		Global.world_complete() ###
 		return
 	
 	if (Global.level_number != Global.level_unlocked and 
@@ -157,6 +156,7 @@ func transition(new_level_number):
 	$UI/CanvasLayer/BlackOverlay.show()
 	$UI.reset_timer()
 	$Player.can_move = false
+	$Player.transitioning = true
 	$Player/CollisionShape2D.disabled = true
 	$Sidekick/Hurtbox/CollisionShape2D.disabled = true
 	
@@ -179,6 +179,7 @@ func transition(new_level_number):
 	$Sidekick/Hurtbox/CollisionShape2D.disabled = false
 	$UI.set_button_visibility(true)
 	$Player.sensing = true
+	$Player.transitioning = false
 	$MultitargetCamera.smoothing_enabled = true
 	
 	# Prevents extra buffer flicker frame between showing switch button (above)

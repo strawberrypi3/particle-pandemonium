@@ -30,6 +30,7 @@ var sensing = true # don't delete, used by Key, Game, and Door
 var coyote_timer = 0
 var buffer_frames_left = 0
 var can_jump = false
+var transitioning = false
 
 
 func _physics_process(delta):
@@ -92,7 +93,8 @@ func move_state(delta):
 	actual_position = position
 	
 	
-	if Input.is_action_just_pressed("switch") and !dying:
+	if (Input.is_action_just_pressed("switch") and not dying and 
+			not transitioning):
 		var ui = get_parent().get_node("UI")
 		if ui.can_switch == true:
 			emit_signal("to_sidekick")

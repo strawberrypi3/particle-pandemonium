@@ -46,11 +46,12 @@ func _physics_process(delta):
 
 
 func world_complete():
-	if Global.world_unlocked == Global.world:
-		if Global.world_unlocked < 6:
-			Global.world_unlocked += 1
-		Global.level_unlocked = 1
+	if world_unlocked == world:
+		if world_unlocked < 6:
+			world_unlocked += 1
+		level_unlocked = 1
 		save_game()
+	get_tree().change_scene("res://SCENES/end_screen.tscn")
 
 
 func level_complete():

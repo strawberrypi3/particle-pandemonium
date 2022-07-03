@@ -32,6 +32,7 @@ var button_count = 0 # Wall count but for ButtonTouchOverride
 var is_within_threshold
 var is_in_wall = false
 var dying = false
+var transitioning = false
 
 onready var target = get_parent().get_node("Player")
 

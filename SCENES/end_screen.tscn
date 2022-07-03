@@ -1,0 +1,115 @@
+[gd_scene load_steps=18 format=2]
+
+[ext_resource path="res://ASSETS/Sprites/LevelPopUpWindowSmall.png" type="Texture" id=1]
+[ext_resource path="res://tres/Animations/SpaceBG.tres" type="SpriteFrames" id=2]
+[ext_resource path="res://tres/Animations/SmallSkyNoBalloons.tres" type="SpriteFrames" id=3]
+[ext_resource path="res://ASSETS/Sprites/Backgrounds/lithium.png" type="Texture" id=4]
+[ext_resource path="res://ASSETS/Sprites/Backgrounds/BoronBG.png" type="Texture" id=5]
+[ext_resource path="res://ASSETS/Sprites/Backgrounds/beryllium.png" type="Texture" id=6]
+[ext_resource path="res://ASSETS/Sprites/Backgrounds/Cloud/default.png" type="Texture" id=7]
+[ext_resource path="res://ASSETS/Tilesets/Grass/tileset_Grass.tres" type="TileSet" id=8]
+[ext_resource path="res://ASSETS/Tilesets/Cloud/CloudAutoTile/tileset_CloudAutoTile.tres" type="TileSet" id=9]
+[ext_resource path="res://SCENES/end_screen.gd" type="Script" id=10]
+[ext_resource path="res://ASSETS/Fonts/HopeGold.ttf" type="DynamicFontData" id=11]
+[ext_resource path="res://tres/hope_gold.tres" type="Theme" id=12]
+[ext_resource path="res://ASSETS/Fonts/MunroSmall-wPZw.ttf" type="DynamicFontData" id=13]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 11 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 48
+font_data = ExtResource( 11 )
+
+[sub_resource type="Theme" id=3]
+default_font = SubResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 10
+font_data = ExtResource( 13 )
+
+[node name="EndScreen" type="Node2D"]
+script = ExtResource( 10 )
+
+[node name="Background" type="Node2D" parent="."]
+
+[node name="1" type="AnimatedSprite" parent="Background"]
+scale = Vector2( 4, 4 )
+frames = ExtResource( 2 )
+frame = 2
+playing = true
+centered = false
+
+[node name="2" type="AnimatedSprite" parent="Background"]
+scale = Vector2( 4, 4 )
+frames = ExtResource( 3 )
+centered = false
+
+[node name="3" type="Sprite" parent="Background"]
+position = Vector2( -184, -128 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 4 )
+centered = false
+
+[node name="4" type="Sprite" parent="Background"]
+position = Vector2( -184, -128 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 6 )
+centered = false
+
+[node name="5" type="Sprite" parent="Background"]
+position = Vector2( -336, -272 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 5 )
+centered = false
+
+[node name="6" type="Sprite" parent="Background"]
+scale = Vector2( 4, 4 )
+texture = ExtResource( 7 )
+centered = false
+
+[node name="TileMap" type="TileMap" parent="Background/6"]
+tile_set = ExtResource( 8 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 327679, 0, 0, 262144, 0, 2, 262162, 0, 0, 262163, 0, 2, 393215, 0, 65536, 327680, 0, 65538, 327698, 0, 65536, 327699, 0, 65538, 458751, 0, 65536, 393216, 0, 65538, 393234, 0, 65536, 393235, 0, 65538, 524287, 0, 65536, 458752, 0, 65538, 458770, 0, 65536, 458771, 0, 65538, 589823, 0, 65536, 524288, 0, 65538, 524306, 0, 65536, 524307, 0, 65538, 655359, 0, 65536, 589824, 0, 131077, 589825, 0, 1, 589826, 0, 1, 589827, 0, 1, 589828, 0, 1, 589829, 0, 1, 589830, 0, 1, 589831, 0, 1, 589832, 0, 1, 589833, 0, 1, 589834, 0, 1, 589835, 0, 1, 589836, 0, 1, 589837, 0, 1, 589838, 0, 1, 589839, 0, 1, 589840, 0, 1, 589841, 0, 1, 589842, 0, 131078, 589843, 0, 65538, 720895, 0, 131072, 655360, 0, 131073, 655361, 0, 131073, 655362, 0, 131073, 655363, 0, 131073, 655364, 0, 131073, 655365, 0, 131073, 655366, 0, 131073, 655367, 0, 131073, 655368, 0, 131073, 655369, 0, 131073, 655370, 0, 131073, 655371, 0, 131073, 655372, 0, 131073, 655373, 0, 131073, 655374, 0, 131073, 655375, 0, 131073, 655376, 0, 131073, 655377, 0, 131073, 655378, 0, 131073, 655379, 0, 131074 )
+
+[node name="TileMap2" type="TileMap" parent="Background/6"]
+tile_set = ExtResource( 9 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( -1, 0, 0, -65536, 0, 2, -65518, 0, 0, -65517, 0, 2, 65535, 0, 65536, 0, 0, 65538, 18, 0, 65536, 19, 0, 65538, 131071, 0, 65536, 65536, 0, 65538, 65554, 0, 65536, 65555, 0, 65538, 196607, 0, 65536, 131072, 0, 65538, 131090, 0, 65536, 131091, 0, 65538, 262143, 0, 131072, 196608, 0, 131074, 196626, 0, 131072, 196627, 0, 131074 )
+
+[node name="LevelPopUpWindowSmall" type="Sprite" parent="."]
+position = Vector2( 600, 296 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 1 )
+
+[node name="Title" type="Label" parent="LevelPopUpWindowSmall"]
+margin_left = -26.0
+margin_top = -50.0
+margin_right = 25.0
+margin_bottom = -36.0
+theme = ExtResource( 12 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Nice job!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Body" type="Label" parent="LevelPopUpWindowSmall"]
+margin_left = -114.0
+margin_top = -28.0
+margin_right = 112.0
+margin_bottom = 17.0
+theme = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "You have witnessed the power of <>
+It only took you # and # deaths!
+[ENTER] to continue"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
