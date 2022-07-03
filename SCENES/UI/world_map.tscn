@@ -425,7 +425,7 @@ layer = -1
 [node name="1" type="AnimatedSprite" parent="BGLayer"]
 scale = Vector2( 4, 4 )
 frames = ExtResource( 4 )
-frame = 1
+frame = 3
 playing = true
 centered = false
 
@@ -504,7 +504,6 @@ __meta__ = {
 [node name="Timer" type="Timer" parent="BGLayer/Controls"]
 wait_time = 4.0
 one_shot = true
-autostart = true
 
 [node name="ChallengeButton" type="Button" parent="."]
 visible = false

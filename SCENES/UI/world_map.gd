@@ -7,13 +7,14 @@ var transitioning : bool = false
 # Stage that the cursor (arrow) is currently pointing to:
 var cursor_stage : int setget set_cursor_stage 
 var background : int setget set_background
+var popped_up : bool = false
 
 func _ready():
 	for child in $BGLayer.get_children():
 		if child is Sprite or child is AnimatedSprite:
 			child.modulate.a = 0
 	$CanvasLayer/PopUp.hide()
-	$BGLayer/Controls.hide()
+	$BGLayer/Controls.show()
 	
 	set_camera_position(Global.world_unlocked, false)
 	set_cursor_stage(Global.world_unlocked, false)
@@ -25,18 +26,26 @@ func _physics_process(delta):
 	$CanvasLayer/PeriodicTable/Top.play(str(Global.world_unlocked))
 	
 	if Input.is_action_just_pressed("left"):
+		if popped_up: # hide popup
+			$CanvasLayer/PopUp.hide()
+			popped_up = false
 		if cursor_stage > 1:
 			set_cursor_stage(cursor_stage - 1)
 		$BGLayer/Controls.hide()
 		$BGLayer/Controls/Timer.start()
 	
 	if Input.is_action_just_pressed("right"):
+		if popped_up: # hide popup
+			$CanvasLayer/PopUp.hide()
+			popped_up = false
 		if cursor_stage < Global.world_unlocked:
 			set_cursor_stage(cursor_stage + 1)
 		$BGLayer/Controls.hide()
 		$BGLayer/Controls/Timer.start()
 	
 	if Input.is_action_just_pressed("enter"):
+		if popped_up:
+			_on_TouchScreenButton_pressed()
 		if Global.world_unlocked >= cursor_stage and not transitioning: # level is unlocked
 			choose_world(cursor_stage)
 		$BGLayer/Controls.hide()
@@ -73,8 +82,8 @@ func set_cursor_stage(stage, animated : bool = true):
 	set_background(cursor_stage, animated)
 	
 	for i in 5:
-		var connector = get_node_or_null("Map/LC" + str(i))
-		if i < Global.world_unlocked and connector:
+		var connector = get_node_or_null("Map/LC" + str(i+1))
+		if i+1 < Global.world_unlocked and connector:
 			connector.modulate = Color("008d47")
 		elif connector:
 			connector.modulate = Color("636363")
@@ -123,6 +132,7 @@ func choose_world(world_number : int):
 		Global.level_number = 1
 	
 	# Show pre-level popup and element-specific information:
+	popped_up = true
 	$CanvasLayer/PopUp.show()
 	for label in get_tree().get_nodes_in_group("element_info"):
 		label.hide()
@@ -151,6 +161,7 @@ func _on_XButton_pressed():
 	$CanvasLayer/PopUp.hide()
 #	$SelectionBar.show()
 	set_cursor_stage(cursor_stage)
+	popped_up = false
 
 
 func _on_Button_pressed():
