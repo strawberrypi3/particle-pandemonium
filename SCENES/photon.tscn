@@ -22,6 +22,7 @@ collision_mask = 1024
 script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+modulate = Color( 0.956863, 0.937255, 0.47451, 1 )
 position = Vector2( 6, 2 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 1 )
