@@ -9,11 +9,11 @@ var worlds = {
 		3 : ["lithium", "li"], 
 		4 : ["beryllium", "be"], 
 		5 : ["boron", "b"],
-		6 : ["carbon", "c"], 
-		7 : ["nitrogen", "n"], 
-		8 : ["oxygen", "o"],
-		9 : ["flourine", "f"], 
-		10 : ["neon", "ne"]}
+		6 : ["carbon", "c"]}
+		#7 : ["nitrogen", "n"], 
+		#8 : ["oxygen", "o"],
+		#9 : ["flourine", "f"], 
+		#10 : ["neon", "ne"]}
 var level_number = 1 # the current level number
 var world_unlocked = 1 # the number of worlds unlocked
 var level_unlocked = 1 # number of levels unlocked of the furthest world
@@ -47,7 +47,8 @@ func _physics_process(delta):
 
 func world_complete():
 	if Global.world_unlocked == Global.world:
-		Global.world_unlocked += 1
+		if Global.world_unlocked < 6:
+			Global.world_unlocked += 1
 		Global.level_unlocked = 1
 		save_game()
 

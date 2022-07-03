@@ -8,12 +8,12 @@ var transitioning : bool = false
 var cursor_stage : int setget set_cursor_stage 
 var background : int setget set_background
 
-
 func _ready():
 	for child in $BGLayer.get_children():
 		if child is Sprite or child is AnimatedSprite:
 			child.modulate.a = 0
 	$CanvasLayer/PopUp.hide()
+	$BGLayer/Controls.hide()
 	
 	set_camera_position(Global.world_unlocked, false)
 	set_cursor_stage(Global.world_unlocked, false)
@@ -27,14 +27,20 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("left"):
 		if cursor_stage > 1:
 			set_cursor_stage(cursor_stage - 1)
+		$BGLayer/Controls.hide()
+		$BGLayer/Controls/Timer.start()
 	
 	if Input.is_action_just_pressed("right"):
 		if cursor_stage < Global.world_unlocked:
 			set_cursor_stage(cursor_stage + 1)
+		$BGLayer/Controls.hide()
+		$BGLayer/Controls/Timer.start()
 	
 	if Input.is_action_just_pressed("enter"):
 		if Global.world_unlocked >= cursor_stage and not transitioning: # level is unlocked
 			choose_world(cursor_stage)
+		$BGLayer/Controls.hide()
+		$BGLayer/Controls/Timer.start()
 
 
 func set_cursor_stage(stage, animated : bool = true):
@@ -54,8 +60,8 @@ func set_cursor_stage(stage, animated : bool = true):
 		$CanvasLayer/PeriodicTable/Cursor.position = Vector2(170 + 
 				20*(cursor_stage - 5), 58)
 	
-	$CanvasLayer/Right.show()
-	$CanvasLayer/Left.show()
+	#$CanvasLayer/Right.show()
+	#$CanvasLayer/Left.show()
 	if cursor_stage == 1:
 		$CanvasLayer/Left.hide()
 	if cursor_stage == Global.world_unlocked:
@@ -84,8 +90,8 @@ func set_camera_position(stage : int, animated : bool = true):
 		$Camera2D.position = target_position
 	else:
 		$Camera2D/Tween.interpolate_property($Camera2D, "position", 
-				$Camera2D.position, target_position, TRANSITION_TIME, Tween.TRANS_QUAD, 
-				Tween.EASE_IN_OUT)
+				$Camera2D.position, target_position, TRANSITION_TIME, 
+				Tween.TRANS_QUAD, Tween.EASE_IN_OUT)
 		$Camera2D/Tween.start()
 		transitioning = true
 
@@ -154,3 +160,8 @@ func _on_Button_pressed():
 
 func _on_Tween_tween_completed(object, key):
 	transitioning = false
+
+
+func _on_Timer_timeout(): # timer to show moving instructions
+	if not $CanvasLayer/PopUp.visible:
+		$BGLayer/Controls.show()

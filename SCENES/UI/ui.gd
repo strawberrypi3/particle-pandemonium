@@ -23,7 +23,7 @@ func _ready():
 
 func regular_state(delta):
 	if switch_button_visible and sidekick_in_range:
-		$MobileControls/Switch.show()
+		#$MobileControls/Switch.show()
 		can_switch = true
 	$MobileControls/Down.hide()
 	$CanvasLayer/Numbers.hide()
@@ -45,7 +45,7 @@ func countdown_state(delta):
 		timer_running = true
 	
 	$MobileControls/Switch.hide()
-	$MobileControls/Down.show()
+	#$MobileControls/Down.show()
 	$CanvasLayer/ElectronOverlay.show()
 	
 	$CanvasLayer/Numbers.show()
@@ -65,16 +65,16 @@ func modulate_arrow_buttons(red, blue, green):
 
 
 func set_button_visibility(visibility : bool): # true = show, false = hide
-	var buttons = get_tree().get_nodes_in_group("arrow_button")
-	buttons.append($MobileControls/Switch)
-	for i in buttons:
-		i.visible = visibility
+	#var buttons = get_tree().get_nodes_in_group("arrow_button")
+	#buttons.append($MobileControls/Switch)
+	#for i in buttons:
+	#	i.visible = visibility
 	switch_button_visible = visibility
 	
 	# Prevents extra buffer flicker frame between showing down button here and 
 	# subsequently hiding it in _physics_process:
-	if state == REGULAR:
-		$MobileControls/Down.hide()
+	#if state == REGULAR:
+		#$MobileControls/Down.hide()
 
 
 func _on_SidekickTimer_timeout():

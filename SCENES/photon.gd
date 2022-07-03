@@ -57,7 +57,7 @@ func reflect(collision : KinematicCollision2D):
 func refract(collision : KinematicCollision2D, num_refractions : int):
 	var normal = collision.normal
 	var rotated = Vector2(normal.y, -normal.x) # rotated 90 degrees clockwise
-	var arc = atan2(rotated.y, rotated.x)
+	var arc = atan2(rotated.y, rotated.x) # get length around unit circle
 	var interval = 180.0 / (num_refractions + 1) # split into equal angles
 	interval = deg2rad(interval)
 	for a in num_refractions:

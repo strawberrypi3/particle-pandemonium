@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=2]
+[gd_scene load_steps=79 format=2]
 
 [ext_resource path="res://SCENES/UI/world_map.gd" type="Script" id=1]
 [ext_resource path="res://ASSETS/Sprites/WorldMap/Base.png" type="Texture" id=2]
@@ -46,6 +46,9 @@
 [ext_resource path="res://ASSETS/Sprites/Backgrounds/lithium.png" type="Texture" id=44]
 [ext_resource path="res://ASSETS/Sprites/Backgrounds/beryllium.png" type="Texture" id=45]
 [ext_resource path="res://ASSETS/Sprites/Backgrounds/BoronBG.png" type="Texture" id=46]
+[ext_resource path="res://ASSETS/Tilesets/Grass/tileset_Grass.tres" type="TileSet" id=47]
+[ext_resource path="res://ASSETS/Fonts/HopeGold.ttf" type="DynamicFontData" id=48]
+[ext_resource path="res://tres/hope_gold.tres" type="Theme" id=49]
 
 [sub_resource type="Animation" id=28]
 length = 0.001
@@ -143,6 +146,10 @@ tracks/0/keys = {
 "values": [ Vector2( 0, -300 ), Vector2( -2352, -300 ) ]
 }
 
+[sub_resource type="DynamicFont" id=34]
+size = 32
+font_data = ExtResource( 48 )
+
 [sub_resource type="Theme" id=21]
 
 [sub_resource type="StyleBoxEmpty" id=22]
@@ -162,34 +169,9 @@ animations = [ {
 "name": "H",
 "speed": 0.0
 }, {
-"frames": [ ExtResource( 29 ) ],
-"loop": false,
-"name": "N",
-"speed": 0.0
-}, {
 "frames": [ ExtResource( 28 ) ],
 "loop": false,
 "name": "C",
-"speed": 0.0
-}, {
-"frames": [ ExtResource( 27 ) ],
-"loop": false,
-"name": "B",
-"speed": 0.0
-}, {
-"frames": [ ExtResource( 24 ) ],
-"loop": false,
-"name": "Li",
-"speed": 0.0
-}, {
-"frames": [  ],
-"loop": false,
-"name": "O",
-"speed": 0.0
-}, {
-"frames": [ ExtResource( 31 ) ],
-"loop": false,
-"name": "Ne",
 "speed": 0.0
 }, {
 "frames": [ ExtResource( 26 ) ],
@@ -197,14 +179,39 @@ animations = [ {
 "name": "Be",
 "speed": 0.0
 }, {
-"frames": [ ExtResource( 25 ) ],
-"loop": false,
-"name": "He",
-"speed": 0.0
-}, {
 "frames": [ ExtResource( 30 ) ],
 "loop": false,
 "name": "F",
+"speed": 0.0
+}, {
+"frames": [ ExtResource( 31 ) ],
+"loop": false,
+"name": "Ne",
+"speed": 0.0
+}, {
+"frames": [ ExtResource( 27 ) ],
+"loop": false,
+"name": "B",
+"speed": 0.0
+}, {
+"frames": [  ],
+"loop": false,
+"name": "O",
+"speed": 0.0
+}, {
+"frames": [ ExtResource( 24 ) ],
+"loop": false,
+"name": "Li",
+"speed": 0.0
+}, {
+"frames": [ ExtResource( 29 ) ],
+"loop": false,
+"name": "N",
+"speed": 0.0
+}, {
+"frames": [ ExtResource( 25 ) ],
+"loop": false,
+"name": "He",
 "speed": 0.0
 } ]
 
@@ -306,36 +313,6 @@ tracks/0/keys = {
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 10 ) ],
-"loop": false,
-"name": "5",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 8 ) ],
-"loop": false,
-"name": "4",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 7 ) ],
-"loop": false,
-"name": "3",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 6 ) ],
-"loop": false,
-"name": "10",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 14 ) ],
-"loop": false,
-"name": "9",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 15 ) ],
-"loop": false,
-"name": "2",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 11 ) ],
 "loop": false,
 "name": "7",
@@ -346,9 +323,39 @@ animations = [ {
 "name": "1",
 "speed": 0.0
 }, {
+"frames": [ ExtResource( 12 ) ],
+"loop": false,
+"name": "8",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 13 ) ],
 "loop": false,
 "name": "6",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ) ],
+"loop": false,
+"name": "3",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 14 ) ],
+"loop": false,
+"name": "9",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ) ],
+"loop": false,
+"name": "5",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ) ],
+"loop": false,
+"name": "4",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 15 ) ],
+"loop": false,
+"name": "2",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 9 ) ],
@@ -356,9 +363,9 @@ animations = [ {
 "name": "11",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 12 ) ],
+"frames": [ ExtResource( 6 ) ],
 "loop": false,
-"name": "8",
+"name": "10",
 "speed": 5.0
 } ]
 
@@ -418,7 +425,7 @@ layer = -1
 [node name="1" type="AnimatedSprite" parent="BGLayer"]
 scale = Vector2( 4, 4 )
 frames = ExtResource( 4 )
-frame = 2
+frame = 1
 playing = true
 centered = false
 
@@ -427,6 +434,18 @@ scale = Vector2( 4, 4 )
 frames = ExtResource( 16 )
 playing = true
 centered = false
+
+[node name="6" type="AnimatedSprite" parent="BGLayer"]
+scale = Vector2( 4, 4 )
+frames = ExtResource( 16 )
+playing = true
+centered = false
+
+[node name="TileMap" type="TileMap" parent="BGLayer/6"]
+tile_set = ExtResource( 47 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 589823, 0, 0, 524288, 0, 1, 524289, 0, 1, 524290, 0, 1, 524291, 0, 1, 524292, 0, 1, 524293, 0, 1, 524294, 0, 1, 524295, 0, 1, 524296, 0, 1, 524297, 0, 1, 524298, 0, 1, 524299, 0, 1, 524300, 0, 1, 524301, 0, 1, 524302, 0, 1, 524303, 0, 1, 524304, 0, 1, 524305, 0, 1, 524306, 0, 1, 524307, 0, 2, 655359, 0, 65536, 589824, 0, 65537, 589825, 0, 65537, 589826, 0, 65537, 589827, 0, 65537, 589828, 0, 65537, 589829, 0, 65537, 589830, 0, 65537, 589831, 0, 65537, 589832, 0, 65537, 589833, 0, 65537, 589834, 0, 65537, 589835, 0, 65537, 589836, 0, 65537, 589837, 0, 65537, 589838, 0, 65537, 589839, 0, 65537, 589840, 0, 65537, 589841, 0, 65537, 589842, 0, 65537, 589843, 0, 65538, 720895, 0, 131072, 655360, 0, 131073, 655361, 0, 131073, 655362, 0, 131073, 655363, 0, 131073, 655364, 0, 131073, 655365, 0, 131073, 655366, 0, 131073, 655367, 0, 131073, 655368, 0, 131073, 655369, 0, 131073, 655370, 0, 131073, 655371, 0, 131073, 655372, 0, 131073, 655373, 0, 131073, 655374, 0, 131073, 655375, 0, 131073, 655376, 0, 131073, 655377, 0, 131073, 655378, 0, 131073, 655379, 0, 131074 )
 
 [node name="3" type="Sprite" parent="BGLayer"]
 scale = Vector2( 4, 4 )
@@ -465,6 +484,27 @@ anims/RESET = SubResource( 32 )
 anims/scroll = SubResource( 33 )
 
 [node name="Tween" type="Tween" parent="BGLayer"]
+
+[node name="Controls" type="Label" parent="BGLayer"]
+visible = false
+margin_left = 15.0
+margin_top = 13.0
+margin_right = 786.0
+margin_bottom = 92.0
+theme = ExtResource( 49 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 34 )
+text = "[ENTER] - select level
+[LEFT] / [RIGHT] - navigate 
+    unlocked levels"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="BGLayer/Controls"]
+wait_time = 4.0
+one_shot = true
+autostart = true
 
 [node name="ChallengeButton" type="Button" parent="."]
 visible = false
@@ -717,10 +757,12 @@ anims/rotate = SubResource( 20 )
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Window2" type="Sprite" parent="CanvasLayer"]
+visible = false
 position = Vector2( 160, 96 )
 texture = ExtResource( 3 )
 
 [node name="PeriodicTable" type="Node2D" parent="CanvasLayer"]
+visible = false
 position = Vector2( 16, 12 )
 
 [node name="Base" type="Sprite" parent="CanvasLayer/PeriodicTable"]
@@ -755,6 +797,7 @@ __meta__ = {
 }
 
 [node name="Left" type="TouchScreenButton" parent="CanvasLayer" groups=["arrow_button"]]
+visible = false
 modulate = Color( 1, 1, 1, 0.690196 )
 position = Vector2( 32, 416 )
 normal = ExtResource( 40 )
@@ -764,6 +807,7 @@ passby_press = true
 action = "left"
 
 [node name="Right" type="TouchScreenButton" parent="CanvasLayer" groups=["arrow_button"]]
+visible = false
 modulate = Color( 1, 1, 1, 0.690196 )
 position = Vector2( 1016, 416 )
 normal = ExtResource( 17 )
@@ -773,6 +817,7 @@ passby_press = true
 action = "right"
 
 [node name="PopUp" type="Control" parent="CanvasLayer"]
+visible = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -873,7 +918,22 @@ custom_fonts/normal_font = SubResource( 9 )
 text = "BORON (B) is the fifth element on the periodic table. In its crystalline form, Boron forms a brittle metalloid that is easily broken. In its crystal form, Boron is dark, but when burned it produces a bright green flame!"
 scroll_active = false
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": true
+}
+
+[node name="C" type="Node2D" parent="CanvasLayer/PopUp" groups=["element_info"]]
+
+[node name="Description" type="RichTextLabel" parent="CanvasLayer/PopUp/C"]
+margin_left = 192.0
+margin_top = 224.0
+margin_right = 1024.0
+margin_bottom = 480.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 9 )
+text = "CARBON (C) is the sixth element on the periodic table. It is one of the most important elements EVER!! Carbon is integral to organic chemistry, such as plants and other living things. It also can form compounds like diamond, which is one of the hardest materials we know of."
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": true
 }
 
 [node name="PlayButton" type="TouchScreenButton" parent="CanvasLayer/PopUp"]
@@ -894,6 +954,7 @@ current = true
 
 [node name="Tween" type="Tween" parent="Camera2D"]
 
+[connection signal="timeout" from="BGLayer/Controls/Timer" to="." method="_on_Timer_timeout"]
 [connection signal="pressed" from="ChallengeButton" to="." method="_on_ChallengeButton_pressed"]
 [connection signal="pressed" from="Map/1/Button" to="." method="_on_Button_pressed"]
 [connection signal="pressed" from="Map/2/Button" to="." method="_on_Button_pressed"]

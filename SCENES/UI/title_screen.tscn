@@ -69,12 +69,12 @@ autoplay = "float_animation"
 anims/float_animation = ExtResource( 3 )
 
 [node name="TapToStart" type="Label" parent="."]
-margin_left = 496.0
+margin_left = 440.0
 margin_top = 424.0
-margin_right = 799.0
+margin_right = 762.0
 margin_bottom = 466.0
 custom_fonts/font = SubResource( 2 )
-text = "[Tap to start]"
+text = "[Press enter to start]"
 __meta__ = {
 "_edit_use_anchors_": false
 }

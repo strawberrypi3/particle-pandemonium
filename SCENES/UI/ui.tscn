@@ -11,9 +11,6 @@
 [ext_resource path="res://ASSETS/Sprites/BlackOverlay.png" type="Texture" id=9]
 [ext_resource path="res://SCENES/button_touch_override.tscn" type="PackedScene" id=10]
 
-
-
-
 [sub_resource type="Animation" id=1]
 resource_name = "Rise"
 length = 5.0
@@ -37,6 +34,11 @@ animations = [ {
 "name": "5",
 "speed": 1.0
 }, {
+"frames": [ ExtResource( 8 ) ],
+"loop": true,
+"name": "1",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 7 ) ],
 "loop": true,
 "name": "2",
@@ -50,11 +52,6 @@ animations = [ {
 "frames": [ ExtResource( 6 ) ],
 "loop": true,
 "name": "3",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 8 ) ],
-"loop": true,
-"name": "1",
 "speed": 5.0
 } ]
 
@@ -166,4 +163,5 @@ position = Vector2( 835.093, 2.12134 )
 
 [node name="ButtonTouchOverride4" parent="CanvasLayer" instance=ExtResource( 10 )]
 position = Vector2( 1009.04, -51.6188 )
+
 [connection signal="timeout" from="SidekickTimer" to="." method="_on_SidekickTimer_timeout"]

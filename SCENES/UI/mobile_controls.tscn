@@ -23,9 +23,8 @@ points = PoolVector2Array( 80, 200, 80, -200, -200, -200, -200, 200 )
 
 [node name="MobileControls" type="CanvasLayer"]
 
-[node name="Left" type="TouchScreenButton" parent="." groups=[
-"arrow_button",
-]]
+[node name="Left" type="TouchScreenButton" parent="." groups=["arrow_button"]]
+visible = false
 modulate = Color( 1, 1, 1, 0.392157 )
 position = Vector2( 5.54, 428.464 )
 normal = ExtResource( 1 )
@@ -33,10 +32,10 @@ shape = SubResource( 1 )
 shape_visible = false
 passby_press = true
 action = "left"
+visibility_mode = 1
 
-[node name="Right" type="TouchScreenButton" parent="." groups=[
-"arrow_button",
-]]
+[node name="Right" type="TouchScreenButton" parent="." groups=["arrow_button"]]
+visible = false
 modulate = Color( 1, 1, 1, 0.392157 )
 position = Vector2( 177.836, 428.464 )
 normal = ExtResource( 2 )
@@ -44,10 +43,10 @@ shape = SubResource( 2 )
 shape_visible = false
 passby_press = true
 action = "right"
+visibility_mode = 1
 
-[node name="Up" type="TouchScreenButton" parent="." groups=[
-"arrow_button",
-]]
+[node name="Up" type="TouchScreenButton" parent="." groups=["arrow_button"]]
+visible = false
 modulate = Color( 1, 1, 1, 0.392157 )
 position = Vector2( 1015.78, 376.712 )
 normal = ExtResource( 3 )
@@ -55,8 +54,10 @@ shape = SubResource( 3 )
 shape_visible = false
 passby_press = true
 action = "up"
+visibility_mode = 1
 
 [node name="Switch" type="TouchScreenButton" parent="."]
+visible = false
 modulate = Color( 1, 0.894118, 0.207843, 0.392157 )
 position = Vector2( 839.848, 428.464 )
 normal = ExtResource( 4 )
@@ -64,10 +65,10 @@ shape = SubResource( 4 )
 shape_visible = false
 passby_press = true
 action = "switch"
+visibility_mode = 1
 
-[node name="Down" type="TouchScreenButton" parent="." groups=[
-"arrow_button",
-]]
+[node name="Down" type="TouchScreenButton" parent="." groups=["arrow_button"]]
+visible = false
 modulate = Color( 1, 1, 1, 0.392157 )
 position = Vector2( 839.848, 428.464 )
 normal = ExtResource( 5 )
@@ -75,3 +76,4 @@ shape = SubResource( 5 )
 shape_visible = false
 passby_press = true
 action = "down"
+visibility_mode = 1
