@@ -1,0 +1,20 @@
+[
+    {"Name":"PROTON", "Text":"Okay, where are we now?"},
+    {"Name":"ELECTRON", "Text":"We're in the sky."},
+    {"Name":"PROTON", "Text":"Wow, cool! Fluffy clouds! I wonder if there are any balloons around here?"},
+    {"Name":"ELECTRON", "Text":"Yeah, I was gonna get to that. Balloons are usually filled with Helium."},
+    {"Name":"ELECTRON", "Text":"Helium is the second element - two protons together."},
+    {"Name":"PROTON", "Text":"Wow! Let's go!"},
+    {"Name":"ELECTRON", "Text":"Wait... just jumping ahead isn't gonna work here."},
+    {"Name":"ELECTRON", "Text":"In some puzzles, you might need my help."},
+    {"Name":"ELECTRON", "Text":"I'm super small and light, so I can fly around and get into smaller spaces on my own..."},
+    {"Name":"ELECTRON", "Text":"...but I shouldn't leave you for too long, otherwise we could get... reacted."},
+    {"Name":"PROTON", "Text":"...reacted?"},
+    {"Name":"ELECTRON", "Text":"Singular protons and electrons are in high demand nowadays."},
+    {"Name":"ELECTRON", "Text":"Bases... oxidizing agents... *shudder* It's a real jungle out there."},
+    {"Name":"ELECTRON", "Text":"If we want to stay together, I shouldn't stray too far from you."},
+    {"Name":"ELECTRON", "Text":"How about this - I'll fly wherever you tell me to, but only for FIVE SECONDS."},
+    {"Name":"PROTON", "Text":"Sounds like a plan!!"},
+    {"Name":"ELECTRON", "Text":"Ok. Use the button on the bottom right to switch controls."},
+    {"Name":"PROTON", "Text":"I can't wait, this will be awesome!"}
+]

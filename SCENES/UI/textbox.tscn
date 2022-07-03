@@ -1,0 +1,70 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://SCENES/UI/textbox.gd" type="Script" id=1]
+[ext_resource path="res://ASSETS/Sprites/textbox.png" type="Texture" id=2]
+[ext_resource path="res://ASSETS/Fonts/HopeGold.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://tres/hope_gold.tres" type="Theme" id=4]
+[ext_resource path="res://ASSETS/Sprites/next_arrow.png" type="Texture" id=5]
+[ext_resource path="res://float_animation.tres" type="Animation" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+font_data = ExtResource( 3 )
+
+[sub_resource type="Theme" id=2]
+default_font = SubResource( 1 )
+
+[node name="Textbox" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 600, 128 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 2 )
+
+[node name="Name" type="RichTextLabel" parent="."]
+margin_left = 256.0
+margin_top = 56.0
+margin_right = 360.0
+margin_bottom = 96.0
+theme = ExtResource( 4 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_colors/selection_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_selected = Color( 0, 0, 0, 1 )
+text = "Hello"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Text" type="RichTextLabel" parent="."]
+margin_left = 256.0
+margin_top = 96.0
+margin_right = 944.0
+margin_bottom = 184.0
+theme = SubResource( 2 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_colors/selection_color = Color( 0, 0, 0, 1 )
+text = "Hihihihi"
+fit_content_height = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2( 928, 168 )
+
+[node name="NextArrow" type="Sprite" parent="Node2D"]
+position = Vector2( 0, 4.53173 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 5 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D/NextArrow"]
+autoplay = "float_animation"
+anims/float_animation = ExtResource( 6 )
