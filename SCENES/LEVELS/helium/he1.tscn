@@ -1,7 +1,14 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://SCENES/LEVELS/helium/he.tscn" type="PackedScene" id=1]
 [ext_resource path="res://SCENES/key.tscn" type="PackedScene" id=2]
+[ext_resource path="res://ASSETS/Sprites/Controls/e.png" type="Texture" id=3]
+[ext_resource path="res://ASSETS/Sprites/Controls/s.png" type="Texture" id=4]
+[ext_resource path="res://ASSETS/Sprites/Controls/a.png" type="Texture" id=5]
+[ext_resource path="res://ASSETS/Sprites/Controls/up.png" type="Texture" id=6]
+[ext_resource path="res://ASSETS/Sprites/Controls/d.png" type="Texture" id=7]
+[ext_resource path="res://ASSETS/Sprites/Controls/w.png" type="Texture" id=8]
+[ext_resource path="res://ASSETS/Sprites/Controls/left.png" type="Texture" id=9]
 
 [node name="Level" instance=ExtResource( 1 )]
 
@@ -9,7 +16,54 @@
 position = Vector2( 800, 512 )
 
 [node name="Key" parent="." index="5" instance=ExtResource( 2 )]
-position = Vector2( 448, 160 )
+position = Vector2( 400, 176 )
 
 [node name="PlayerPosition" parent="." index="6"]
 position = Vector2( 448, 544 )
+
+[node name="E" type="Sprite" parent="." index="8"]
+position = Vector2( 856, 192 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 3 )
+
+[node name="A" type="Sprite" parent="." index="9"]
+position = Vector2( 1008, 152 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 5 )
+
+[node name="D" type="Sprite" parent="." index="10"]
+position = Vector2( 1104, 152 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 7 )
+
+[node name="S" type="Sprite" parent="." index="11"]
+position = Vector2( 1056, 152 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 4 )
+
+[node name="W" type="Sprite" parent="." index="12"]
+position = Vector2( 1056, 104 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 8 )
+
+[node name="Left" type="Sprite" parent="." index="13"]
+position = Vector2( 1104, 272 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 9 )
+flip_h = true
+
+[node name="Up" type="Sprite" parent="." index="14"]
+position = Vector2( 1056, 272 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 6 )
+flip_v = true
+
+[node name="Left2" type="Sprite" parent="." index="15"]
+position = Vector2( 1008, 272 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 9 )
+
+[node name="Up2" type="Sprite" parent="." index="16"]
+position = Vector2( 1056, 224 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 6 )

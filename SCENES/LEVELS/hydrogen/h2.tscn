@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://SCENES/LEVELS/hydrogen/h.tscn" type="PackedScene" id=1]
 [ext_resource path="res://tres/Animations/BigSpaceBG.tres" type="SpriteFrames" id=2]
+[ext_resource path="res://ASSETS/Sprites/Controls/up.png" type="Texture" id=3]
+[ext_resource path="res://ASSETS/Sprites/Controls/w.png" type="Texture" id=4]
 
 [node name="Level" instance=ExtResource( 1 )]
 
@@ -18,3 +20,13 @@ locked = false
 
 [node name="PlayerPosition" parent="." index="4"]
 position = Vector2( 416, 544 )
+
+[node name="Up" type="Sprite" parent="." index="6"]
+position = Vector2( 424, 352 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 3 )
+
+[node name="W" type="Sprite" parent="." index="7"]
+position = Vector2( 424, 304 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 4 )
