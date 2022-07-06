@@ -17,6 +17,7 @@ func _ready():
 
 func _physics_process(delta):
 	if Input.is_action_just_pressed("enter"):
+		Audio.stop()
 		get_tree().change_scene("res://SCENES/UI/world_map.tscn")
 
 

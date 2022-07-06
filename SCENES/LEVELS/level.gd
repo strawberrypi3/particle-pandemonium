@@ -49,7 +49,7 @@ func _ready():
 		$Camera2D.make_current()
 
 
-func _on_Door_body_entered(body):
+func _on_Door_body_entered(body): ###
 	# The following two checks prevent player from entering door upon instancing
 	# level if door is in the same place as the player just was (nice sentence)
 	if body.get_filename() == "res://SCENES/player.tscn":

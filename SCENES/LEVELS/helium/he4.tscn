@@ -16,7 +16,7 @@ tile_data = PoolIntArray( -1, 0, 0, -65536, 0, 1, -65535, 0, 1, -65534, 0, 1, -6
 tile_data = PoolIntArray( 1114114, 0, 0, 1114115, 0, 0, 1114116, 0, 0, 1114117, 0, 0, 1114118, 0, 0, 1114119, 0, 0, 1114120, 0, 0, 1114121, 0, 0, 1114122, 0, 0, 1114123, 0, 0, 1114138, 0, 0, 1114139, 0, 0, 1114140, 0, 0, 1114141, 0, 0, 1114142, 0, 0, 1114143, 0, 0, 1114144, 0, 0, 1114145, 0, 0, 1114146, 0, 0, 1114147, 0, 0 )
 
 [node name="Door" parent="." index="4"]
-position = Vector2( 640, 448 )
+position = Vector2( 584, 448 )
 
 [node name="Key" parent="." index="5" instance=ExtResource( 2 )]
 position = Vector2( 640, 128 )
@@ -27,4 +27,4 @@ start_position = Vector2( 416, 224 )
 end_position = Vector2( 800, 224 )
 
 [node name="PlayerPosition" parent="." index="7"]
-position = Vector2( 544, 480 )
+position = Vector2( 704, 482 )

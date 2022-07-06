@@ -12,10 +12,10 @@ frames = ExtResource( 3 )
 start_position = Vector2( 0, -90.51 )
 
 [node name="Door" parent="." index="3"]
-position = Vector2( 632, 512 )
+position = Vector2( 616, 512 )
 
 [node name="PlayerPosition" parent="." index="4"]
-position = Vector2( 448, 544 )
+position = Vector2( 920, 536 )
 
 [node name="Key" parent="." index="5" instance=ExtResource( 2 )]
-position = Vector2( 896, 512 )
+position = Vector2( 336, 520 )

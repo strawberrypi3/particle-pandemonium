@@ -1,7 +1,14 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=19 format=2]
 
+[ext_resource path="res://ASSETS/Sprites/credits_button.png" type="Texture" id=1]
 [ext_resource path="res://SCENES/UI/title_screen.gd" type="Script" id=2]
 [ext_resource path="res://float_animation.tres" type="Animation" id=3]
+[ext_resource path="res://ASSETS/Sprites/credits_button_hover.png" type="Texture" id=4]
+[ext_resource path="res://ASSETS/Sprites/LevelPopUpWindowSmall.png" type="Texture" id=5]
+[ext_resource path="res://tres/hope_gold.tres" type="Theme" id=6]
+[ext_resource path="res://ASSETS/Fonts/MunroSmall-wPZw.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://ASSETS/Fonts/HopeGold.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://ASSETS/Sprites/XButton.png" type="Texture" id=9]
 [ext_resource path="res://ASSETS/Sprites/TitleCard.png" type="Texture" id=11]
 [ext_resource path="res://ASSETS/Fonts/RulerGold.ttf" type="DynamicFontData" id=17]
 [ext_resource path="res://ASSETS/Sprites/HexagonBackground.png" type="Texture" id=18]
@@ -29,6 +36,17 @@ font_data = ExtResource( 17 )
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 600, 300 )
+
+[sub_resource type="DynamicFont" id=1]
+size = 48
+font_data = ExtResource( 8 )
+
+[sub_resource type="Theme" id=5]
+default_font = SubResource( 1 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 30
+font_data = ExtResource( 7 )
 
 [node name="TitleScreen" type="Control"]
 anchor_right = 1.0
@@ -70,9 +88,9 @@ anims/float_animation = ExtResource( 3 )
 
 [node name="TapToStart" type="Label" parent="."]
 margin_left = 440.0
-margin_top = 424.0
+margin_top = 392.0
 margin_right = 762.0
-margin_bottom = 466.0
+margin_bottom = 434.0
 custom_fonts/font = SubResource( 2 )
 text = "[Press enter to start]"
 __meta__ = {
@@ -86,13 +104,161 @@ autostart = true
 [node name="Label" type="Label" parent="."]
 margin_right = 85.0
 margin_bottom = 14.0
-text = "Ver 0.0 Alpha"
+text = "Ver 1.0"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="TouchScreenButton" type="TouchScreenButton" parent="."]
+visible = false
 shape = SubResource( 3 )
 action = "ui_accept"
+visibility_mode = 1
+
+[node name="TextureButton" type="TextureButton" parent="."]
+margin_left = 464.0
+margin_top = 488.0
+margin_right = 533.0
+margin_bottom = 528.0
+rect_scale = Vector2( 4, 4 )
+texture_normal = ExtResource( 1 )
+texture_pressed = ExtResource( 4 )
+texture_hover = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Credits" type="Node2D" parent="."]
+
+[node name="LevelPopUpWindowSmall" type="Sprite" parent="Credits"]
+scale = Vector2( 4, 4 )
+texture = ExtResource( 5 )
+centered = false
+
+[node name="Label" type="Label" parent="Credits"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 536.0
+margin_top = 88.0
+margin_right = 668.0
+margin_bottom = 126.0
+theme = ExtResource( 6 )
+text = "CREDITS"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="Credits"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 384.0
+margin_top = 144.0
+margin_right = 516.0
+margin_bottom = 182.0
+theme = ExtResource( 6 )
+text = "Mira"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="Credits"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 264.0
+margin_top = 184.0
+margin_right = 576.0
+margin_bottom = 257.0
+theme = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
+text = "programming, level design, music, some art"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label5" type="Label" parent="Credits"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 616.0
+margin_top = 192.0
+margin_right = 928.0
+margin_bottom = 265.0
+theme = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
+text = "background art"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label6" type="Label" parent="Credits"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 256.0
+margin_top = 304.0
+margin_right = 568.0
+margin_bottom = 377.0
+theme = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
+text = "Fonts by eeve somepx and ten by twenty"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label8" type="Label" parent="Credits"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 192.0
+margin_top = 440.0
+margin_right = 992.0
+margin_bottom = 513.0
+theme = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
+text = "Special thanks - godot contributors, itch.io, scientists, and you!!"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label7" type="Label" parent="Credits"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 608.0
+margin_top = 304.0
+margin_right = 920.0
+margin_bottom = 377.0
+theme = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
+text = "Grass tileset by shackhal"
+align = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="Credits"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 720.0
+margin_top = 144.0
+margin_right = 852.0
+margin_bottom = 182.0
+theme = ExtResource( 6 )
+text = "Jumby"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="XButton" type="TextureButton" parent="Credits"]
+margin_left = 1032.0
+margin_top = 64.0
+margin_right = 1101.0
+margin_bottom = 104.0
+rect_scale = Vector2( 4, 4 )
+texture_normal = ExtResource( 9 )
+texture_pressed = ExtResource( 9 )
+texture_hover = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="timeout" from="TapToStart/Timer" to="." method="_on_Timer_timeout"]
+[connection signal="pressed" from="TextureButton" to="." method="_on_TextureButton_pressed"]
+[connection signal="pressed" from="Credits/XButton" to="." method="_on_XButton_pressed"]

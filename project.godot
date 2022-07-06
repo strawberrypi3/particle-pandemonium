@@ -21,6 +21,7 @@ config/icon="res://ASSETS/Sprites/icon.png"
 [autoload]
 
 Global="*res://SCENES/global.gd"
+Audio="*res://SCENES/audio.tscn"
 
 [display]
 

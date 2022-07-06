@@ -20,6 +20,8 @@ func _ready():
 	set_cursor_stage(Global.world_unlocked, false)
 	
 	$CanvasLayer/PeriodicTable/Waves.play("default")
+	
+	Audio.play("WorldMap")
 
 
 func _physics_process(delta):
@@ -154,6 +156,8 @@ func _on_ChallengeButton_pressed():
 
 
 func _on_TouchScreenButton_pressed(): # Popup (second) play button
+	Audio.stop()
+	Audio.play("Level")
 	get_tree().change_scene("res://SCENES/game.tscn")
 
 

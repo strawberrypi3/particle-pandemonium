@@ -2,7 +2,7 @@ extends Area2D
 
 export var locked = true
 
-signal level_complete
+#signal level_complete
 
 func _physics_process(delta):
 	$CollisionShape2D.disabled = locked
