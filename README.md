@@ -4,4 +4,6 @@ Particle Pandemonium is a short puzzle-platformer game for Linux, MacOS, and Win
 
 Game available from itch.io: https://chia-studios.itch.io/particlepandemonium
 
+![image](https://user-images.githubusercontent.com/95989724/184052979-a1ee99fa-aa6f-44ae-bda2-a1e991f99ac2.png)
+
 Enjoy!
